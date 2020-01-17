@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>产线达成率</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:thprolineachrate:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thprolineachrate:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thprolineachrate:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">插入时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.createTime" placeholder="插入时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.dataTime" placeholder="日期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">线别</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.lineName" placeholder="线别"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">班别</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.shiftName" placeholder="班别"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0前段  1后段</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.step" placeholder="0前段  1后段"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">生产排产量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.schedulQty" placeholder="生产排产量"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">前段无值，后段生产，报表系统维护</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.standardQry" placeholder="前段无值，后段生产，报表系统维护"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">生产产出量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.actualQty" placeholder="生产产出量"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">前段有值，后段需要报表系统自己计算</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.achRate" placeholder="前段有值，后段需要报表系统自己计算"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">默认0 不推送，1推送</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.isPush" placeholder="默认0 不推送，1推送"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">推送时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineAchRate.pushTime" placeholder="推送时间"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/thprolineachrate.js?_${.now?long}"></script>
+</body>
+</html>

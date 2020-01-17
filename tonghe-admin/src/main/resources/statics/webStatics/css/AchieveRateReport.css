@@ -1,0 +1,931 @@
+.wrapper>.row{
+    margin-right:0;
+    margin-left:0;
+}
+/*去除公共样式的边线*/
+.chart>div{
+    position:relative;
+    background-image: linear-gradient(
+            rgba(6, 39, 161, 0.1),
+            rgba(6, 39, 161, 0.1));
+    box-shadow: 0px 0px 60px 0px  rgba(2, 16, 30, 0.3);
+    border: solid 2px #2c2f58;
+
+}
+/*canvas 画图开始*/
+.wrapper>.productRate>.chart>.showChart{
+}
+.wrapper>.productRate>.chart>.showChart>canvas {
+    display: block;
+    background: transparent;
+    position: absolute;
+    top:0;
+    left:0;
+}
+/*canvas 画图结束*/
+
+
+
+
+
+/*各工序产出达成率*/
+.wrapper>.productRate{
+    width:100%;
+    flex:none;
+    height:70%;
+}
+.wrapper>.productRate>.chart>.showChart>.new{
+    height:2.75rem;
+    width:60%;
+    position:absolute;
+    top:6.5%;
+    left: 45%;
+    transform: translate(-50,0);
+    transform-origin: center center;
+    background:rgba(0,152,255,0.5);
+    box-shadow: 0 0 2.5rem 0 rgba(0, 152, 255, 0.5);
+    border-radius:1.33rem;
+}
+.wrapper>.productRate>.chart>.showChart>.new>.title{
+    width:10%;
+    height:100%;
+    float: left;
+    background:rgba(0,152,255,1);
+    border-radius:1.33rem;
+    padding-left:1rem;
+    padding-right: 1rem;
+    margin-right: 5%;
+    font-size:1.33rem;
+    font-weight: bold;
+}
+.wrapper>.productRate>.chart>.showChart>.new>.title>img{
+    width:1.33rem;
+    height:1.33rem;
+    object-fit: contain;
+}
+.wrapper>.productRate>.chart>.showChart>.new>.detail{
+    float:left;
+    width:70%;
+    height:100%;
+
+}
+
+.wrapper>.productRate>.chart>.showChart>.new>.detail>ul{
+    height:100%;
+}
+.wrapper>.productRate>.chart>.showChart>.new>.detail>ul>li{
+    /*margin-right:5.8%;*/
+    /*width:28.5rem;*/
+    width:50%;
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding:0 2%;
+}
+.wrapper>.productRate>.chart>.showChart>.new>.detail>ul>li>p{
+    font-size:1.33rem;
+    font-weight: bold;
+}
+.wrapper>.productRate>.chart>.showChart>.new>.cycleTime{
+    width:12%;
+    height:100%;
+    background:rgba(0,152,255,1);
+    border-radius: 0 1.33rem 1.33rem 0;
+    float: right;
+    overflow: hidden;
+    line-height:2.75rem;
+    font-size: 1.33rem;
+    font-weight: bold;
+    padding:0 0.5rem;
+}
+
+.wrapper>.productRate>.chart>.showChart>.legend{
+    /*width:16%;*/
+    position:absolute;
+    top:6.5%;
+    right:5%;
+
+}
+.wrapper>.productRate>.chart>.showChart>.legend>li{
+    width:10rem;
+    float:right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:1.33rem;
+}
+.wrapper>.productRate>.chart>.showChart>.legend>li>.icon{
+    display: block;
+    width:1.5rem;
+    height:1.5rem;
+    border-radius: 50%;
+}
+.wrapper>.productRate>.chart>.showChart>.legend>li>span{
+    font-size: 1.33rem;
+}
+.wrapper>.productRate>.chart>.showChart>.legend>li:last-child{
+    margin-right:1.83rem ;
+}
+.wrapper>.productRate>.chart>.showChart>.legend>li:first-child>.icon{
+    background-image: linear-gradient(0deg,
+    #48f6f3 0%,
+    #25dad7 50%,
+    #02bdba 100%);
+}
+.wrapper>.productRate>.chart>.showChart>.legend>li:last-child>.icon{
+    background-image: linear-gradient(0deg,
+    #ff9c00 0%,
+    #f9b524 100%);
+}
+.wrapper>.productRate>.chart>.showChart>.coord{
+    width:90%;
+    height:65%;
+    position: absolute;
+    left:5%;
+    top:15%;
+    /*flex-direction: column-reverse;*/
+}
+.wrapper>.productRate>.chart>.showChart>.coord>li{
+    width:100%;
+    height:1.08rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wrapper>.productRate>.chart>.showChart>.coord>li>span{
+    font-size:1.33rem;
+    text-align: left;
+}
+.wrapper>.productRate>.chart>.showChart>.coord>li>.line{
+    display: block;
+    width:93%;
+    height:0;
+    border:0.5px solid #2c2f58;
+}
+
+.wrapper>.productRate>.chart>.showChart>.barGraph{
+    width:80%;
+    height:70%;
+    position:absolute;
+    left:10%;
+    top:16%;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul{
+    width:100%;
+    height:100%;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li{
+    width:4.4%;
+    height:100%;
+    position: relative;
+    cursor:pointer;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture{
+    width:100%;
+    height:90%;
+    margin-bottom:30%;
+    /*background:url("../images/AchieveRateReport/barBg.png") no-repeat center center;*/
+    /*background-size: 100% 100% ;*/
+    padding:0 0 1.04rem 0;
+    position: relative;
+}
+
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li{
+    /*flex:none;*/
+    width:50%;
+    /*height:calc(80% - 2.08rem);*/
+    /*position: relative;*/
+    position: absolute;
+    left:0;
+    bottom:1.04rem;
+}
+
+
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:nth-child(1){
+    background-image: linear-gradient(180deg,
+    #eb8a23 0%,
+    #eba42c 100%);
+    left:0;
+    height:0;
+    transition:height .5s;
+
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:after{
+    display: block;
+    content: "";
+    width:100%;
+    height:2.08rem;
+    position:absolute;
+    left:0;
+    top:-1.04rem;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:before{
+    display: block;
+    content: "";
+    width:100%;
+    height:1.04rem;
+    position:absolute;
+    left:0;
+    bottom:-1.04rem;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:nth-child(1):after{
+    background:url("../images/AchieveRateReport/top.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:nth-child(1):before{
+    background:url("../images/AchieveRateReport/bottom.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:nth-child(2):after{
+    background:url("../images/AchieveRateReport/blueTop.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:nth-child(2):before{
+    background:url("../images/AchieveRateReport/blueBottom.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:nth-child(2){
+    background-image: linear-gradient(180deg,
+    #0f77e3 0%,
+    #12a9e1 100%);
+    left:50%;
+    height:0;
+    transition: height .5s;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>li:nth-child(3){
+    left:50%;
+    bottom:60%;
+    width:5.5rem;  /*从5re*/
+    height:8.33rem;
+    background: url("../images/AchieveRateReport/hint.png") no-repeat center center;
+    background-size: 100% 100%;
+    transform:translate(-50%,0.625rem);
+    transform-origin: center top;
+    text-align: center;
+    line-height:4.167rem;
+    font-family: Haettenschweiler;
+    font-size: 2.5rem;
+    color: #44f3f0;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.picture>.red{
+    background: url("../images/AchieveRateReport/hint-red.png") no-repeat center center !important;
+    background-size: 100% 100% !important;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>p{
+    font-size: 1.667rem;
+    line-height:25px;
+    text-align: center;
+}
+/*各工序产出达成率过低，出提示框*/
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.reminder{
+    display:block;
+    position: absolute;
+    top:107%;
+    left:50%;
+    width:10.416rem;
+    padding:0.5rem;
+    background:#000000;
+    border:1px solid #e72851;
+    transform: translate(-50%,0);
+    transform-origin: center center;
+    z-index:999;
+    max-height:7.16rem ;
+    /*animation:  changeTop 500ms linear 0s infinite alternate;*/
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.reminder>.wrapper{
+    width:100%;
+    height:100%;
+
+
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.reminder>.wrapper>.text{
+    text-align:left;
+    overflow: auto;
+    float:left;
+    width:100%;
+    margin-top:-2rem;
+
+    /*position:relative;*/
+    /*left:0;*/
+    /*top: 0.5rem;*/
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.reminder .arrow,.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.reminder .arrow>i{
+    display: block;
+    position:relative;
+    left:50%;
+    top: -2.5rem;
+    width:0;
+    height:0;
+    float:left;
+    border:1rem solid #e72851;
+    border-color:transparent transparent #e72851 transparent;
+    /*border-width: 0 0 1rem 0.5rem;*/
+    transform-origin: center;
+    transform: translate(-50%,0);
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.reminder .arrow>i{
+    position:absolute;
+    left:50%;
+    top: -0.85rem;
+    bottom:0;
+    border:1rem solid #000000;
+    border-color:transparent transparent #000000 transparent;
+    z-index:9999;
+
+}
+
+/*hover 提示*/
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.cover{
+    display: none;
+    position: absolute;
+    top:70%;
+    right:-150%;
+    background:rgba(140,140,140,0.7);
+    border:1px solid rgba(0,0,0,.3);
+    border-radius: 0.5rem;
+    padding:0.5rem;
+    z-index:999;
+
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.cover>li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.cover>li>.icon{
+    display: block;
+    width:1.25rem;
+    height:1.25rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.cover>.plan>.icon{
+    background-image: linear-gradient(0deg, #ff9c00 0%, #f9b524 100%);
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li>.cover>.actual>.icon{
+    background-image: linear-gradient(0deg, #48f6f3 0%, #25dad7 50%, #02bdba 100%);
+}
+.wrapper>.productRate>.chart>.showChart>.barGraph>ul>li:hover>.cover{
+   display: block;
+}
+/*各工序产出达成率结束*/
+
+
+/*各工序在制品 */
+.wrapper>.inProduction{
+    width:100%;
+    height:30%;
+    flex:none;
+}
+
+.wrapper>.inProduction>.chart>.inProductionCharte{
+    width:100%;
+    height:100%;
+}
+.wrapper>.inProduction>.chart>.inProductionCharte>ul {
+    margin-top: 0.2rem;
+    margin-bottom:0.2rem;
+    padding:0 4.833rem;
+    width:100%;
+    height:75%;
+    position:absolute;
+    top:17%;
+    left:0;
+}
+/*li 默认绿色*/
+.wrapper>.inProduction>.chart>.inProductionCharte>ul>li{
+    width:9%;
+    height:100%;
+    background:url(../images/AchieveRateReport/safety.png) no-repeat center center;
+    background-size: contain;
+
+    overflow: hidden;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    position:relative;
+
+}
+.wrapper>.inProduction>.chart>.inProductionCharte>ul>li.red{
+    background:url(../images/AchieveRateReport/danger.png) no-repeat center center;
+    background-size: contain;
+}
+
+.wrapper>.inProduction>.chart>.inProductionCharte>ul>li.yellow{
+    background:url(../images/AchieveRateReport/waring.png) no-repeat center center;
+    background-size: contain;
+}
+.wrapper>.inProduction>.chart>.inProductionCharte>ul>li.yellow>.intro>.number{
+    color: #f29e1b;
+}
+.wrapper>.inProduction>.chart>.inProductionCharte>ul>li.red>.intro>.number{
+    color: #ed2323;
+}
+.inProductionCharte>ul>li>.intro,.inProductionCharte>ul>li>.cover{
+    /*position: absolute;*/
+    /*top:50%;*/
+    /*left:50%;*/
+    /*width:100%;*/
+    /*height:65%;*/
+    /*transform: translate(-50%,-50%);*/
+    /*transform-origin: center center;*/
+    position: absolute;
+    left:0.25rem;
+    top:50%;
+    width:calc(100% - 0.5rem );
+    transform: translate(0,-50%);
+    transform-origin: center center;
+    overflow: hidden;
+    /*border:1px solid red;*/
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+.inProductionCharte>ul>li>.intro{
+    z-index:999;
+    height:65%;
+
+}
+.inProductionCharte>ul>li>.intro>p{
+    /*float: left;*/
+    /*width:100%;*/
+    display: inline-block;
+    color:#fff;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height:1.5rem;
+}
+.inProductionCharte>ul>li>.intro>p.targetValue{
+    width: 100%;
+    height:33.33%;
+    position: relative;
+}
+.inProductionCharte>ul>li>.intro>p.targetValue>span{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transform-origin: center center;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+.inProductionCharte>ul>li>.intro>p:nth-child(2){
+    color:#61eb61;
+    font-size: 2rem;
+    line-height:2rem;
+    margin:0.6rem auto;
+}
+.inProductionCharte>ul>li>.intro>p:last-child{
+    /*padding-top:0.7rem;*/
+    font-family: MicrosoftYaHei;
+}
+.inProductionCharte>ul>li>.cover{
+    position: absolute;
+    left:0.25rem;
+    top:50%;
+    width:calc(100% - 0.5rem );
+
+    transform: translate(0,-50%);
+    transform-origin: center center;
+    overflow: hidden;
+    border-radius: 50%;
+    transition: height .5s;
+
+}
+.inProductionCharte>ul>li>.cover>.changingColor{
+    background:linear-gradient(#286547, #4dbc57);
+    width: 100%;
+    height: 1.33rem;
+    position:relative;
+}
+.inProductionCharte>ul>li>.cover>.changingColor>.waterWaves1,.inProductionCharte>ul>li>.cover>.changingColor>.waterWaves2{
+    display: block;
+    position:absolute;
+    top:-1.3rem;
+    height:1.33rem;
+    width:30rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+
+}
+.inProductionCharte>ul>li>.cover>.changingColor>.waterWaves1{
+    left:-30%;
+    background-image:url("../images/AchieveRateReport/green60.png");
+    background-size: 100% 100%;
+}
+.inProductionCharte>ul>.red>.cover>.changingColor>.waterWaves1{
+    background-image:url("../images/AchieveRateReport/red60.png");
+    background-size: 100% 100%;
+}
+.inProductionCharte>ul>.yellow>.cover>.changingColor>.waterWaves1{
+    background-image:url("../images/AchieveRateReport/yellow60.png");
+    background-size: 100% 100%;
+}
+
+.inProductionCharte>ul>li>.cover>.changingColor>.waterWaves2{
+    left:0;
+    background-image: url("../images/AchieveRateReport/green100.png");
+    background-size: 100% 100%;
+}
+.inProductionCharte>ul>.red>.cover>.changingColor>.waterWaves2{
+    left:0;
+    background-image: url("../images/AchieveRateReport/red100.png");
+    background-size: 100% 100%;
+}
+.inProductionCharte>ul>.yellow>.cover>.changingColor>.waterWaves2{
+    left:0;
+    background-image: url("../images/AchieveRateReport/yellow100.png");
+    background-size: 100% 100%;
+}
+
+
+@keyframes rageAnimate2
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-moz-keyframes rageAnimate2 /* Firefox */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-webkit-keyframes rageAnimate2 /* Safari 和 Chrome */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-o-keyframes rageAnimate2 /* Opera */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+@keyframes rageAnimate1
+{
+    0%{
+        left:-50%;
+    }
+    25%{
+        left:-70%;
+    }
+    50%{
+        left:-80%;
+    }
+    75%{
+        left:-90%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-moz-keyframes rageAnimate1 /* Firefox */
+{
+    0%{
+        left:-50%;
+    }
+    25%{
+        left:-70%;
+    }
+    50%{
+        left:-80%;
+    }
+    75%{
+        left:-90%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-webkit-keyframes rageAnimate1 /* Safari 和 Chrome */
+{
+    0%{
+        left:-50%;
+    }
+    25%{
+        left:-70%;
+    }
+    50%{
+        left:-80%;
+    }
+    75%{
+        left:-90%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-o-keyframes rageAnimate1 /* Opera */
+{
+    0%{
+        left:-50%;
+    }
+    25%{
+        left:-70%;
+    }
+    50%{
+        left:-80%;
+    }
+    75%{
+        left:-90%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+
+@keyframes rageAnimate2
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-moz-keyframes rageAnimate2 /* Firefox */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-webkit-keyframes rageAnimate2 /* Safari 和 Chrome */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-o-keyframes rageAnimate2 /* Opera */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+/*修改高度*/
+@keyframes changeH
+{
+    0%{
+        height:5%;
+    }
+    25%{
+        height:25%;
+    }
+    50%{
+        height:50%;
+    }
+    75%{
+        height:70%;
+    }
+    100%{
+        height:100%;
+    }
+}
+
+@-moz-keyframes changeH /* Firefox */
+{
+    0%{
+        height:5%;
+    }
+    25%{
+        height:25%;
+    }
+    50%{
+        height:50%;
+    }
+    75%{
+        height:70%;
+    }
+    100%{
+        height:100%;
+    }
+}
+
+@-webkit-keyframes changeH /* Safari 和 Chrome */
+{
+    0%{
+        height:5%;
+    }
+    25%{
+        height:25%;
+    }
+    50%{
+        height:50%;
+    }
+    75%{
+        height:70%;
+    }
+    100%{
+        height:100%;
+    }
+}
+
+@-o-keyframes changeH /* Opera */
+{
+    0%{
+        height:5%;
+    }
+    25%{
+        height:25%;
+    }
+    50%{
+        height:50%;
+    }
+    75%{
+        height:70%;
+    }
+    100%{
+        height:100%;
+    }
+}
+
+/*产出达成率的提示框*/
+@keyframes changeTop
+{
+    0%{
+        top:106%;
+    }
+    25%{
+        top:109%;
+    }
+    50%{
+        top:106%;
+    }
+    75%{
+        top:109%;
+    }
+    100%{
+        top:106%;
+    }
+}
+
+@-moz-keyframes changeTop /* Firefox */
+{
+    0%{
+        top:106%;
+    }
+    25%{
+        top:109%;
+    }
+    50%{
+        top:106%;
+    }
+    75%{
+        top:109%;
+    }
+    100%{
+        top:106%;
+    }
+}
+
+@-webkit-keyframes changeTop /* Safari 和 Chrome */
+{
+    0%{
+        top:106%;
+    }
+    25%{
+        top:109%;
+    }
+    50%{
+        top:106%;
+    }
+    75%{
+        top:109%;
+    }
+    100%{
+        top:106%;
+    }
+}
+@-o-keyframes changeTop /* Opera */
+{
+    0%{
+        top:106%;
+    }
+    25%{
+        top:109%;
+    }
+    50%{
+        top:106%;
+    }
+    75%{
+        top:109%;
+    }
+    100%{
+        top:106%;
+    }
+}

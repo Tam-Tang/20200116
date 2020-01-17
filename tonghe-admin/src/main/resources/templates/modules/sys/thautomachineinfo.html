@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>設備基本信息數據表</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:thautomachineinfo:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thautomachineinfo:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thautomachineinfo:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備名稱</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.machineName" placeholder="設備名稱"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備UPH</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.uph" placeholder="設備UPH"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備位置</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.position" placeholder="設備位置"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備類型</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.type" placeholder="設備類型"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備型號</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.model" placeholder="設備型號"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備品牌</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.brand" placeholder="設備品牌"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備編號</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.machineNo" placeholder="設備編號"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">加工精度</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.machineAccuracy" placeholder="加工精度"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">運行總時間</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.runTotalTime" placeholder="運行總時間"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">運行時長</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.runTime" placeholder="運行時長"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">產出顯示</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.outputDisplay" placeholder="產出顯示"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備稼動率</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.utilizationRate" placeholder="設備稼動率"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備及時狀態</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.machinTimelyStatus" placeholder="設備及時狀態"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">設備狀態顯示</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.machinStatusDisplay" placeholder="設備狀態顯示"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">保養週期顯示</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thAutoMachineInfo.machinIntervalDisplay" placeholder="保養週期顯示"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/thautomachineinfo.js?_${.now?long}"></script>
+</body>
+</html>

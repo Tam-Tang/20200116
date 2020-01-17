@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自动化设备看板</title>
+    <!-- 设置视口-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <!-- 导入css-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/bootstrap.css"/>
+    <!-- 引入swiper 样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/swiper/swiper.min.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/common.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/AutoEquipmentReport.css"/>
+
+    <!-- 导入3个js，有顺序要求-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/jquery.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/popper.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+    <!--引入公共字体，请求方法-->
+    <script src="${request.contextPath}/statics/webStatics/js/utils/require.js"></script>
+    <!--引入echart.js-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/echart/echarts.common.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--头部主题-->
+    <header></header>
+    <!--内容部分-->
+    <div class="wrapper flexColumnBetweenCenter">
+        <!--设备状态监控-->
+        <div class="row equipmentControll">
+            <div class="chart  col-xl-12 col-xs-12" >
+                <p class="theme" style="position: absolute">
+                    <span class="title">设备状态监控</span>
+                    <!--<span class="subhead">Adverse cause TOP3</span>-->
+                </p>
+                <div class="row echartWrap ">
+                    <!--class=showChart 是echarts图表的父组件-->
+                    <div class="showChart col-xl-3 col-xs-3" id="pieChart"></div>
+                    <div class="lineNo col-xl-9 col-xs-9">
+                        <ul class="row top flexRowStartStart">
+                        </ul>
+<!--                        <ul class="row bottom flexRowStartCenter">-->
+<!--                        </ul>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--下部分 -->
+        <div class="row autoEquipmentCondition">
+            <div class="chart clear col-xl-5 col-xs-5" >
+                <p class="theme" style="position: absolute">
+                    <span class="title">设备运行状态</span>
+                </p>
+                <!-- 设备运行状态-->
+                <div class="row status flexRowBetweenCenter">
+                    <div class="imageWrapper col-xl-6 col-xs-6">
+                        <img src="${request.contextPath}/statics/webStatics/images/AutoEquipmentReport/autoEquipment.png" width="100%" alt="没有图片">
+                    </div>
+                    <div class="introduce  flexRowStartCenter col-xl-6 col-xs-6">
+                        <div class="row flexRowBetweenStart">
+                            <div class="iconWrapper col-xl-2 col-xs-2">
+                                <i class="icon"></i>
+                            </div>
+                            <div class="info col-xl-10 ol-xs-10">
+                                <div class="top ">
+                                    <div class="equipmentInfo">
+                                        <p class="font-24">内存条贴标机</p>
+                                        <p class="font-24"> A03</p>
+                                        <p class="font-18">所属线别：前加工</p>
+                                        <p class="font-18">UPH：450台</p>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <p class="tip font-24">功能</p>
+                                    <p class="font-18">
+                                        内存条标签自动打
+                                        印并粘贴在指定位
+                                        置，并完成条码扫
+                                        描进行link，无人
+                                        化作业。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="videoWrap col-xl-7 col-xs-7">
+                <div class=" row">
+                    <video class="col-xl-12 col-xs-12" src=""></video>
+                    <div class="cover col-xl-12 col-xs-12 ">
+                        <img src="${request.contextPath}/statics/webStatics/images/AutoEquipmentReport/start.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${request.contextPath}/statics/webStatics/js/AutoEquipmentReport.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/header.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThOrderProQuantityDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThOrderProQuantityEntity" id="thOrderProQuantityMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="orderProTotalQty" column="ORDER_PRO_TOTAL_QTY"/>
+        <result property="orderProDeliveryQty" column="ORDER_PRO_DELIVERY_QTY"/>
+        <result property="orderProUndeliveryQty" column="ORDER_PRO_UNDELIVERY_QTY"/>
+        <result property="ordeqTy" column="ORDEQ_TY"/>
+    </resultMap>
+
+    <!--按照订单维度查询交付分析  查询当月-->
+    <select id="queryDeliveryByOrderQty" resultType="com.ags.modules.sys.dto.DeliveryByOrderQtyDTO">
+       SELECT
+            to_char( trunc( CREATE_TIME, 'DD' ), 'yyyy-mm-dd' ) AS TIME,
+            sum( ORDER_PRO_TOTAL_QTY ) AS ORDER_TOTAL_QTY,
+            sum( ORDER_PRO_DELIVERY_QTY ) AS ORDER_DELIVERY_QTY,
+            sum( ORDER_PRO_UNDELIVERY_QTY ) AS ORDER_UNDELIVERY_QTY,
+            sum( ORDEQ_TY ) AS ORDEQ_TY,
+            100 * round(sum( ORDER_PRO_UNDELIVERY_QTY )/sum( ORDER_PRO_TOTAL_QTY ),4) as UNDELIVERY_PERCENT,
+            100 * round(sum( ORDER_PRO_DELIVERY_QTY )/sum( ORDER_PRO_TOTAL_QTY ),4) as DELIVERY_PERCENT
+        FROM
+            TH_ORDER_PRO_QUANTITY
+        WHERE
+            to_char( CREATE_TIME, 'mm' ) = to_char( SYSDATE, 'mm' )
+        GROUP BY
+            to_char( trunc( CREATE_TIME, 'DD' ), 'yyyy-mm-dd' )
+        ORDER BY
+            to_char( trunc( CREATE_TIME, 'DD' ), 'yyyy-mm-dd' ) ASC
+    </select>
+</mapper>

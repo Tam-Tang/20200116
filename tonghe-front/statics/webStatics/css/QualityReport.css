@@ -1,0 +1,189 @@
+.wrapper{
+    width:100%;
+    flex:1;
+}
+.wrapper>.row{
+    width:100%;
+    height:100%;
+    margin-right: 0;
+    margin-left: 0;
+    align-items: flex-start;
+}
+
+.theme {
+    min-width: 20rem;
+    height: 5.167rem;
+}
+.chart:first-child>div:after{
+    display: none;
+}
+.ecahrtWrap{
+    width:100%;
+    height:100%;
+    position: relative;
+    padding:5.767rem 1rem 5%;
+}
+.chart>.barCharts{
+    background-image: url("");
+    border:0;
+}
+.barCharts{
+    position:absolute;
+    left:0.5rem;
+    top:0.5rem;
+    width:calc(100% - 1rem);
+    height:calc(100% - 1rem);
+}
+/*雷达图的图例*/
+.myLegend{
+    position: absolute !important;
+    left:6%;
+    top:3%;
+}
+.myLegend>li{
+    float:left;
+    margin-right:1.66rem;
+    font-size:2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.myLegend>li>.selectBox{
+    display: block;
+    width:1.667rem;
+    height:1.667rem;
+    border-radius: 50%;
+    margin-right:0.5rem;
+    border: solid 0.416rem #165fc3;
+}
+.myLegend>li>.active{
+    display: block;
+    background-image: linear-gradient(0deg,
+    #0b7aba 0%,
+    #2addda 100%);
+}
+
+/*雷达图，时间周期*/
+.updateTime{
+    position: absolute !important;
+    top:7%;
+    left:6%;
+    background: rgba(0,152,255,0.5);
+    min-width: 29.167rem;
+    height: 2.75rem;
+}
+.updateTime>.wrapper{
+    width:100%;
+    height:100%;
+}
+
+
+.ecahrtWrap>.pcba,.ecahrtWrap>.cto,.swiper-container{
+    width:100%;
+    height:31%;
+    margin-bottom:2%;
+    background-image: linear-gradient(90deg,
+    rgba(60, 0, 255, 0.1) 0%,
+    rgba(9, 162, 212, 0.1) 100%);
+}
+.ecahrtWrap>.title{
+    min-width: 20rem;
+    height: 5rem;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    color: #eaeaea;
+    padding-left: 1.66rem;
+}
+
+/*Swiper轮播开始*/
+.swiper-container {
+    width: calc( 100% - 2rem );
+    /*height:90%;*/
+    margin-bottom:0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.swiper-slide{
+    width:100%;
+    /*height:calc( 50% - 0.5px );*/
+    height:100%;
+}
+/*pie环状图；lineChart:折线图*/
+.pie,.lineChart{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height:100%;
+}
+.pie{
+    background-image: linear-gradient(90deg, rgba(60, 0, 255, 0.1) 0%, rgba(9, 162, 212, 0.1) 100%);
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition:1s 1s all ease;
+    transition:1s 1s all ease;
+}
+.lineChart{
+    background-image: linear-gradient(90deg, rgba(60, 0, 255, 0.1) 0%, rgba(9, 162, 212, 0.1) 100%);
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition:1s all ease;
+    transition:1s all ease;
+}
+/*缩小为0*/
+.changeSmall{
+-webkit-transform:scaleX(0);
+transform:scaleX(0);
+-webkit-transition:1s all ease;
+transition:1s all ease;
+}
+/*扩大到100%*/
+.changeBag{
+-webkit-transform: scaleX(1);
+transform: scaleX(1);
+-webkit-transition:1s 1s all ease;
+transition:1s 1s all ease
+}
+.pie>div,.lineChart>div{
+    /*position: absolute !important;*/
+    width:100%;
+    height:100%;
+    margin:0 auto;
+}
+.pie>div>canvas,.lineChart>div>canvas{
+    height:100%;
+}
+/*包裹自定义分页器的div的位置等CSS样式*/
+.swiper-pagination-custom {
+    width:45%;
+    height: 1.5rem;
+    text-align: center;
+}
+.swiper-pagination{
+    position: absolute;
+    top:1rem;
+    left:calc(100% - 1rem);
+    transform: translate(-100% , 0);
+    transform-origin: left top;
+}
+/*自定义分页器的样式，这个你自己想要什么样子自己写*/
+.swiper-pagination-customs {
+    width: 1.5rem;
+    height: 1.5rem;
+    display:inline-block;
+    opacity: 0.3;
+    border-radius: 2px;
+    border:0.2rem solid #165fc3;
+    margin: 0 5px;
+    outline: 0;
+}
+/*自定义分页器激活时的样式表现*/
+.swiper-pagination-customs-active {
+    opacity: 1;
+    border:none;
+    background-image: linear-gradient(0deg, #0b7aba 0%, #2addda 100%);
+}
+
+/*swiper 轮播结束*/

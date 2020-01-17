@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThEsdRealTimeDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThEsdRealTimeEntity" id="thEsdRealTimeMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="place" column="PLACE"/>
+        <result property="esdStatus" column="ESD_STATUS"/>
+        <result property="isPush" column="IS_PUSH"/>
+        <result property="pushTime" column="PUSH_TIME"/>
+    </resultMap>
+
+    <select id="queryEsdStatusByPlace" resultType="com.ags.modules.sys.dto.EsdStatusByPlaceDTO">
+        SELECT SUM(OK) as OK,SUM(FAIL) as FAIL,PLACE from (
+
+        SELECT count(ESD_STATUS) OK, 0 FAIL,PLACE FROM TH_ESD_REAL_TIME where ESD_STATUS = 0 and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)GROUP BY PLACE
+
+        union all
+
+        SELECT 0 OK, count(ESD_STATUS) FAIL,PLACE FROM TH_ESD_REAL_TIME where ESD_STATUS = 1  and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)GROUP BY PLACE
+
+        ) GROUP BY PLACE
+    </select>
+
+    <select id="queryEsdStatusByPlaceMan" resultType="com.ags.modules.sys.dto.EsdStatusByPlaceDTO">
+        SELECT SUM(OK) as OK,SUM(FAIL) as FAIL,PLACE from (
+
+        SELECT count(ESD_STATUS) OK, 0 FAIL,PLACE FROM TH_ESD_REAL_TIME where ESD_TYPE = 'MAN' and ESD_STATUS = 0 and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)GROUP BY PLACE
+
+        union all
+
+        SELECT 0 OK, count(ESD_STATUS) FAIL,PLACE FROM TH_ESD_REAL_TIME where ESD_TYPE = 'MAN' and ESD_STATUS = 1  and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)GROUP BY PLACE
+
+        ) GROUP BY PLACE
+    </select>
+
+    <select id="queryEsdStatusByPlaceManESD" resultType="com.ags.modules.sys.dto.EsdPlaceDTO">
+        SELECT ESD_ID , PLACE
+          FROM TH_ESD_REAL_TIME
+         where ESD_TYPE = 'MAN'
+           and ESD_STATUS = 1
+           and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)
+         GROUP BY PLACE, ESD_ID
+    </select>
+
+
+    <select id="queryEsdStatusByPlaceMachine" resultType="com.ags.modules.sys.dto.EsdStatusByPlaceDTO">
+        SELECT SUM(OK) as OK,SUM(FAIL) as FAIL,PLACE from (
+
+        SELECT count(ESD_STATUS) OK, 0 FAIL,PLACE FROM TH_ESD_REAL_TIME where ESD_TYPE = 'MACHINE' and ESD_STATUS = 0 and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)GROUP BY PLACE
+
+        union all
+
+        SELECT 0 OK, count(ESD_STATUS) FAIL,PLACE FROM TH_ESD_REAL_TIME where ESD_TYPE = 'MACHINE' and ESD_STATUS = 1  and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)GROUP BY PLACE
+
+        ) GROUP BY PLACE
+    </select>
+
+    <select id="queryEsdStatusByPlaceMachineESD" resultType="com.ags.modules.sys.dto.EsdPlaceDTO">
+        SELECT ESD_ID , PLACE
+          FROM TH_ESD_REAL_TIME
+         where ESD_TYPE = 'MACHINE'
+           and ESD_STATUS = 1
+           and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)
+         GROUP BY PLACE, ESD_ID
+    </select>
+
+    <select id="queryManESDWarn" resultType="com.ags.modules.sys.dto.ESDWarnDTO">
+            select DATA_TIME TIME, PLACE, ESD_ID ID, ESD_TYPE, ESD_STATUS STATUS
+  from TH_ESD_REAL_TIME
+ where esd_status = '1' and ESD_TYPE = 'MAN'
+   and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)
+
+    </select>
+
+    <select id="queryMachineESDWarn" resultType="com.ags.modules.sys.dto.ESDWarnDTO">
+
+               select DATA_TIME TIME, PLACE, ESD_ID ID, ESD_TYPE, ESD_STATUS STATUS
+  from TH_ESD_REAL_TIME
+ where esd_status = '1' and ESD_TYPE = 'MACHINE'
+  and CREATE_TIME = (select MAX(CREATE_TIME) from TH_ESD_REAL_TIME)
+
+    </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThYieldOfProLineDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThYieldOfProLineEntity" id="thYieldOfProLineMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="productLineId" column="PRODUCT_LINE_ID"/>
+        <result property="stationId" column="STATION_ID"/>
+        <result property="goodRate" column="GOOD_RATE"/>
+        <result property="shiftId" column="SHIFT_ID"/>
+    </resultMap>
+
+
+</mapper>

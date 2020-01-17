@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>产线不良明细表</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:thprolinedefectdetails:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thprolinedefectdetails:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thprolinedefectdetails:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">插入时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.createTime" placeholder="插入时间"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.dataTime" placeholder="日期"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">产线编号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.productLineId" placeholder="产线编号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">站点编号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.stationId" placeholder="站点编号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">工单号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.orderNumber" placeholder="工单号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">产品SN</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.unitSn" placeholder="产品SN"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">不良类别编号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.badTypeId" placeholder="不良类别编号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">班别</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="thProLineDefectDetails.shiftId" placeholder="班别"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/thprolinedefectdetails.js?_${.now?long}"></script>
+</body>
+</html>

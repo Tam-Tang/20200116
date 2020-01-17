@@ -1,0 +1,68 @@
+{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{maintenanceDetailPie为维修周期管理,maintenanceCycleTop10为维修超期TOP10,maintenanceNumber为维修数量veneerWip为单板WIP趋势tworeflux为二次回流trendData为不良分布趋势图boardconfig为看板配置数据}",
+    "maintenanceDetailPie": {
+      "badnum": "11",
+      "up5num": "0",
+      "down5num": "11",
+      "percent": "80.67"
+    },
+    "maintenanceCycleTop10": [
+      {
+        "unitSn": "OR000001",
+        "overTime": "1",
+        "introduce": "就是悬浮现实的信息,后来增加的"
+      },
+      {
+        "unitSn": "OR000002",
+        "overTime": "12",
+        "introduce": "就是悬浮现实的信息,后来增加的"
+      },
+      {
+        "unitSn": "OR000003",
+        "overTime": "5",
+        "introduce": "就是悬浮现实的信息,后来增加的"
+      },
+      {
+        "unitSn": "OR000004",
+        "overTime": "10",
+        "introduce": "就是悬浮现实的信息,后来增加的"
+      }
+    ],
+    "maintenanceNumber": {
+      "maintainQty": "500",
+      "finishQty": "1000",
+      "totalQty": "1500"
+    },
+    "veneerWip": {
+      "xaxis" :["2019-11-18", "2019-11-19", "2019-11-20", "2019-11-21", "2019-11-22", "2019-11-23", "2019-11-24"],
+      "goalData": [82, 82, 90, 74, 90, 80, 87],
+      "trueData": [83, 69, 85, 72, 100, 82, 90]
+    },
+    "tworeflux": {
+      "xaxis" :["1月", "2月", "3月", "4月", "5月", "6月", "7月"],
+      "goalData":[],
+      "trueData": [83, 69, 85, 72, 100, 82, 90]
+    },
+    "trendData": {
+      "xAxisData": ["少锡", "连锡", "偏位", "立碑", "引脚不良", "缺件", "撞件", "批量更换或返工", "其他"],
+      "series":[
+        {
+          "name": "04:00",
+          "data": [120, 132, 101, 134, 90, 230, 210, 122, 90]
+        },
+        {
+          "name": "08:00",
+          "data": [220, 182, 191, 234, 290, 330, 310, 201, 300]
+        }
+      ]
+    },
+    "boardconfig": {
+      "id": "1199498864515796993",
+      "email": "lanccj@163.com",
+      "refreshTime": "7200"
+    }
+  }
+}

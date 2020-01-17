@@ -1,0 +1,240 @@
+{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{temandhum为温度数据,esdstatusMan为人员ESD数据,esdstatusMachine为机器ESD数据,boardconfig为看板配置数据}",
+    "temandhum": [
+      {
+        "id": "1",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "原料仓库区",
+        "temperature": "28",
+        "hamidity": "16"
+      },
+      {
+        "id": "2",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "KITTING区",
+        "temperature": "28",
+        "hamidity": "26"
+      },
+      {
+        "id": "3",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "PCBA区",
+        "temperature": "28",
+        "hamidity": "36"
+      },
+      {
+        "id": "4",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "前加工区",
+        "temperature": "28",
+        "hamidity": "46"
+      },
+      {
+        "id": "5",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "G3组装区",
+        "temperature": "28",
+        "hamidity": "56"
+      },
+      {
+        "id": "6",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "FT测试区",
+        "temperature": "28",
+        "hamidity": "46"
+      },
+      {
+        "id": "7",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "ST测试区",
+        "temperature": "28",
+        "hamidity": "46"
+      },
+      {
+        "id": "8",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "G3包装区",
+        "temperature": "28",
+        "hamidity": "46"
+      },
+      {
+        "id": "9",
+        "createTime": "2019-11-06 16:09:31",
+        "dataTime": "2019-11-06 16:09:34",
+        "place": "测试与维修区",
+        "temperature": "25",
+        "hamidity": "46"
+      }
+    ],
+    "esdstatusMan": [
+      {
+        "ok": "0",
+        "fail": "2",
+        "place": "G3組裝一線",
+        "failEsd": [
+          {
+            "place": "G3組裝一線",
+            "esdId": "00015"
+          },
+          {
+            "place": "G3組裝一線",
+            "esdId": "0006"
+          },
+          {
+            "place": "G3組裝一線",
+            "esdId": "0007"
+          },
+          {
+            "place": "G3組裝一線",
+            "esdId": "0008"
+          }
+        ]
+      },
+      {
+        "ok": "0",
+        "fail": "1",
+        "place": "前加工區",
+        "failEsd": [
+          {
+            "place": "前加工區",
+            "esdId": "00013"
+          }
+        ]
+      },
+      {
+        "ok": "0",
+        "fail": "1",
+        "place": "PTH線",
+        "failEsd": [
+          {
+            "place": "PTH線",
+            "esdId": "00010"
+          }
+        ]
+      },
+      {
+        "ok": "2",
+        "fail": "0",
+        "place": "SMT七線",
+        "failEsd": null
+      },
+      {
+        "ok": "0",
+        "fail": "1",
+        "place": "正/逆向維修區",
+        "failEsd": [
+          {
+            "place": "正/逆向維修區",
+            "esdId": "00012"
+          }
+        ]
+      },
+      {
+        "ok": "0",
+        "fail": "2",
+        "place": "SMT八線",
+        "failEsd": [
+          {
+            "place": "SMT八線",
+            "esdId": "0007"
+          },
+          {
+            "place": "SMT八線",
+            "esdId": "0009"
+          }
+        ]
+      }
+    ],
+    "esdstatusMachine": [
+      {
+        "ok": "0",
+        "fail": "1",
+        "place": "G3组装一线",
+        "failEsd": [
+          {
+            "place": "G3组装一线",
+            "esdId": "00014"
+          },
+          {
+            "place": "G3组装一线",
+            "esdId": "00014"
+          }
+        ]
+      },
+      {
+        "ok": "0",
+        "fail": "1",
+        "place": "G3组装二线",
+        "failEsd": [
+          {
+            "place": "G3组装二线",
+            "esdId": "00014"
+          },
+          {
+            "place": "G3组装er线",
+            "esdId": "00014"
+          }
+        ]
+      },
+      {
+        "ok": "0",
+        "fail": "1",
+        "place": "KITTING",
+        "failEsd": [
+          {
+            "place": "KITTING",
+            "esdId": "00014"
+          },
+          {
+            "place": "KITTING",
+            "esdId": "00014"
+          }
+        ]
+      },
+      {
+        "ok": "2",
+        "fail": "2",
+        "place": "原料仓库",
+        "failEsd": [
+          {
+            "place": "原料仓库",
+            "esdId": "0003"
+          },
+          {
+            "place": "原料仓库",
+            "esdId": "0004"
+          }
+        ]
+      },
+      {
+        "ok": "0",
+        "fail": "1",
+        "place": "G3包装一线",
+        "failEsd": [
+          {
+            "place": "在线维修",
+            "esdId": "00011"
+          }
+        ]
+      }
+    ],
+    "boardconfig": {
+      "id": "1199498968752640001",
+      "email": "lanccj@163.com",
+      "refreshTime": "60",
+      "temperature": "40",
+      "humidity": "50"
+    }
+  }
+}

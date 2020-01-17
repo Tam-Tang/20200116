@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThEachSiteWipDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThEachSiteWipEntity" id="thEachSiteWipMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="stationId" column="STATION_ID"/>
+        <result property="shiftName" column="SHIFT_NAME"/>
+        <result property="wipQty" column="WIP_QTY"/>
+    </resultMap>
+
+    <select id="queryList" resultType="com.ags.modules.sys.dto.EachSiteWipDataDTO">
+
+        select station.station_name STATION_NAME,
+        round(sum(WIP_QTY) / COUNT(1),0) WIP_QTY,
+        starnddata.WIP_NUM STANDARD_DATA,
+        case
+            when round(sum(WIP_QTY) / COUNT(1),1) > starnddata.WIP_NUM then 3
+            when round(sum(WIP_QTY) / COUNT(1),1) > round(starnddata.WIP_NUM/2,1) then 2
+            else 1
+        end status
+        from TH_EACH_SITE_WIP sitewip,
+        TH_STATION       station,
+        TH_WIP_RED_DATA  starnddata
+        where sitewip.station_id = station.station_id(+)
+        and sitewip.station_id = starnddata.station_id(+)
+        and station.station_name is not null
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+        group by station.station_name, starnddata.WIP_NUM
+
+
+    </select>
+
+
+
+
+</mapper>

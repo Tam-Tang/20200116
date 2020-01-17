@@ -1,0 +1,537 @@
+.wrapper{
+    padding-top:1.04rem;
+}
+.wrapper>.throwStatistics{
+    margin:0 auto;
+    height: 6.67rem;
+}
+/*统计的显示*/
+.throwStatistics>div{
+    min-width: 12.5rem;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.throwStatistics>div>span{
+    width:100%;
+    font-size: 1.667rem;
+    line-height: 1.667rem;
+    text-align: left;
+}
+.throwStatistics>div>p{
+    width:100%;
+    font-size:3.75rem ;
+    line-height:3.75rem;
+    text-align: left;
+    margin-top:1.25rem;
+}
+.throwStatistics>.day-putOut-number{
+    margin:0 9.83rem;
+}
+
+/*底下的抛料率分析*/
+.putOutAnalyze{
+    width:100%;
+    height: calc(100% - 6.67rem);
+}
+
+/*右上角的小方框，分页标记*/
+.pagination{
+    height:5.167rem;
+    position: absolute;
+    top:0.5rem;
+    right:4.67rem;
+    align-items: center;
+}
+.pagination>li{
+    width: 1.5rem;
+    height: 1.5rem;
+    display:inline-block;
+    opacity: 0.3;
+    border-radius: 2px;
+    border:0.2rem solid #165fc3;
+    margin: 0 0 0 5px;
+    outline: 0;
+}
+.pagination>.active{
+    opacity: 1;
+    border:none;
+    background-image: linear-gradient(0deg, #0b7aba 0%, #2addda 100%);
+}
+
+/*抛料率详情*/
+.putOutAnalyze>.chart>.showChart{
+    width:100%;
+    height:100%;
+    box-sizing: content-box;
+}
+.putOutAnalyze>.chart>.showChart>.throwAnalyze{
+    position: absolute;
+    font-size:1.5rem;
+}
+.putOutAnalyze>.chart>.showChart>.throwAnalyze:after{
+    transform: translate(-0.5rem,-0.5rem);
+}
+.throwAnalyze>.list{
+    width:100%;
+    height:calc(100% - 5.167rem);
+    padding-top:5.167rem;
+    flex-wrap:nowrap;
+}
+
+.throwAnalyze>.list>li{
+    width:50%;
+    padding:0 1.875rem;
+}
+.throwAnalyze>.list>li>.inList{
+    width:100%;
+    height:100%;
+}
+.throwAnalyze>.list>li>.inList>.inLi{
+    /*里面的li*/
+    width:100%;
+    height:50%;
+}
+.throwAnalyze>.list>li>.inList>.inLi>.title{
+    height:3.6rem;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.throwAnalyze>.list>li>.inList>.inLi>.title>.equipmentNo{
+    font-size:2rem;
+    line-height: 2rem;
+}
+.throwAnalyze>.list>li>.inList>.inLi>.title>.lineNo{
+    font-size:1.5rem;
+    line-height: 1.5rem;
+}
+.throwAnalyze>.list>li>.inList>.inLi>.ecahrtWrap{
+    width:100%;
+    height:22.083rem;
+}
+/*swiper 的分页器样式*/
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*横向*/
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+}
+/*自定义分页器的样式，这个你自己想要什么样子自己写*/
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+    top:0.83rem;
+    height:2.25rem;
+    padding:0 1.875rem;
+    text-align: right;
+}
+/*自定义分页器的样式，这个你自己想要什么样子自己写*/
+.swiper-pagination-bullet{
+    width:-moz-fit-content;
+    width:fit-content;
+    height: 1.5rem;
+    margin: 0!important;
+}
+.swiper-pagination-bullet>.page1, .swiper-pagination-bullet>.page2{
+    width: 1.5rem;
+    height: 1.5rem;
+    display:inline-block;
+    border-radius: 2px;
+    border: solid 0.2rem #165fc3;
+    margin: 0 5px;
+    outline: 0;
+}
+/*自定义分页器激活时的样式表现*/
+.swiper-pagination-bullet-active{
+    background:rgba(0,0,0,0);
+}
+.swiper-pagination-bullet-active>.page1,.swiper-pagination-bullet-active>.page2{
+    opacity: 1;
+    border:none;
+    background-image: linear-gradient(0deg, #0b7aba 0%, #2addda 100%);
+}
+/*分页器样式结束*/
+
+/*图表区 左*/
+.throwAnalyze .ecahrtWrap>.left{
+    width:10.416rem;
+    height:100%;
+    flex:none;
+    box-shadow: 0 0 1.9rem 0 rgba(66, 226, 255, 0.5);
+    border-radius: 0.58rem;
+    position:relative;
+    overflow: hidden;
+    cursor:pointer;
+}
+.throwAnalyze .ecahrtWrap>.left>p{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    padding:2.083rem;
+    font-size:2.5rem;
+    z-index:999;
+}
+.throwAnalyze .ecahrtWrap>.left>p>span{
+    font-size:1.25rem ;
+}
+.throwAnalyze .ecahrtWrap>.left>.rateHeight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-image: linear-gradient(180deg, #48f6f3 0%, #25dad7 50%, #02bdba 100%);
+    border-radius:0 0 0.58rem 0.58rem;
+    transition: height .5s;
+    /*box-shadow: 0px 0px 23px 0px rgba(66, 226, 255, 0.5);*/
+}
+.throwAnalyze .ecahrtWrap>.left>.danger{
+    background-image: linear-gradient(0deg, #eb6d11 0%, #eba52c 100%);
+    border-radius:0 0 0.58rem 0.58rem;
+    transition: height .5s;
+    /*box-shadow: 0px 0px 23px 0px rgba(231, 121, 40, 0.5);*/
+}
+
+.throwAnalyze .ecahrtWrap>.left>.warning{
+    background-image: linear-gradient(0deg, #1668ef 0%, #2addda 100%);
+    border-radius:0 0 0.58rem 0.58rem;
+    transition: height .5s;
+    /*box-shadow: 0px 0px 23px 0px rgba(66, 226, 255, 0.5);*/
+}
+.throwAnalyze .ecahrtWrap>.left>.rateHeight>.water{
+    display: block;
+    width:100%;
+    height:1.25rem;
+    z-index: 3;
+    position: relative;
+    /*overflow: hidden;*/
+    transition: all 3s;
+    -moz-transition: all 3s;
+    -webkit-transition: all 3s;
+    -o-transition:all 3s;
+}
+.throwAnalyze .ecahrtWrap>.left>.rateHeight>.water>i{
+    display: block;
+    width:120rem;
+    height:1.25rem;
+    position: absolute;
+    top:-1.2rem;
+}
+.throwAnalyze .ecahrtWrap>.left>.rateHeight>.water>i:first-child{
+    left:-50%;
+    background: url("../images/ThrowRateReport/green.png") no-repeat center center;
+    background-size: 100% 100%;
+
+}
+.throwAnalyze .ecahrtWrap>.left>.rateHeight>.water>i:last-child{
+    left:-10%;
+    background: url("../images/ThrowRateReport/green-opc.png") no-repeat center center;
+    background-size: 100% 100%;
+
+}
+.throwAnalyze .ecahrtWrap>.left>.danger>.water>i:first-child{
+    background: url("../images/ThrowRateReport/yellow.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.throwAnalyze .ecahrtWrap>.left>.danger>.water>i:last-child{
+    background: url("../images/ThrowRateReport/yellow-opc.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.throwAnalyze .ecahrtWrap>.left>.warning>.water>i:first-child{
+    background: url("../images/ThrowRateReport/blue.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+.throwAnalyze .ecahrtWrap>.left>.warning>.water>i:last-child{
+    background: url("../images/ThrowRateReport/blue-opc.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.throwAnalyze .ecahrtWrap>.left>.introduce{
+    position: absolute;
+    bottom:-100%;
+    left:0;
+    display: block;
+    height:100%;
+    width:100%;
+    background: #031546;
+    z-index:999;
+    transition: bottom .5s;
+    -moz-transition: bottom .5s; /* Firefox 4 */
+    -webkit-transition: bottom .5s; /* Safari and Chrome */
+    -o-transition:bottom .5s; /* Opera */
+}
+.throwAnalyze .ecahrtWrap>.left>.introduce>ul{
+    width:100%;
+    height:100%;
+    flex-wrap: wrap;
+    padding:0 1rem;
+}
+.throwAnalyze .ecahrtWrap>.left>.introduce>ul>li {
+    width:100%;
+    font-size:1rem;
+    line-height:1.5rem;
+    text-align: left;
+}
+.throwAnalyze .ecahrtWrap>.left:hover>.introduce{
+    bottom:0;
+
+}
+
+/*图表区 右*/
+.throwAnalyze .ecahrtWrap>.right{
+    width:calc(100% - 12.499rem);
+    height:100%;
+    background-image: linear-gradient(90deg, rgba(60, 0, 255, 0.1) 0%, rgba(9, 162, 212, 0.1) 100%);
+}
+.right>li{
+    height:100%;
+    width:33.333333%;
+    padding: 2.08rem 0;
+    position: relative;
+    overflow: hidden;
+    cursor:pointer;
+}
+.right>li:nth-child(2){
+    position: relative;
+}
+.right>li:nth-child(2):before,.right>li:nth-child(2):after{
+    display: block;
+    content: "";
+    width:2px;
+    height:16.25rem;
+    background-color: #2c2f58;
+    transform: translate(0,-50%);
+    transform-origin: center center;
+}
+.right>li:nth-child(2):before{
+    position: absolute;
+    left:0;
+    top:50%;
+}
+.right>li:nth-child(2):after{
+    position: absolute;
+    right:0;
+    top:50%;
+}
+
+.right>li>div{
+  margin:0 auto;
+
+}
+/*右边的上部分*/
+.right>li>.information{
+    height:6.458rem;
+    overflow: hidden;
+}
+.right>li>.information>p, .right>li>.information>span{
+    display: inline-block;
+    width:100%;
+    font-size:1.5rem;
+    line-height:1.5rem;
+    text-align: center;
+}
+.right>li>.information>.partNumber{
+}
+.right>li>.information>.partNumber>i{
+    display: inline-block;
+    width:2.08rem;
+    height:2.08rem;
+    line-height: 2.08rem;
+    text-align: center;
+    border-radius: 50%;
+    font-style:normal;
+}
+.right>li:nth-child(1)>.information>.partNumber>i{
+    background-color: #ff4150;
+}
+.right>li:nth-child(2)>.information>.partNumber>i{
+    background-color: #f5d122;
+}
+.right>li:nth-child(3)>.information>.partNumber>i{
+    background-color: #0f71de;
+}
+
+.right>li>.information>.rate{
+    font-size:2.2rem;
+    line-height: 2.2rem;
+    /*margin-top:0.5rem;*/
+    margin-bottom:0.4rem;
+
+}
+.right>li>.information>.rate+span{
+    z-index:3;
+}
+/*右边的下部分*/
+.right>li>.show{
+    width:100%;
+    padding:0 2.1rem;
+    height:calc(100% - 6.458rem);
+}
+.right>li>.show>div{
+    height:100%;
+    padding-right:0;
+    padding-left: 0;
+}
+.right>li>.show>div>.bar{
+    width:1.25rem;
+    height:calc(100% - 2.444rem);
+    margin:0 auto 1.1rem;
+    position: relative;
+}
+.right>li>.show>div>.bar>i{
+    display: block;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    border-radius: 0.625rem;
+}
+.right>li>.show>.sumNumber>.bar>i{
+    height:100%;
+    background-image: linear-gradient(-21deg,
+    #1a6bff 0%,
+    #29d3ff 100%),
+    linear-gradient(
+            #f5d122,
+            #f5d122);
+    background-blend-mode: normal,
+    normal;
+
+}
+.right>li>.show>.putOutNumber>.bar>i{
+    height:30%;
+    background-image: linear-gradient(0deg,
+    #ee7917 0%,
+    #f6e024 100%),
+    linear-gradient(
+            #f5d122,
+            #f5d122);
+    background-blend-mode: normal,
+    normal;
+}
+.right>li>.show>div>.typeName{
+    height:1.33333rem;
+    line-height:1.333333rem;
+    font-size:1.333333rem;
+}
+.right>li>.detail{
+    position: absolute;
+    left:0;
+    bottom:-100%;
+    width:100%;
+    height: 100%;
+    background-image: linear-gradient(-21deg,
+    #1a6bff 0%,
+    #29d3ff 100%),
+    linear-gradient(
+            #f5d122,
+            #f5d122);
+    z-index: 999;
+    transition: bottom .3s;
+    -moz-transition:bottom .3s;; /* Firefox 4 */
+    -webkit-transition:bottom .3s; /* Safari and Chrome */
+    -o-transition:bottom .3s; /* Opera */
+}
+.right>li>.detail>.introduce{
+    width:100%;
+    height: 100%;
+
+}
+.right>li>.detail>.introduce>p{
+    width:100%;
+    height:2.08rem;
+    font-size:1.667rem;
+    line-height:2.08rem;
+    text-align: left;
+    padding:0 1.25rem;
+}
+.right>li:hover>.detail{
+    bottom:0;
+}
+@keyframes ripple
+{
+    0%{
+       left:-10%;
+    }
+    25%{
+       left:-20%;
+    }
+    50%{
+       left:-50%;
+    }
+    75%{
+       left:-70%;
+    }
+    100%{
+       left:-100%;
+    }
+}
+
+@-moz-keyframes ripple /* Firefox */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-webkit-keyframes ripple /* Safari 和 Chrome */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+@-o-keyframes ripple /* Opera */
+{
+    0%{
+        left:-10%;
+    }
+    25%{
+        left:-20%;
+    }
+    50%{
+        left:-50%;
+    }
+    75%{
+        left:-70%;
+    }
+    100%{
+        left:-100%;
+    }
+}
+
+

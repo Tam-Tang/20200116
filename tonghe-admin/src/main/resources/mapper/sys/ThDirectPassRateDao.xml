@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThDirectPassRateDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThDirectPassRateEntity" id="thDirectPassRateMap">
+        <result property="id" column="ID"/>
+        <result property="passType" column="PASS_TYPE"/>
+        <result property="totalNum" column="TOTAL_NUM"/>
+        <result property="failNum" column="FAIL_NUM"/>
+        <result property="passRate" column="PASS_RATE"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="createTime" column="CREATE_TIME"/>
+    </resultMap>
+
+    <!--查询PCBA直通率-->
+    <select id="queryPCBADirectPassRare" resultType="com.ags.modules.sys.vo.DirectPassRateVo">
+        select
+          round(sum(PASS_RATE)/count(1),1)  percent,
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            TO_CHAR(CREATE_TIME, 'hh24' ) || '時'AS TIME
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            '周' || to_char( CREATE_TIME - 1, 'D' ) AS TIME
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            TO_CHAR(CREATE_TIME,'yyyy-mm-dd') AS TIME
+        </if>
+        from
+          TH_DIRECT_PASS_RATE
+        where
+          1=1  and PASS_TYPE = 'PCBA'
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+        GROUP BY
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            TO_CHAR(CREATE_TIME, 'hh24' ) || '時'
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            '周' || to_char( CREATE_TIME - 1, 'D' )
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            TO_CHAR(CREATE_TIME,'yyyy-mm-dd')
+        </if>
+        ORDER BY
+                TIME ASC
+    </select>
+
+
+    <!--查询CTO直通率-->
+    <select id="queryCTODirectPassRare" resultType="com.ags.modules.sys.vo.DirectPassRateVo">
+        select
+        round(sum(PASS_RATE)/count(1),1)  percent,
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            TO_CHAR(CREATE_TIME, 'hh24' ) || '時'AS TIME
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            '周' || to_char( CREATE_TIME - 1, 'D' ) AS TIME
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            TO_CHAR(CREATE_TIME,'yyyy-mm-dd') AS TIME
+        </if>
+        from
+        TH_DIRECT_PASS_RATE
+        where
+        1=1  and PASS_TYPE = 'CTO'
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+        GROUP BY
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            TO_CHAR(CREATE_TIME, 'hh24' ) || '時'
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            '周' || to_char( CREATE_TIME - 1, 'D' )
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            TO_CHAR(CREATE_TIME,'yyyy-mm-dd')
+        </if>
+        ORDER BY
+        TIME ASC
+    </select>
+</mapper>

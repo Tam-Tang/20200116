@@ -1,0 +1,763 @@
+.wrapper>.row{
+    width:100%;
+    height:100%;
+    /*background:url(../images/ProcessStateReport/processLayout.png) no-repeat right center;*/
+    /*background-size: contain ;*/
+    padding:0.5rem 0;
+    position: relative;
+}
+.wrapper>.row>.left{
+    /*max-height:72.9rem;*/
+    height: 100%;
+    position:absolute;
+    top:0.5rem;
+    left:0;
+    z-index: 999;
+
+
+}
+.wrapper>.row>.left>.row {
+    width: 100%;
+    height:100%;
+    margin-right: 0;
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.wrapper>.row>.left>.row>.chart {
+    height: 90%;
+    padding:0 0 0 2.08rem;
+}
+.chart>.echartWrap{
+    width:100%;
+    height:100%;
+    padding-top:5.167rem;
+}
+.chart>.echartWrap>.processLis{
+
+}
+.chart>.echartWrap>.processList{
+    width:100%;
+    height:60%;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 3%;
+
+
+}
+.chart>.echartWrap>.processList>li{
+    width:48.5%;
+    height:15.6%;
+    margin-right:2.9%;
+    margin-bottom:2%;
+    padding:0 1.67rem;
+    background-image: linear-gradient(
+            rgba(46, 84, 223, 0.1),
+            rgba(46, 84, 223, 0.1));
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+/*灯泡颜色*/
+.chart>.echartWrap>.processList>li>.light{
+    display: block;
+    width:2.167rem;
+    height:2.83rem;
+    margin-right:1.83rem;
+    background:url(../images/green.png) no-repeat center center;
+    background-size:100% 100% ;
+}
+.chart>.echartWrap>.processList>li>.green{
+    background:url(../images/green.png) no-repeat center center;
+    background-size:100% 100% ;
+}
+.chart>.echartWrap>.processList>li>.yellow{
+    background:url(../images/yellow.png) no-repeat center center;
+    background-size:100% 100% ;
+    animation: yellowBlink 500ms linear 0s infinite alternate; /*动画*/
+}
+.chart>.echartWrap>.processList>li>.red{
+    background:url(../images/red.png) no-repeat center center;
+    background-size:100% 100% ;
+    animation: blink 300ms linear 0s infinite alternate; /*动画*/
+}
+
+.chart>.echartWrap>.processList>li:nth-child(2n){
+    margin-right:0;
+}
+.chart>.echartWrap>.processList>li>.processName{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.chart>.echartWrap>.testStatus{
+    padding-right:0;
+    padding-left:0;
+    padding-bottom:0.83rem;
+    width:100%;
+    height:35%;
+
+}
+.chart>.echartWrap>.testStatus>.title{
+    /*padding:0 1rem;*/
+    /*margin:0.67rem 0 1.67rem 0;*/
+    font-size:1.667rem;
+    line-height:5.167rem;
+    padding:0 2.66rem;
+}
+.chart>.echartWrap>.testStatus>.list{
+    width:100%;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    flex-wrap: wrap;
+
+}
+.chart>.echartWrap>.testStatus>.list>li{
+    width:100%;
+    height:7.5rem;
+    background-image: linear-gradient(
+            rgba(46, 84, 223, 0.1),
+            rgba(46, 84, 223, 0.1));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 2.08rem;
+    margin-bottom:1.25rem;
+}
+.chart>.echartWrap>.testStatus>.list>li>div{
+    width:45%;
+}
+.chart>.echartWrap>.testStatus>.list>li>div>.lineName{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #38cccc;
+}
+.chart>.echartWrap>.testStatus>.list>li>div>.iconList{
+    width:100%;
+    height:2.08rem;
+
+}
+.chart>.echartWrap>.testStatus>.list>li>div>.iconList>i{
+    width:2rem;
+    height:2rem;
+    background:url(../images/ProcessStateReport/green.png) no-repeat center center;
+    background-size:100% 100%;
+
+}
+.chart>.echartWrap>.testStatus>.list>li>div>.iconList>.red{
+    animation: myblink 300ms linear 0s infinite alternate;
+}
+
+.wrapper>.row>.bgLayout{
+    width:125rem;
+    height:100%;
+    position:absolute ;
+    top:0;
+    right:0;
+    z-index:1;
+    background:url(../images/ProcessStateReport/processLayout.png) no-repeat right center;
+    background-size: 100% 100% ;
+}
+.wrapper>.row >.bgLayout>.wrapper{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.wrapper>.row >.bgLayout>.wrapper>.processStatusLight,.machineInt,.utilization{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index: 1;
+}
+.wrapper>.row >.bgLayout>.wrapper>.processStatusLight>.wrapper,.machineInt>.wrapper,.utilization>.wrapper{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+
+.wrapper>.row >.bgLayout>.wrapper>.processStatusLight>.wrapper>i{
+    display: block;
+    width:2.167rem;
+    height:2.833rem;
+    background:url(../images/green.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+.wrapper>.row >.bgLayout>.wrapper>.processStatusLight>.wrapper>i.red{
+    background:url(../images/red.png) no-repeat center center;
+    background-size: 100% 100%;
+    animation: blink 300ms ease-in 0s infinite alternate; /*动画*/
+}
+.wrapper>.row >.bgLayout>.wrapper>.processStatusLight>.wrapper>i.yellow{
+    background:url(../images/red.png) no-repeat center center;
+    background-size: 100% 100%;
+    animation: yellowBlink 500ms ease-in 0s infinite alternate; /*动画*/
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(1){
+    position: absolute;
+    left:45%;
+    bottom:2%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(2){
+    position: absolute;
+    left:38%;
+    bottom:9%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(3){
+    position: absolute;
+    left:31%;
+    bottom:15%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(4){
+    position: absolute;
+    left:50%;
+    top:48%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(5){
+    position: absolute;
+    left:51.5%;
+    top:45%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(6){
+    position: absolute;
+    left:46.5%;
+    top:44%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(7){
+    position: absolute;
+    left:49%;
+    top:40%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(8){
+    position: absolute;
+    left:38%;
+    top:40%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(9){
+    position: absolute;
+    left:32%;
+    top:36%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(10){
+    position: absolute;
+    left:40%;
+    top:28%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(11){
+    position: absolute;
+    right:34%;
+    top:13%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.processStatusLight>.wrapper>i:nth-child(12){
+
+    position: absolute;
+    right:38%;
+    top:12%;
+}
+
+/*机器上的解释框*/
+.wrapper>.row>.bgLayout>.wrapper>.machineInt{
+/*    position: absolute;*/
+/*    left:0;*/
+/*    top:0;*/
+/*    width:100%;*/
+/*    height:100%;*/
+    z-index: 333;
+}
+/*.wrapper>.row>.bgLayout>.wrapper>.machineInt>.wrapper{*/
+/*    width:100%;*/
+/*    height:100%;*/
+/*    position: relative;*/
+/*}*/
+/*机器描述label*/
+.wrapper>.row>.bgLayout>.wrapper>.machineInt>.wrapper>.label{
+    background:transparent;
+    width:13.667rem;
+    height:9.875rem;
+    position:absolute;
+    bottom:28.3%;
+    left:64%;
+    z-index: 999;
+    display:none;
+}
+
+.wrapper>.row>.bgLayout>.wrapper>.machineInt>.wrapper>.label>.positionRelative{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.wrapper>.row>.bgLayout>.wrapper>.machineInt>.wrapper>.label>.positionRelative>.introduce{
+    position:absolute;
+    right:0;
+    top:0;
+    width:17.92rem;
+    height:14.58rem;
+    padding:1.875rem 1.667rem;
+    text-align: center;
+    line-height:1.667rem ;
+    background: url("../images/ProcessStateReport/tip.png") no-repeat center;
+    background-size: 100% 100%;
+
+}
+.wrapper>.row>.bgLayout>.wrapper>.machineInt>.wrapper>.label1>.positionRelative>.introduce{
+    right:0;
+    top:0;
+    transform: translate(90%,-15%);
+    transform-origin: left top;
+}
+.wrapper>.row >.bgLayout>.wrapper>.machineInt>.wrapper>.label>.positionRelative>.introduce>.name{
+    font-size: 1rem;
+    margin-bottom:1.667rem;
+    text-align: left;
+}
+.wrapper>.row >.bgLayout>.wrapper>.machineInt>.wrapper>.label>.positionRelative>.introduce>ul>li{
+    text-align: left;
+}
+
+.wrapper>.row >.bgLayout>.wrapper>.machineInt>.wrapper>.label1{
+    width:13.667rem;
+    height:9.875rem;
+    bottom:29.8%;
+    left:64%;
+    background: url("../images/ProcessStateReport/label1.png") no-repeat center;
+    background-size: 100% 100%;
+
+}
+
+/*第二个*/
+.wrapper>.row >.bgLayout>.wrapper>.machineInt>.wrapper>.label2{
+    width:13.667rem;
+    height:13.667rem;
+    bottom:16.3%;
+    left:42%;
+    background: url("../images/ProcessStateReport/label2.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.machineInt>.wrapper>.label2>.positionRelative>.introduce{
+    right:100%;
+    top:-50%;
+    transform: translate(8%,0);
+    transform-origin: left top;
+}
+/*第三个*/
+.wrapper>.row >.bgLayout>.wrapper>.machineInt>.wrapper>.label3{
+    width:9.5rem;
+    height:14.7rem;
+    bottom:39.5%;
+    left:50.5%;
+    background: url("../images/ProcessStateReport/label3.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.machineInt>.wrapper>.label3>.positionRelative>.introduce{
+    left:100%;
+    top:-50%;
+    transform: translate(-8%,0);
+    transform-origin: left top;
+}
+
+
+/*稼动率*/
+.wrapper>.row>.bgLayout>.wrapper>.utilization{
+    z-index:999;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text{
+    width:5.58rem;
+    height:5rem;
+    background-color: #000000;
+    border: solid 2px #1a9bdd;
+    padding:0.5rem 0;
+    display: none;
+
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text>.title{
+    width:100%;
+    font-size: 1rem;
+    line-height:1.25rem;
+    font-weight: bold;
+    text-align: center;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text>.rate{
+    font-family: Haettenschweiler;
+    font-size: 2.5rem;
+    line-height:2.5rem;
+    font-weight: normal;
+    color: #1a9bdd;
+    text-align: center;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text>.arrow{
+    float:right;
+    position: relative;
+    right:0;
+    top:-50%;
+    transform: translate(100%,-50%);
+    transform-origin: center center;
+    border:0.67rem solid #1a9bdd;
+    border-color: transparent transparent transparent #1a9bdd;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text>.arrow>.icon{
+    position: absolute;
+    left:0;
+    top:50%;
+    transform: translate(-60%,-50%);
+    transform-origin: center center;
+    border:0.67rem solid #000000;
+    border-color: transparent transparent transparent #000000;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text1{
+    position:absolute;
+    left:40%;
+    bottom:2%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text2{
+    position:absolute;
+    left:33%;
+    bottom:8%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text3{
+    position:absolute;
+    left:26%;
+    bottom:14%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text4{
+    position:absolute;
+    left:20%;
+    bottom:22%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text5{
+    position: absolute;
+    left:47%;
+    top:52%;
+    transform: rotateZ(-45deg);
+
+
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text6{
+    position: absolute;
+    left:54%;
+    top:43%;
+
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text6>.arrow,.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text8>.arrow,.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text11>.arrow,.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text12>.arrow{
+    float:left !important;
+    position: relative;
+    left:0;
+    top:-50%;
+    transform: translate(-110%,-50%);
+    transform-origin: center center;
+    border:0.67rem solid #1a9bdd;
+    border-color: transparent #1a9bdd transparent transparent;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text6>.arrow>.icon,.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text8>.arrow>.icon,.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text11>.arrow>.icon,.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text12>.arrow>.icon{
+    position: absolute;
+    left:0;
+    top:50%;
+    transform: translate(-40%,-50%);
+    transform-origin: center center;
+    border:0.67rem solid #000000;
+    border-color: transparent #000000 transparent transparent;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text7{
+    position: absolute;
+    left:42%;
+    top:44%;
+
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text8{
+    position: absolute;
+    left:51%;
+    top:38%;
+
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text9{
+    position: absolute;
+    left:33%;
+    top:40%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text10{
+    position: absolute;
+    left:27%;
+    top:36%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text11{
+    position: absolute;
+    left:42%;
+    top:26%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text12{
+    position: absolute;
+    right:29%;
+    top:13%;
+}
+.wrapper>.row>.bgLayout>.wrapper>.utilization>.wrapper>.text13{
+    position: absolute;
+    right:40%;
+    top:10%;
+}
+
+/*动画*/
+@keyframes blink{
+    0%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+@-moz-keyframes blink{ /* Firefox */
+    0%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        background:transparent;
+    }
+    50%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        background:transparent;
+    }
+    100%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-webkit-keyframes blink /* Safari 和 Chrome */
+{
+    0%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-o-keyframes blink /* Opera */
+{
+    0%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+/*亮黄灯*/
+@keyframes yellowBlink
+{
+    0%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/yellow.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+/*小钟闪烁动画*/
+@keyframes myblink
+{
+    0%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+    0%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+    0%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+    0%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        background:url(../images/ProcessStateReport/red.png) no-repeat center center;
+        background-size:100% 100% ;
+    }
+}

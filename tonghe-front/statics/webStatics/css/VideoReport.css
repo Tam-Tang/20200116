@@ -1,0 +1,33 @@
+.container>.wrapper{
+    display:block;
+    width:100%;
+    height:calc(100% - 5.8rem);
+}
+
+.container>.wrapper>.row{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container>.wrapper>.row>.content{
+    width:100%;
+    height:94%;
+    background:url(../images/videoBg.png) no-repeat center center ;
+    background-size: 100% 100%;
+}
+.container>.wrapper>.row>.content>.list{
+    /*ul 宽度1500px ,总宽1920px*/
+    width:78%;
+    height:100%;
+    padding:1.25rem 0;
+    flex-wrap: wrap;
+    margin:0 auto;
+}
+.container>.wrapper>.row>.content>.list>li{
+    width:30%;
+    height:29.8%;
+    border:1px solid #ffffff;
+}

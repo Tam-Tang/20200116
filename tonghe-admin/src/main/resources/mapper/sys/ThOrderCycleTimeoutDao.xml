@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThOrderCycleTimeoutDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThOrderCycleTimeoutEntity" id="thOrderCycleTimeoutMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="overTime" column="OVER_TIME"/>
+        <result property="orderNumber" column="ORDER_NUMBER"/>
+        <result property="saleNumber" column="SALE_NUMBER"/>
+        <result property="isPush" column="IS_PUSH"/>
+        <result property="pushTime" column="PUSH_TIME"/>
+    </resultMap>
+
+    <sql id="queryOrderCycleTimeOutSQL">
+
+        SELECT TRIM(ORDER_NUMBER) AS ORDER_NUMBER, SUM(OVER_TIME) AS OVER_TIME
+              FROM TH_ORDER_CYCLE_TIMEOUT
+             WHERE to_char(CREATE_TIME, 'mm') = to_char(SYSDATE, 'mm')
+               AND OVER_TIME IS NOT NULL
+             GROUP BY TRIM(ORDER_NUMBER)
+
+
+    </sql>
+
+    <!--查询订单周期数据 查询当月    -->
+    <select id="queryOrderCycleTimeOut" resultType="com.ags.modules.sys.dto.OrderCycleTimeOutDTO">
+        <include refid="queryOrderCycleTimeOutSQL"></include>
+        ORDER BY TO_NUMBER(OVER_TIME) DESC
+    </select>
+
+
+    <sql id="queryOrderCycleTimeOutPerctSQL">
+
+
+        SELECT T.ORDER_NUMBER as ORDER_NUMBER,
+               to_number(TO_CHAR(T.OVER_TIME / 24, 'FM99990.99')) as OVER_TIME_DAY,
+               (select COMPLIANCE_DAY from TH_ORDER_CONFIG) as COMPLIANCE_DAY
+          FROM (
+
+                <include refid="queryOrderCycleTimeOutSQL"></include>
+
+                 ) T
+
+
+    </sql>
+
+
+    <!--查询交付周期率  设定周期天数内-->
+    <select id="queryOrderCycleTimeOutPerct" resultType="com.ags.modules.sys.dto.OrderCycleTimeOutPerctDTO">
+        SELECT TOTAL_QTY,OVER_TIME_QTY,TO_CHAR((1-OVER_TIME_QTY / TOTAL_QTY)*100, 'FM99990.99') AS PERCENT FROM (
+
+        select count(1) as TOTAL_QTY,sum(OVER_TIMES) AS OVER_TIME_QTY
+          from (
+               select T2.*,case
+               when T2.OVER_TIME_DAY > T2.COMPLIANCE_DAY then 1
+               else 0
+         end  as OVER_TIMES from (
+
+        <include refid="queryOrderCycleTimeOutPerctSQL"></include>
+
+                          )T2
+               )
+        )
+
+
+    </select>
+
+</mapper>

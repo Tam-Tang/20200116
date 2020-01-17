@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThMachineThrowingRateDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThMachineThrowingRateEntity" id="thMachineThrowingRateMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="lineId" column="LINE_ID"/>
+        <result property="trackNo" column="TRACK_NO"/>
+        <result property="machineNo" column="MACHINE_NO"/>
+        <result property="shiftName" column="SHIFT_NAME"/>
+        <result property="partNumber" column="PART_NUMBER"/>
+        <result property="setQty" column="SET_QTY"/>
+        <result property="throwQty" column="THROW_QTY"/>
+        <result property="throwRate" column="THROW_RATE"/>
+
+    </resultMap>
+
+
+
+    <select id="listNew" resultMap="thMachineThrowingRateMap">
+        SELECT * FROM TH_MACHINE_THROWING_RATE where CREATE_TIME = (select MAX(CREATE_TIME) from TH_MACHINE_THROWING_RATE)
+    </select>
+
+    <select id="queryDayMachineThrowingRate" resultType="com.ags.modules.sys.dto.DayMachineThrowingRateDTO">
+        SELECT
+
+        decode(sum(SET_QTY), '', 0, sum(SET_QTY)) as SET_QTY,
+         decode(sum(THROW_QTY), '', 0, sum(THROW_QTY)) as THROW_QTY,
+
+        to_char(sum(THROW_QTY) / sum(SET_QTY) *100,'fm9999999990.00')|| '%' percent
+
+        FROM TH_MACHINE_THROWING_RATE where to_char(DATA_TIME,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd')
+    </select>
+
+    <select id="queryDayEachMachineThrowingRate" resultType="com.ags.modules.sys.dto.DayEachMachineThrowingRateDTO">
+
+                select t.line_id,
+       t.line_name,
+       t.machine_no,
+
+to_char(t.percent *100,'fm9999999990.00')|| '%' percent
+
+     ,
+
+      to_char((t.percent / 100) * standard,'fm9999999990.00')
+       as throw_rate,
+       t.standard
+  from (
+
+        SELECT rate.line_id,
+                line.line_name,
+                rate.MACHINE_NO,
+                100 * sum(rate.THROW_QTY) / sum(rate.SET_QTY) percent,
+                (select STANDARD_DATA from TH_MAINTENANCE_CONFIG) standard
+
+          FROM TH_MACHINE_THROWING_RATE rate, TH_PRODUCT_LINE line
+         where 1 = 1
+           and rate.line_id = line.line_id
+           and to_char(DATA_TIME, 'yyyy-mm-dd') =
+               to_char(sysdate, 'yyyy-mm-dd')
+         GROUP BY rate.line_id, line.line_name, MACHINE_NO
+
+        ) t
+
+    </select>
+
+    <select id="queryEachMachineThrowingRateTop3" resultType="com.ags.modules.sys.dto.MachineThrowingRateDTO">
+        <![CDATA[
+       select t.*, 100 - t.Throw_Rate as set_rate,(select STANDARD_DATA from TH_MAINTENANCE_CONFIG) rate
+  from (SELECT *
+          FROM (SELECT t.*,
+                       row_number() over(partition BY MACHINE_NO ORDER BY THROW_RATE DESC) row_number
+                  FROM TH_MACHINE_THROWING_RATE t)
+         WHERE row_number <= 3
+         ORDER BY MACHINE_NO, ROW_NUMBER
+        ) t
+
+        ]]>
+    </select>
+
+</mapper>

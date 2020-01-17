@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThAutoStatusDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThAutoStatusEntity" id="thAutoStatusMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="euipmentName" column="EUIPMENT_NAME"/>
+        <result property="euipmentType" column="EUIPMENT_TYPE"/>
+        <result property="shiftName" column="SHIFT_NAME"/>
+        <result property="status" column="STATUS"/>
+        <result property="isPush" column="IS_PUSH"/>
+        <result property="pushTime" column="PUSH_TIME"/>
+    </resultMap>
+
+    <select id="listNew" resultMap="thAutoStatusMap">
+        SELECT * FROM TH_AUTO_STATUS where CREATE_TIME = (select MAX(CREATE_TIME) from TH_AUTO_STATUS)
+    </select>
+
+    <!--数据1H刷新一次  所以查询最新的即可-->
+    <select id="queryWarn5BylistNew" resultType="com.ags.modules.sys.dto.AutoStatusWarnDTO">
+        select * from (
+            SELECT EUIPMENT_TYPE, EUIPMENT_NAME, count(1) times
+              FROM TH_AUTO_STATUS
+             where CREATE_TIME = (select MAX(CREATE_TIME) from TH_AUTO_STATUS)
+               and status != 'OK'
+             group by EUIPMENT_TYPE, EUIPMENT_NAME) t where t.times>5 order by t.times desc
+    </select>
+
+    <!--数据1H刷新一次  所以查询最新的即可-->
+    <select id="queryStatusBylistNew" resultType="com.ags.modules.sys.dto.AutoStatusDTO">
+        SELECT EUIPMENT_TYPE,
+       EUIPMENT_NAME,
+       STATUS,
+       to_char(CREATE_TIME - 1 / 24, 'hh24') || ':00' || '-' ||
+       to_char(CREATE_TIME, 'hh24') || ':00' time_range,
+       count(1) NUM
+  FROM TH_AUTO_STATUS
+ where CREATE_TIME = (select MAX(CREATE_TIME) from TH_AUTO_STATUS)
+ group by EUIPMENT_TYPE,
+          EUIPMENT_NAME,
+          STATUS,
+          to_char(CREATE_TIME - 1 / 24, 'hh24') || ':00' || '-' ||
+          to_char(CREATE_TIME, 'hh24') || ':00'
+
+    </select>
+
+</mapper>

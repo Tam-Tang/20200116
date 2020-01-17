@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThMaintenanceNumberDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThMaintenanceNumberEntity" id="thMaintenanceNumberMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="shiftType" column="SHIFT_TYPE"/>
+        <result property="maintainQty" column="MAINTAIN_QTY"/>
+        <result property="finishQty" column="FINISH_QTY"/>
+        <result property="maintainStep" column="MAINTAIN_STEP"/>
+    </resultMap>
+
+    <!--查询维修数量  周 月 年-->
+    <select id="queryMaintenanceNumber" resultType="com.ags.modules.sys.dto.MaintenanceNumberDTO">
+        SELECT
+            sum( MAINTAIN_QTY ) AS MAINTAIN_QTY,
+            sum( FINISH_QTY ) AS FINISH_QTY,
+            sum( MAINTAIN_QTY ) + sum( FINISH_QTY ) AS TOTAL_QTY
+        FROM
+            TH_MAINTENANCE_NUMBER
+        WHERE
+            1=1
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            and TO_CHAR(CREATE_TIME,'dd') = TO_CHAR(SYSDATE,'dd')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            and to_char(CREATE_TIME,'iw')=to_char(sysdate,'iw')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            and TO_CHAR(CREATE_TIME,'yyyy-mm') = TO_CHAR(SYSDATE,'yyyy-mm')
+        </if>
+    </select>
+</mapper>

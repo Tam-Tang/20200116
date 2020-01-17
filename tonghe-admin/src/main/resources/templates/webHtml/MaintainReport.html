@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>维修看板</title>
+        <!-- 设置视口-->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport"
+              content="width=device-width,initial-scale=1"/>
+        <!-- 导入css-->
+        <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/bootstrap.css"/>
+        <!-- 引入swiper 样式-->
+        <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/swiper/swiper.min.css">
+        <!--公共样式-->
+        <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/common.css">
+        <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/MaintainReport.css"/>
+
+        <script src="${request.contextPath}/statics/webStatics/js/plugIn/jquery.min.js"></script>
+        <script src="${request.contextPath}/statics/webStatics/js/plugIn/popper.min.js"></script>
+        <script src="${request.contextPath}/statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+        <!--引入公共字体，请求方法-->
+        <script src="${request.contextPath}/statics/webStatics/js/utils/require.js"></script>
+        <!--引入echart.js-->
+        <script src="${request.contextPath}/statics/webStatics/js/plugIn/echart/echarts.common.js"></script>
+    </head>
+    <body>
+    <div class="container">
+        <header></header>
+        <!--内容部分-->
+        <div class="loading flexColumnCenterCenter">
+            <img src="${request.contextPath}/statics/webStatics/images/loading.png"  alt="图片出错">
+        </div>
+        <div class="wrapper ">
+            <div class="row">
+                <!--左边-->
+                <div class="left col-xl-4 col-xs-4">
+                    <div class="row">
+                        <div class="toggleBtn flexRowStartCenter col-xl-12 col-xs-12">
+                            <p>
+                                <i class="icon active"></i>
+                                <span>整机</span>
+                            </p>
+                            <p>
+                                <i class="icon"></i>
+                                <span>单板</span>
+                            </p>
+                        </div>
+                        <div class="chart  col-xl-12 col-xs-12" >
+                            <p class="theme" style="position: absolute">
+                                <span class="title">维修周期管理</span>
+                                <!--<span class="subhead">Adverse cause TOP3</span>-->
+                            </p>
+                            <div class="row echartWrap">
+                                <div class="pieChart  col-xl-12 col-xs-12">
+                                  <div class="row flexRowBetweenCenter">
+                                      <div class="left flexColumnCenterCenter col-xl-6 col-xs-6">
+                                          <div class="showChart" id="fixedRateChart">
+<!--                                              <canvas id="c3" width="100%" height="100%">您的浏览器版本太低</canvas>-->
+                                          </div>
+                                          <p>及时维修率</p>
+                                      </div>
+                                      <div class="right flexColumnCenterStart col-xl-6 col-xs-6">
+                                          <p>不良数：&nbsp;<span>0</span></p>
+                                          <p>>5小时：<span>0</span></p>
+                                          <p><5小时：<span>0</span></p>
+                                      </div>
+                                  </div>
+                                </div>
+                                <!--维修超期Top10-->
+                                <div class="fixedOverTime col-xl-12 col-xs-12">
+                                    <p class="title">维修超时TOP10</p>
+                                    <div class="list">
+                                        <div class="tupian swiper-container">
+                                            <ul class="swiper-wrapper orderList">
+                                                <!-- 多个li-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右边-->
+                <div class="right col-xl-8 col-xs-8">
+                    <div class="row">
+                        <div class="top col-xl-12 col-xs-12">
+                            <div class="row">
+                                <!--仪表盘区-->
+                                <div class="pieChart  col-xl-7 col-xs-7">
+                                    <div class="row pieChartRow">
+                                        <ul class="toggleBtn  col-xs-3 col-xs-3">
+                                            <li>
+                                                <i class="icon"></i>
+                                                <span>今日</span>
+                                            </li>
+                                            <li>
+                                                <i class="icon"></i>
+                                                <span>本周</span>
+                                            </li>
+                                            <li>
+                                                <i class="icon"></i>
+                                                <span>本月</span>
+                                            </li>
+                                        </ul>
+                                        <div class="pie flexRowStartCenter col-xl-9 col-xs-9">
+                                            <div class="bg flexColumnCenterCenter">
+                                                <div class="fixedNum flexColumnBetweenCenter">
+                                                    <p class="text">已维修数量</p>
+                                                    <p class="number">0</p>
+                                                </div>
+                                                <div class="fixedState flexColumnBetweenCenter">
+                                                    <p>
+                                                        <i class="icon"></i>
+                                                        待维修：&nbsp;&nbsp;<span>0</span>
+                                                    </p>
+                                                    <p>
+                                                        <i class="icon"></i>进维修：&nbsp;&nbsp;<span>0</span>
+                                                    </p>
+                                                    <div class="cover">
+                                                        <i></i>
+                                                        <i></i>
+                                                        <i></i>
+                                                        <i></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 回流焊/单板wip趋势图-->
+                                <div class="reflowSoldering col-xl-5 col-xs-5 ">
+                                    <div class="chart" >
+                                        <p class="theme " style="position: absolute">
+                                            <span class="title">二次回流监控</span>
+                                        </p>
+                                        <div class="showChart secondaryCircumfluence" id="secondaryCircumfluence"></div>
+                                        <div class="showChart wipline" id="wipline"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom col-xl-12 col-xs-12">
+                            <div class="chart " >
+                                <p class="theme" style="position: absolute">
+                                    <span class="title">不良分布走势图</span>
+                                </p>
+                                <div class="showChart" id="areaChart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="${request.contextPath}/statics/webStatics/js/MaintainReport.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/header.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+    </body>
+</html>

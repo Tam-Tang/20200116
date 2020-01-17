@@ -1,0 +1,25 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /tonghe-generator
+
+spring:
+  profiles:
+    active: comtest
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
+
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+
+pagehelper:
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#指定数据库，可选值有【mysql、oracle、sqlserver、postgresql】
+renren:
+  database: oracle

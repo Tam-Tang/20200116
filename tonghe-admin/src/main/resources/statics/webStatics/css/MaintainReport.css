@@ -1,0 +1,373 @@
+.row{
+    margin:0;
+}
+.active{
+    background-image: linear-gradient(0deg, #0b7aba 0%, #2addda 100%);
+}
+.wrapper>.row{
+    height:100%;
+}
+#fixedRateChart>div{ /*echart 中的canvas布局*/
+    margin:0 auto !important;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+/*左侧*/
+.wrapper>.row>.left{
+    height:100%;
+}
+
+.wrapper>.row>.left>.row{
+    width:100%;
+    height:100%;
+}
+.wrapper>.row>.left>.row>.toggleBtn{
+    padding:0.5rem;
+    height:6rem;
+}
+.wrapper>.row>.left>.row>.toggleBtn>p{
+    margin-left:3.125rem;
+    text-align: left;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.wrapper>.row>.left>.row>.toggleBtn>p>.icon{
+    display: inline-block;
+    width: 1.667rem;
+    height: 1.667rem;
+    border: solid 0.4rem #165fc3;
+    margin-right:1.042rem;
+    border-radius: 50%;
+}
+.wrapper>.row>.left>.row>.chart{
+    height:calc(100% - 6rem);
+}
+.wrapper>.row>.left>.row>.chart>.echartWrap{
+    height:100%;
+    position: relative;
+
+}
+.wrapper>.row>.left>.row>.chart>.echartWrap:after{
+    /*transform: translate(-0.5rem,-0.5rem);*/
+}
+/*维修周期管理开始*/
+.echartWrap>.pieChart{
+    /*padding: 5.167rem 1.25rem 1.25rem;*/
+    height:47.2%;
+    position: absolute;
+    left:0;
+    top:0;
+}
+.pieChart>div{
+    height:100%;
+    background-image: linear-gradient(rgba(46, 84, 223, 0.1), rgba(46, 84, 223, 0.1));
+}
+.pieChart .left{
+    height:100%;
+    /*padding:0 0 15.2% 0;*/
+
+}
+.pieChart .left>p{
+    font-size: 2rem;
+    line-height: 2rem;
+    text-align: center;
+}
+.pieChart>div>.left>.showChart{
+    width:100%;
+    height:60%;
+    position: relative;
+    /*width:14.58rem;*/
+    /*height:14.58rem;*/
+    /*position: relative;*/
+}
+.pieChart>div>.left>.showChart>canvas{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform-origin: center center;
+    transform:translate(-50%,-50%);
+}
+.pieChart>div>.left>.showChart>.rateNum{
+    position: absolute;
+    top:50%;
+    left:50%;
+    font-family: Haettenschweiler;
+    font-size: 5rem;
+    transform-origin: center center;
+    transform:translate(-50%,-50%);
+}
+.pieChart .right{
+    /*height:100%;*/
+    overflow: hidden;
+}
+.pieChart .right>p{
+    font-size:2rem;
+    line-height:4.5rem;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.pieChart .right>p>span{
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left;
+    width:7rem;
+}
+/*维修周期管理结束*/
+/*维修超期开始*/
+.echartWrap>.fixedOverTime{
+    padding:0 1.25rem 1.25rem;
+    height:52.8%;
+    position: absolute;
+    left:0;
+    top:47.2%;
+}
+.echartWrap>.fixedOverTime>.title{
+    width:100%;
+    height:5rem;
+    line-height: 5rem;
+    font-size:1.6rem;
+}
+.echartWrap>.fixedOverTime>.list{
+    width:100%;
+    height:calc(100% - 5rem);
+    overflow: hidden;
+}
+.echartWrap>.fixedOverTime>.list li{
+    background-image: linear-gradient(rgba(46, 84, 223, 0.1), rgba(46, 84, 223, 0.1));
+    padding:0 1.45rem;
+    cursor: pointer;
+}
+.echartWrap>.fixedOverTime>.list li>.importantInfo{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.echartWrap>.fixedOverTime>.list li>.importantInfo>.no{
+    width:10%;
+    font-size: 1.66rem;
+    font-family: 'Haettenschweiler';
+}
+.echartWrap>.fixedOverTime>.list li>.importantInfo>.order{
+    width:58%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    font-size:1.5rem;
+}
+.echartWrap>.fixedOverTime>.list li>.importantInfo>.progressBar{
+    width:42%;
+    height:1.67rem;
+    display: block;
+    background-color:#165fc3;
+    border-radius: 0.83rem;
+    position: relative;
+}
+.echartWrap>.fixedOverTime>.list li>.importantInfo>.progressBar>.icon{
+    position: absolute;
+    top:0;
+    left:0;
+    display: inline-block;
+    width:30%;
+    height:100%;
+    border-radius:0.83rem;
+    /*background-image: linear-gradient(-90deg, #eba52c 0%, #eb4911 100%);*/
+    z-index:1;
+    transition:width 3s ease;
+
+}
+.echartWrap>.fixedOverTime>.list li>.importantInfo>.progressBar>.time{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 2;
+    font-size:1.25rem;
+    line-height:1.67rem;
+    margin-left:1.25rem;
+
+}
+.echartWrap>.fixedOverTime>.list li>.cover{
+    display: none;
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.echartWrap>.fixedOverTime>.list li>.cover>.detail{
+    /*width:100%;*/
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    transform-origin: center;
+    font-size:1rem;
+}
+.echartWrap>.fixedOverTime>.list li:hover>.importantInfo{
+    display: none;
+}
+.echartWrap>.fixedOverTime>.list li:hover>.cover {
+    display: block;
+}
+/*swiper 用到的样式*/
+.swiper-container {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+}
+.container .tupian .swiper-slide {
+    width: 100%;
+    height: 4.16rem;
+}
+/*维修超期结束*/
+/*左侧结束*/
+
+/*右侧开始*/
+.wrapper>.row>.right{
+    height:100%;
+}
+.wrapper>.row>.right>.row{
+    width:100%;
+    height:100%;
+}
+/*右侧的上部分*/
+.wrapper>.row>.right>.row>.top{
+    width:100%;
+    height:50%;
+    padding:0.5rem;
+}
+.wrapper>.row>.right>.row>.top>.row{
+    padding:0;
+    height:100%;
+}
+/*仪表盘区开始*/
+.wrapper>.row>.right>.row>.top>.row>.pieChart{
+    height:100%;
+}
+.wrapper>.row>.right>.row>.top>.row>.pieChart>.pieChartRow{
+    width:100%;
+    height:100%;
+    background: transparent;
+}
+.pieChart>.pieChartRow>.toggleBtn{
+    padding-top:6rem;
+}
+.pieChart>.pieChartRow>.toggleBtn>li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:2.83rem;
+    font-size:2rem;
+    line-height:2rem;
+    cursor: pointer;
+}
+.pieChart>.pieChartRow>.toggleBtn>li>.icon{
+    display: inline-block;
+    height:1.66rem;
+    width:1.66rem;
+    border: solid 0.416rem #165fc3;
+    border-radius: 50%;
+    margin-right:0.83rem;
+
+}
+
+.pieChart>.pieChartRow>.pie{
+    height: 100%;
+}
+.pieChart>.pieChartRow>.pie>.bg{
+    width: 100%;
+    height: 100%;
+    background:url('../images/MaintainReport/pie.png') no-repeat center center;
+    /*background-size: 100% 100%;*/
+    background-size: cover;
+}
+.pieChart>.pieChartRow>.pie>.bg p{
+    font-size:1.66rem;
+    line-height: 2.333rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.pieChart>.pieChartRow>.pie>.bg span{
+    font-size:2.333rem;
+    line-height: 2.333rem;
+    font-family: 'Haettenschweiler';
+}
+.pieChart>.pieChartRow>.pie>.bg>.fixedNum{
+    height:7.15rem;
+    margin-bottom:1.2rem ;
+}
+.pieChart>.pieChartRow>.pie>.bg>.fixedNum>.number{
+    font-size:5rem;
+    line-height: 5rem;
+    text-align: center;
+    font-family: 'Haettenschweiler';
+}
+.pieChart>.pieChartRow>.pie>.bg>.fixedState{
+    width:20.8rem;
+    height:8.33rem;
+    background:url("../images/MaintainReport/smallBg.png") no-repeat center center;
+    background-size: 100% 100%;
+    position: relative;
+}
+.pieChart>.pieChartRow>.pie>.bg>.fixedState>.cover{
+    position: absolute;
+    width:20.8rem;
+    height:8.33rem;
+    top:0;
+    left:0;
+    background-color: #000000;
+    opacity: 0.1;
+}
+.pieChart>.pieChartRow>.pie>.bg>.fixedState>p{
+    width:100%;
+    height:50%;
+    padding:0 1.25rem 0 3rem;
+}
+.pieChart>.pieChartRow>.pie>.bg>.fixedState .icon{
+    display: inline-block;    width:1.5rem;
+    height:1.5rem;
+    background:url("../images/MaintainReport/icon.png") no-repeat center center;
+    background-size: 100% 100%;
+    margin-right: 1.25rem;
+}
+/*仪表盘区结束*/
+
+
+.reflowSoldering{
+    width:100%;
+    height:100%;
+    padding:6rem 0 4.5rem;
+}
+.reflowSoldering>.chart{
+    width: 100%;
+    height:100%;
+    position: relative;
+}
+.reflowSoldering .secondaryCircumfluence ,.reflowSoldering .wipline {
+    position:absolute;
+    top:0.5rem;
+    left:0.5rem;
+    width: calc(100% - 1rem);
+    height:100%;
+    padding-top:2.5rem;
+}
+.wipline{
+    visibility: hidden;
+    padding-top:0;
+}
+
+
+/*右侧的下部分*/
+.wrapper>.row>.right>.row>.bottom{
+    width:100%;
+    height:50%;
+}
+.wrapper>.row>.right>.row>.bottom>.chart>.showChart{
+    width:100%;
+    height:100%;
+}
+/*右侧结束*/

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThEuipmentStatusDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThEuipmentStatusEntity" id="thEuipmentStatusMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="euipmentId" column="EUIPMENT_ID"/>
+        <result property="euipmentName" column="EUIPMENT_NAME"/>
+        <result property="euipmentType" column="EUIPMENT_TYPE"/>
+        <result property="lineId" column="LINE_ID"/>
+        <result property="shiftName" column="SHIFT_NAME"/>
+        <result property="status" column="STATUS"/>
+    </resultMap>
+
+    <select id="listNew" resultMap="thEuipmentStatusMap">
+        SELECT * FROM TH_EUIPMENT_STATUS where DATA_TIME = (select MAX(DATA_TIME) from TH_EUIPMENT_STATUS)
+    </select>
+
+
+    <select id="queryMobilityByLine"  resultType="com.ags.modules.sys.dto.MobilityRateDTO">
+        select t.line_name,
+       round((24 - (t.failtimes * 5) / 60) / 24 * 100, 1)  rate
+  from (
+
+        select sum(t.totaltimes) as totaltimes,
+                sum(t.failtimes) failtimes,
+                (sum(t.totaltimes) - sum(t.failtimes)) oktimes,
+                t.line_name
+          from (select
+
+                  line.line_name,
+
+                  count(1) totaltimes,
+                  0 failtimes
+
+                   from TH_EUIPMENT_STATUS status, TH_PRODUCT_LINE line
+                  where status.line_id = line.line_id(+)
+                    and TO_CHAR(DATA_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                  group by line.line_name
+
+                 union all
+
+                 select
+
+                  line.line_name,
+
+                  0 oktimes,
+                  count(1) failtimes
+
+                   from TH_EUIPMENT_STATUS status, TH_PRODUCT_LINE line
+                  where status.line_id = line.line_id(+)
+                    and status.status = 'FAIL'
+                    and TO_CHAR(DATA_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                  group by line.line_name
+
+                 ) t
+                   where t.line_name is not null
+         group by t.line_name) t
+
+    </select>
+
+    <select id="queryMobilityByMachine"  resultType="com.ags.modules.sys.dto.MachineMobilityRateDTO">
+       select t.euipment_id,
+       t.euipment_name,
+       round((24 - (t.failtimes * 5) / 60) / 24 * 100, 1)  rate
+  from (
+
+        select sum(t.totaltimes) as totaltimes,
+                sum(t.failtimes) failtimes,
+                (sum(t.totaltimes) - sum(t.failtimes)) oktimes,
+                t.euipment_id,
+                t.euipment_name
+          from (select
+
+                  status.euipment_id,
+                  status.euipment_name,
+
+                  count(1) totaltimes,
+                  0 failtimes
+
+                   from TH_EUIPMENT_STATUS status
+                  where 1 = 1
+                    and TO_CHAR(DATA_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                  group by status.euipment_id, status.euipment_name
+
+                 union all
+
+                 select
+
+                  status.euipment_id,
+                  status.euipment_name,
+
+                  0 oktimes,
+                  count(1) failtimes
+
+                   from TH_EUIPMENT_STATUS status
+                  where 1 = 1
+                    and status.status = 'FAIL'
+                    and TO_CHAR(DATA_TIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                  group by status.euipment_id, status.euipment_name
+
+                 ) t
+                   where t.euipment_id is not null
+         group by t.euipment_id, t.euipment_name) t
+
+
+    </select>
+
+    <select id="queryEquipmentGL1h" resultType="com.ags.modules.sys.dto.EquipmentGL1hDTO">
+        select * from (
+
+            select EUIPMENT_ID,
+                   EUIPMENT_NAME,
+                   to_char(count(1) * 5 / 3600, 'fm9999999990.00') overtime
+              from TH_EUIPMENT_STATUS
+             where STATUS = '2'
+               and EUIPMENT_ID is not null
+               and to_char(DATA_TIME, 'yyyy-mm-dd') = '2019-11-17'
+             group by EUIPMENT_ID, EUIPMENT_NAME)
+
+             where overtime>1
+
+    </select>
+
+</mapper>

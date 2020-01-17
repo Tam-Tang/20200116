@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThQualityConfigDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThQualityConfigEntity" id="thQualityConfigMap">
+        <result property="id" column="ID"/>
+        <result property="refreshTime" column="REFRESH_TIME"/>
+        <result property="pcbaStandardData" column="PCBA_STANDARD_DATA"/>
+        <result property="ctoStandardData" column="CTO_STANDARD_DATA"/>
+    </resultMap>
+
+</mapper>

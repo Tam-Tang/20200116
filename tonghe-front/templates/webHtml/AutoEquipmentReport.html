@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自动化设备看板</title>
+    <!-- 设置视口-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <!-- 导入css-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/plugIn/bootstrap.css"/>
+    <!-- 引入swiper 样式-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/plugIn/swiper/swiper.min.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/common.css">
+    <link rel="stylesheet" href="../../statics/webStatics/css/AutoEquipmentReport.css"/>
+
+    <!-- 导入3个js，有顺序要求-->
+    <script src="../../statics/webStatics/js/plugIn/jquery.min.js"></script>
+    <script src="../../statics/webStatics/js/plugIn/popper.min.js"></script>
+    <script src="../../statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+    <!--引入公共字体，请求方法-->
+    <script src="../../statics/webStatics/js/utils/require.js"></script>
+    <!--引入echart.js-->
+    <script src="../../statics/webStatics/js/plugIn/echart/echarts.min.js"></script>
+    <!--    <script src="../../statics/webStatics/js/plugIn/u-charts.js"></script>-->
+</head>
+<body>
+<div class="container">
+    <!--头部主题-->
+    <header></header>
+    <!--内容部分-->
+    <div class="loading flexColumnCenterCenter">
+        <img src="../../statics/webStatics/images/loading.png"  alt="图片出错">
+    </div>
+    <div class="wrapper flexColumnBetweenCenter">
+        <!--数据统计表-->
+        <div class="dataStatistics flexRowBetweenCenter">
+            <div class="chart" >
+                <p class="theme" style="position: absolute">
+                    <span class="title">设备运行情况</span>
+                    <!--<span class="subhead">Adverse cause TOP3</span>-->
+                </p>
+                <div class="echartWrap ">
+                    <!--class=showChart 是echarts图表的父组件-->
+                    <div class="showChart" id="operatingState"></div>
+                </div>
+            </div>
+            <div class="chart" >
+                <p class="theme" style="position: absolute">
+                    <span class="title">总稼动率</span>
+                    <!--<span class="subhead">Adverse cause TOP3</span>-->
+                </p>
+                <div class="echartWrap ">
+                    <!--class=showChart 是echarts图表的父组件-->
+                    <img class="dashBoard" src="../../statics/webStatics/images/AutoEquipmentReport/dashBoard.png" alt="">
+                    <img class="roundness" src="../../statics/webStatics/images/AutoEquipmentReport/roundness.png" alt="">
+                    <div class="showChart " id="gaugeChart"></div>
+                </div>
+            </div>
+            <div class="chart">
+                <p class="theme" style="position: absolute">
+                    <span class="title">设备报警数据</span>
+                    <!--<span class="subhead">Adverse cause TOP3</span>-->
+                </p>
+                <div class="echartWrap">
+                    <div class="list">
+                        <div class="tupian  swiper1">
+                            <ul class=" orderList">
+                                <!-- 多个li-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--下部分 机器介绍 -->
+        <div class="machineState swiper-container  swiper2">
+            <div class="  flexRowBetweenCenter swiper-wrapper" style="width:100%">
+            </div>
+            <!--<div class="swiper-button-prev swiper-button-prev1"></div>-->
+            <!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
+            <!--<div class="swiper-button-next swiper-button-next1"></div>-->
+        </div>
+    </div>
+</div>
+<script src="../../statics/webStatics/js/AutoEquipmentReport.js"></script>
+<script src="../../statics/webStatics/js/header.js"></script>
+<script src="../../statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+</body>
+</html>

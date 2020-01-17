@@ -1,0 +1,407 @@
+/*@charset 'utf-8';*/
+*{margin:0;padding:0;}
+html,body{width:100%;height:100%;margin: 0;padding: 0;font-size: 10px;
+    font-family: Airal,'microsoft yahei',' PingFangSC-Regular';color:#ffffff;background-color: rgba(0,0,0,1);-moz-user-select:none;/*火狐*/-webkit-user-select:none;/*webkit浏览器*/ -ms-user-select:none;/*IE10*/-khtml-user-select:none;/*早期浏览器*/  user-select:none;}
+a{text-decoration: none;}
+a:link {color: #F40;}
+a:visited {color:#F40;}
+a:hover{color: #F40;text-decoration: none;}
+a:active {color: #F40;}
+img{width: 100%;}
+i{
+    font-style: normal;
+}
+*{box-sizing: border-box}
+p,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,img{margin: 0;padding: 0;border: none;list-style: none;}
+/*.clear{clear:both; line-height:0; height:0; font-size:0px;}*/
+.clear:after{content: "."; display: block; height: 0; clear: both; visibility: hidden; }/*清除浮动*/
+/*input输入框pla颜色*/
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#cccccc; opacity:1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #cccccc;opacity:1;
+}
+input:-ms-input-placeholder{
+    color: #cccccc;opacity:1;
+}
+input::-webkit-input-placeholder{
+    color: #cccccc;opacity:1;
+}
+/*主体样式*/
+.container{
+    height:100%;
+    width:100%;
+    max-width:100%;/*替换掉bootstrap 中的*/
+    padding-right:3.2%;/*修改bootstrap中左右内边距*/
+    padding-left:3.2%;/*修改bootstrap中左右内边距*/
+    padding-bottom: 1.875rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background:url("../images/backgroundImg.jpg") no-repeat left top;
+    background-size: cover;
+}
+.container>.wrapper,.container>.loading{
+    width:100%;
+    height:calc(100% - 5.8rem);
+}
+.container>.wrapper{
+    display:none;
+}
+.container>.wrapper:after{
+    display: table;
+    content:'';
+}
+.container>.loading {
+    width: 100%;
+    height: calc(100% - 5.8rem);
+    position: relative;
+}
+.container>.loading>img{
+    width:6.67rem;
+    height:6.67rem;
+    animation: rotate 1s ease-in infinite;
+    position: absolute;
+    left:calc( 50% - 3.335rem);
+    top:calc(50% - 3.335rem);
+
+}
+/*去除bootstrap .row的外边距*/
+.container>.row,.wrapper>.row{
+    margin:0;
+}
+
+/*------头部顶端样式-------*/
+header{
+    height: 5.8rem;
+    width:100%;
+    background:url('../images/wholeOrder.png') no-repeat center center;
+    background-size: 100% 100%;
+}
+header.row{
+    padding:0 0.5rem;
+}
+header>.company>.companyName{
+    font-size:1.6rem;
+}
+header>.company>.EnglishCompanyName{
+    font-size:0.83rem;
+}
+header>.title{
+    width:40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header>.title>p{
+    flex:none;
+    font-size:2.83rem;
+    text-align: center;
+    height: 100%;
+    line-height:5.8rem;
+    color:#438dec;
+    font-weight: 700;
+    margin-bottom:0;
+}
+header>.company{
+    width:20%;
+}
+header>.showTime{
+    width:20%;
+    font-size:1rem;
+    align-items: flex-end;
+
+}
+header>.showTime>.bottom{
+    flex:1;
+    height:100%;
+}
+header>.showTime>.bottom>.date{
+    margin-right:1rem;
+    font-size:1.2rem;
+}
+header>.showTime>.top{
+    flex:1;
+    height:100%;
+    font-size:2rem;
+}
+header>.showTime>.top>.icon {
+    display: inline-block;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+.showTime>.bottom>.date ,.showTime>.top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.showTime>.bottom>.week{
+    text-align:right;
+}
+
+.my_font{
+    font-family:"\5FAE\8F6F\96C5\9ED1";
+    font-size: 16px;
+    color: #fffffe;
+}
+.flexRowBetweenCenter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.flexRowBetweenStart{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.flexRowBetweenEnd{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.flexRowStartStart{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.flexRowStartCenter{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flexRowAroundCenter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.flexRowAroundStart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.flexRowCenterCenter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+/*flex 垂直方向布局*/
+.flexColumnStartStart{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+/*flex 垂直方向布局*/
+.flexColumnStartCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flexColumnCenterCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*flex 垂直方向布局*/
+.flexColumnCenterStart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+/*flex 垂直方向布局*/
+.flexColumnAroundCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.flexColumnBetweenCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*公共的chart ,标题布局*/
+.chart{
+    height:100%;
+    padding:0.5rem 0.5rem;
+}
+.chart>div{
+    background-image: linear-gradient(rgba(6, 39, 161, 0.1), rgba(6, 39, 161, 0.1));
+    border: solid 1px #2c2f58;
+    position: relative;
+}
+.theme{
+    position:absolute;
+    background:url(../images/OrderReport/leftTopMark.png) no-repeat center center;
+    background-size:100% 100%;
+    z-index:3;
+    min-width: 16rem;
+    height:5.167rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left:2.66rem;
+    /*box-shadow:-1rem -1rem 5rem 0 #00fcfc ;*/
+}
+.chart>div:after{
+    position: absolute;
+    bottom:0;
+    right:0;
+    display: inline-block;
+    content:'';
+    /*width:10.91%;*/
+    /*height:13.89%;*/
+    width:5rem;
+    height:5rem;
+    transform: translate(0,0);
+    transform-origin: right bottom;
+    z-index:2;
+    background:url(../images/OrderReport/rightBottomMark.png) no-repeat center center;
+    background-size:100% 100%;
+    /*box-shadow:1.667rem 1.667rem 5rem 0 #00fcfc ;*/
+}
+.chart>.showChart>div:first-child{
+    left:50%;
+    top:50%;
+    transform-origin: center center;
+    transform: translate(-50%,-50%);
+}
+
+/*标题*/
+.theme>.title {
+    font-size: 1.667rem;
+    line-height: 1.667rem;
+    color:#eaeaea;
+}
+/*副文本*/
+.theme>.subhead{
+    font-size:0.9rem;
+    line-height:0.9rem;
+    color: #52a5ff;
+}
+
+
+/* boot4 增加的上下垂直滚动*/
+.carousel-fade .carousel-inner .carousel-item {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    transition-property: opacity;
+}
+.carousel-fade .carousel-inner .carousel-item,
+.carousel-fade .carousel-inner .active.carousel-item-left,
+.carousel-fade .carousel-inner .active.carousel-item-right {
+    opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+}
+
+.carousel-vertical .carousel-inner .carousel-item-next.carousel-item-left,
+.carousel-vertical .carousel-inner .carousel-item-prev.carousel-item-right {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+.carousel-vertical .carousel-inner .active.carousel-item-left,
+.carousel-vertical .carousel-inner .carousel-item-prev {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+.carousel-vertical .carousel-inner .active.carousel-item-right,
+.carousel-vertical .carousel-inner .carousel-item-next {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+/*动画*/
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(30deg);
+    }
+    50%{
+        transform: rotate(50deg);
+    }
+    75%{
+        transform: rotate(80deg);
+    }
+    100%{
+        transform: rotate(100deg);
+    }
+}
+@-moz-keyframes  rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(30deg);
+    }
+    50%{
+        transform: rotate(50deg);
+    }
+    75%{
+        transform: rotate(80deg);
+    }
+    100%{
+        transform: rotate(100deg);
+    }
+}
+
+@-webkit-keyframes  rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(30deg);
+    }
+    50%{
+        transform: rotate(50deg);
+    }
+    75%{
+        transform: rotate(80deg);
+    }
+    100%{
+        transform: rotate(100deg);
+    }
+}
+
+@-o-keyframes  rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(30deg);
+    }
+    50%{
+        transform: rotate(50deg);
+    }
+    75%{
+        transform: rotate(80deg);
+    }
+    100%{
+        transform: rotate(100deg);
+    }
+}

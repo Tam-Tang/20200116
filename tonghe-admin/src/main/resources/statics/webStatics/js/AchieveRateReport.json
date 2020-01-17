@@ -1,0 +1,158 @@
+{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{datarangetime为查询时间周期,completionrate为各工序产出达成率,wipnumber为各工序在制品,boardconfig为看板配置数据}",
+    "datarangetime": {
+      "timeStart": "12:00",
+      "timeEnd": "14:00"
+    },
+    "top1datas": {
+      "PreWeekTop1Ach": null,
+      "NowWeekTop1Ach": {
+        "lineName": "FBT",
+        "schedulQty": "100",
+        "actualQty": "322",
+        "achRate": "975.8",
+        "standardAchRate": "65",
+        "status": null,
+        "catrgorys": null
+      },
+      "PreWeekTop1NoAch": null,
+      "NowWeekTop1NoAch": {
+        "lineName": "FBT",
+        "schedulQty": "13.6",
+        "actualQty": "36.5",
+        "achRate": ".2",
+        "standardAchRate": "65",
+        "status": null,
+        "catrgorys": null
+      }
+    },
+
+    "completionrate": [
+      {
+        "lineName": "SMTL7",
+        "schedulQty": "100",
+        "actualQty": "90",
+        "achRate": 40.5,
+        "standardAchRate": "80",
+        "reminder":"换线，人员培训，新人作业，机器不良"
+      },
+      {
+        "lineName": "SMTL8",
+        "schedulQty": "80",
+        "actualQty": "120",
+        "achRate": 93.3,
+        "standardAchRate": "80"
+      },
+      {
+        "lineName": "PTH",
+        "schedulQty": "70",
+        "actualQty": "70",
+        "achRate": 93.3,
+        "standardAchRate": "80"
+      },
+      {
+        "lineName": "ICT",
+        "schedulQty": "170",
+        "actualQty": "120",
+        "achRate": 93.3,
+        "standardAchRate": "80"
+      },
+      {
+        "lineName": "FBT",
+        "schedulQty": "52",
+        "actualQty": "38",
+        "achRate": 80,
+        "standardAchRate": "80"
+      }, {
+        "lineName": "组装1",
+        "schedulQty": "80",
+        "actualQty": "172",
+        "achRate": 75,
+        "standardAchRate": "80"
+      },
+      {
+        "lineName": "组装2",
+        "schedulQty": "90",
+        "actualQty": "85",
+        "achRate": 45,
+        "standardAchRate": "80"
+      },
+      {
+        "lineName": "测试",
+        "schedulQty": "98",
+        "actualQty": "100",
+        "achRate": 45,
+        "standardAchRate": "80"
+      },
+      {
+        "lineName": "包装1",
+        "schedulQty": "50",
+        "actualQty": "30",
+        "achRate": 45,
+        "standardAchRate": "80"
+      }
+    ],
+    "wipnumber": [
+      {
+        "stationName": "FT",
+        "wipQty": "50",
+        "standardData": "322"
+      },
+      {
+        "stationName": "OBA",
+        "wipQty": "48",
+        "standardData": "23",
+        "status":2
+      },
+      {
+        "stationName": "波峰焊",
+        "wipQty": "41.5",
+        "standardData": "23"
+      },
+      {
+        "stationName": "SMT",
+        "wipQty": "54",
+        "standardData": "2323"
+      },
+      {
+        "stationName": "ICT",
+        "wipQty": "20",
+        "standardData": "2"
+      },
+      {
+        "stationName": "ST",
+        "wipQty": "21",
+        "standardData": "23",
+        "status":3
+      },
+      {
+        "stationName": "IQC",
+        "wipQty": "54",
+        "standardData": "1887"
+      },
+      {
+        "stationName": "波峰焊",
+        "wipQty": "41.5",
+        "standardData": "22"
+      },
+      {
+        "stationName": "FBT",
+        "wipQty": "43",
+        "standardData": "323"
+      },
+      {
+        "stationName": "OBA",
+        "wipQty": "48",
+        "standardData": "333"
+      }
+    ],
+    "boardconfig": {
+      "id": "1199505877132009474",
+      "email": "lanccj@163.com",
+      "refreshTime": "7200"
+    }
+  }
+}

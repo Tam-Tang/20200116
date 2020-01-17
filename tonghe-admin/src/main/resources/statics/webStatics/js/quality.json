@@ -1,0 +1,115 @@
+{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{datarangetime为查询周期,yields为产线良率数据,yieldTrendAndTop3为维修超期TOP10,pcbaDirectPassRate为PCBA直通率ctoDirectPassRate为CTO直通率boardconfig为看板配置数据}",
+    "datarangetime": {
+      "timeStart": "00:00:00",
+      "timeEnd": "2019-12-31 23:59:59"
+    },
+    "yields": [
+      {
+        "yield": "60",
+        "stationName": "ICT",
+        "stationId": "ICT",
+        "starndardYield": "89"
+      },
+      {
+        "yield": "60",
+        "stationName": "波峰焊",
+        "stationId": "波峰焊",
+        "starndardYield": "80"
+      },
+      {
+        "yield": "60",
+        "stationName": "FT",
+        "stationId": "FT",
+        "starndardYield": "87"
+      },
+      {
+        "yield": "60",
+        "stationName": "ST",
+        "stationId": "ST",
+        "starndardYield": "68"
+      },
+      {
+        "yield": "60",
+        "stationName": "IQC",
+        "stationId": "IQC",
+        "starndardYield": "58"
+      },
+      {
+        "yield": "85.5",
+        "stationName": "OBA",
+        "stationId": "OBA",
+        "starndardYield": "47"
+      },
+      {
+        "yield": "60.9",
+        "stationName": "SMT",
+        "stationId": "SMT",
+        "starndardYield": "60"
+      },
+      {
+        "yield": "60",
+        "stationName": "FBT",
+        "stationId": "FBT",
+        "starndardYield": "98"
+      }
+    ],
+    "yieldTrendAndTop3": [
+      {
+        "pieChart": {
+          "titleText": "SMT",
+          "legendData": ["未计划","已计划","在制"],
+          "seriesData": [80,60,100]
+        },
+        "lineChart": {
+          "titleText": "良率趋势图",
+          "xaxis":["1", "1", "1", "1", "1", "1", "1"],
+          "seriesData": [30, 78, 54, 63, 28, 75, 48]
+        }
+      },
+      {
+        "pieChart": {
+          "titleText": "IQC",
+          "legendData": ["立碑","操作原因导致误测","未贴平（脚翘）"],
+          "seriesData": [200,100,50]
+        },
+        "lineChart": {
+          "titleText": "良率趋势图",
+          "xaxis":["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+          "seriesData": [30, 20, 80, 40, 30, 20, 52]
+        }
+      },
+      {
+        "pieChart": {
+          "titleText": "IP",
+          "legendData": ["立碑","操作原因导致误测","未贴平（脚翘）"],
+          "seriesData": [200,100,50]
+        },
+        "lineChart": {
+          "titleText": "良率趋势图",
+          "xaxis":["11/22", "11/13", "11/14", "11/15", "11/16", "11/17", "11/18"],
+          "seriesData": [30, 20, 80, 40, 30, 20, 52]
+        }
+      }
+    ],
+    "pcbaDirectPassRate": {
+      "title": "PCBA直通率",
+      "xaxis":["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+      "goalData":  [92, 82, 96, 84, 90, 100, 88],
+      "trueData":  [95, 98, 95, 98, 100, 95, 90]
+    },
+    "ctoDirectPassRate": {
+      "title": "CTO直通率",
+      "xaxis":["2019-12", "2020-1", "2020-2", "2020-3", "2020-4", "2020-5", "2020-6"],
+      "goalData":  [90, 95, 97, 94, 100, 91, 95.6],
+      "trueData":  [92, 96, 97, 98, 90, 92, 96]
+    },
+    "boardconfig": {
+      "id": "1199499493426515969",
+      "refreshTime": "7200"
+    }
+  }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>产出达成率看板</title>
+    <!-- 设置视口-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/bootstrap.css"/>
+    <!-- 引入swiper 样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/swiper/swiper.min.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/common.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/AchieveRateReport.css"/>
+
+    <!-- 导入3个js，有顺序要求-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/jquery.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/popper.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+    <!--引入公共字体，请求方法-->
+    <script src="${request.contextPath}/statics/webStatics/js/utils/require.js"></script>
+    <!--引入echart.js-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/echart/echarts.common.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--头部主题-->
+    <header></header>
+    <!--内容部分-->
+    <div class="loading flexColumnCenterCenter">
+        <img src="${request.contextPath}/statics/webStatics/images/loading.png"  alt="图片出错">
+    </div>
+    <div class="wrapper flexColumnBetweenCenter">
+        <!--各工序产出达成率-->
+        <div class="row productRate">
+            <div class="chart col-xl-12 col-xs-12" >
+                <p class="theme">
+                    <span class="title">各工序产出达成率</span>
+                    <!--<span class="subhead">Delivery status chart/Order Quantity</span>-->
+                </p>
+                <div class="showChart " style="width:100%;height:100%;">
+                    <div class="new clear">
+                        <p class="title flexRowAroundCenter"><img src="${request.contextPath}/statics/webStatics/images/AchieveRateReport/new.png" alt="图片加载失败">公告</p>
+                       <div class="detail swiper-container">
+                           <ul class="flexRowStartCenter swiper-wrapper ">
+                               <li class="swiper-slide">
+                                   <p>上周达标TOP1：<span>--</span></p>
+                                   <p>未达标TOP1: <span>--</span></p>
+                               </li>
+                               <li>
+                                   <p>本周达标TOP1：<span>--</span></p>
+                                   <p>未达标TOP1：<span>--</span></p>
+                               </li>
+                           </ul>
+                       </div>
+                        <p class="cycleTime">00:00~00:00</p>
+                    </div>
+                    <ul class=" legend clear">
+                        <li>
+                            <i class="icon"></i>
+                            实际完成数量
+                        </li>
+                        <li>
+                            <i class="icon"></i>
+                            计划完成数量
+                        </li>
+                    </ul>
+                    <!-- 坐标-->
+                    <ul class="coord flexColumnBetweenCenter">
+                        <li>
+                            <span class="rate">100%</span>
+                            <i class="line"></i>
+                            <span class="number">150</span>
+                        </li>
+                        <li>
+                            <span class="rate">80%</span>
+                            <i class="line"></i>
+                            <span class="number">120</span>
+                        </li>
+                        <li>
+                            <span class="rate">60%</span>
+                            <i class="line"></i>
+                            <span class="number">90</span>
+                        </li>
+                        <li>
+                            <span class="rate">40%</span>
+                            <i class="line"></i>
+                            <span class="number">60</span>
+                        </li>
+                        <li>
+                            <span class="rate">20%</span>
+                            <i class="line"></i>
+                            <span class="number">30</span>
+                        </li>
+                        <li>
+                            <span class="rate">0%</span>
+                            <i class="line"></i>
+                            <span class="number">0</span>
+                        </li>
+                    </ul>
+                    <div class="barGraph">
+                        <ul class="flexRowBetweenCenter">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--各工序在制品 -->
+        <div class="row inProduction">
+            <div class="chart col-xl-12 col-xs-12" id="flowChart">
+                <p class="theme" style="position: absolute">
+                    <span class="title">各工序在制品</span>
+<!--                    <span class="subhead">Adverse cause TOP3</span>-->
+                </p>
+                <div class="inProductionCharte ">
+                        <ul class="list flexRowAroundCenter">
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${request.contextPath}/statics/webStatics/js/AchieveRateReport.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/header.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+</body>
+</html>

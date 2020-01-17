@@ -1,0 +1,159 @@
+//每周
+"iw":{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{datarangetime为查询周期,yields为产线良率数据,yieldTrendAndTop3为维修超期TOP10,pcbaDirectPassRate为PCBA直通率ctoDirectPassRate为CTO直通率boardconfig为看板配置数据}",
+    "datarangetime": {
+      "timeStart": "2019-12-02 00:00:00",
+      "timeEnd": "2019-12-08 23:59:59"
+    },
+    "yields": [
+      {
+        "yield": "60",
+        "stationName": "ICT",
+        "stationId": "ICT",
+        "starndardYield": "89"
+      },
+      {
+        "yield": "60",
+        "stationName": "波峰焊",
+        "stationId": "波峰焊",
+        "starndardYield": "80"
+      },
+      {
+        "yield": "60",
+        "stationName": "FT",
+        "stationId": "FT",
+        "starndardYield": "87"
+      },
+      {
+        "yield": "60",
+        "stationName": "ST",
+        "stationId": "ST",
+        "starndardYield": "68"
+      },
+      {
+        "yield": "60",
+        "stationName": "IQC",
+        "stationId": "IQC",
+        "starndardYield": "58"
+      },
+      {
+        "yield": "85.5",
+        "stationName": "OBA",
+        "stationId": "OBA",
+        "starndardYield": "47"
+      },
+      {
+        "yield": "60.9",
+        "stationName": "SMT",
+        "stationId": "SMT",
+        "starndardYield": "60"
+      },
+      {
+        "yield": "60",
+        "stationName": "FBT",
+        "stationId": "FBT",
+        "starndardYield": "98"
+      }
+    ],
+    "yieldTrendAndTop3": [],
+    "pcbaDirectPassRate": [
+      {
+        "percent": "69.5%",
+        "time": "周4"
+      }
+    ],
+    "ctoDirectPassRate": [
+      {
+        "percent": "70.4%",
+        "time": "周4"
+      }
+    ],
+    "boardconfig": {
+      "id": "1199499493426515969",
+      "refreshTime": "7200"
+    }
+  }
+}
+
+//每月
+"mm":{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{datarangetime为查询周期,yields为产线良率数据,yieldTrendAndTop3为维修超期TOP10,pcbaDirectPassRate为PCBA直通率ctoDirectPassRate为CTO直通率boardconfig为看板配置数据}",
+    "datarangetime": {
+      "timeStart": "2019-12-01 00:00:00",
+      "timeEnd": "2019-12-31 23:59:59"
+    },
+    "yields": [
+      {
+        "yield": "60",
+        "stationName": "ICT",
+        "stationId": "ICT",
+        "starndardYield": "89"
+      },
+      {
+        "yield": "60",
+        "stationName": "波峰焊",
+        "stationId": "波峰焊",
+        "starndardYield": "80"
+      },
+      {
+        "yield": "60",
+        "stationName": "FT",
+        "stationId": "FT",
+        "starndardYield": "87"
+      },
+      {
+        "yield": "60",
+        "stationName": "ST",
+        "stationId": "ST",
+        "starndardYield": "68"
+      },
+      {
+        "yield": "60",
+        "stationName": "IQC",
+        "stationId": "IQC",
+        "starndardYield": "58"
+      },
+      {
+        "yield": "85.5",
+        "stationName": "OBA",
+        "stationId": "OBA",
+        "starndardYield": "47"
+      },
+      {
+        "yield": "60.9",
+        "stationName": "SMT",
+        "stationId": "SMT",
+        "starndardYield": "60"
+      },
+      {
+        "yield": "60",
+        "stationName": "FBT",
+        "stationId": "FBT",
+        "starndardYield": "98"
+      }
+    ],
+    "yieldTrendAndTop3": [],
+    "pcbaDirectPassRate": [
+      {
+        "percent": "69.5%",
+        "time": "2019-12-05"
+      }
+    ],
+    "ctoDirectPassRate": [
+      {
+        "percent": "70.4%",
+        "time": "2019-12-05"
+      }
+    ],
+    "boardconfig": {
+      "id": "1199499493426515969",
+      "refreshTime": "7200"
+    }
+  }
+}

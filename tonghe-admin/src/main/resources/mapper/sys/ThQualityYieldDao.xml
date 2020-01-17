@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThQualityYieldDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThQualityYieldEntity" id="thQualityYieldMap">
+        <result property="id" column="ID"/>
+        <result property="lineId" column="LINE_ID"/>
+        <result property="stationId" column="STATION_ID"/>
+        <result property="yieldNum" column="YIELD_NUM"/>
+    </resultMap>
+
+    <!--查询产线站点的实际平均良率数据-->
+    <select id="queryYieldByStation" resultType="com.ags.modules.sys.dto.YieldByStationDTO">
+        SELECT
+            to_char(sum(yield.GOOD_RATE)/count(1),'fm9999999990.0') as YIELD,
+            station.STATION_NAME,
+            station.STATION_ID
+        FROM
+            TH_YIELD_OF_PRO_LINE yield,
+            TH_STATION station
+        WHERE
+            yield.STATION_ID = station.STATION_ID
+
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+
+        GROUP BY
+            station.STATION_NAME,station.STATION_ID
+    </select>
+
+    <!--查询产线站点的标准平均良率数据-->
+    <select id="queryStandardYieldByStation" resultType="com.ags.modules.sys.dto.YieldByStationDTO">
+        SELECT
+            ROUND( sum( yield.YIELD_NUM ) / count( 1 ), 4 ) AS YIELD,
+            station.STATION_NAME,
+            station.STATION_ID
+        FROM
+            TH_QUALITY_YIELD yield,
+            TH_STATION station
+        WHERE
+            yield.STATION_ID = station.STATION_ID
+        GROUP BY
+            station.STATION_NAME,
+            station.STATION_ID
+    </select>
+
+    <!--查询产线站点的标准平均良率趋势数据-->
+    <select id="queryStationYieldTrend" resultType="com.ags.modules.sys.dto.YieldTrendByStationDTO">
+        SELECT
+            ROUND( sum( yield.GOOD_RATE ) / count( 1 ), 1 ) AS YIELD,
+            station.STATION_NAME,
+            station.STATION_ID,
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            TO_CHAR(CREATE_TIME, 'hh24' ) || '时'AS TIME
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            '周' || to_char( CREATE_TIME - 1, 'D' ) AS TIME
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            TO_CHAR(CREATE_TIME,'yyyy-mm-dd') AS TIME
+        </if>
+        FROM
+            TH_YIELD_OF_PRO_LINE yield,
+            TH_STATION station
+        WHERE
+            yield.STATION_ID = station.STATION_ID
+
+
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+
+        GROUP BY
+            station.STATION_NAME,
+            station.STATION_ID,
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            TO_CHAR(CREATE_TIME, 'hh24' ) || '时'
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            '周' || to_char( CREATE_TIME - 1, 'D' )
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            TO_CHAR(CREATE_TIME,'yyyy-mm-dd')
+        </if>
+        ORDER BY
+            TIME ASC
+    </select>
+
+    <!--查询该事件类型下趋势的时间集合对象-->
+    <select id="queryTimeByTimeType" resultType="java.lang.String">
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            SELECT '1时' as TIME  from dual
+            union all
+            SELECT '2时' as TIME  from dual
+            union all
+            SELECT '3时' as TIME  from dual
+            union all
+            SELECT '4时' as TIME  from dual
+            union all
+            SELECT '5时' as TIME  from dual
+            union all
+            SELECT '6时' as TIME  from dual
+            union all
+            SELECT '7时'  as TIME from dual
+            union all
+            SELECT '8时'  as TIME from dual
+            union all
+            SELECT '9时'  as TIME from dual
+            union all
+            SELECT '10时'  as TIME from dual
+            union all
+            SELECT '11时'  as TIME from dual
+            union all
+            SELECT '12时'  as TIME from dual
+            union all
+            SELECT '13时' as TIME  from dual
+            union all
+            SELECT '14时' as TIME  from dual
+            union all
+            SELECT '15时' as TIME  from dual
+            union all
+            SELECT '16时' as TIME  from dual
+            union all
+            SELECT '17时' as TIME  from dual
+            union all
+            SELECT '18时' as TIME  from dual
+            union all
+            SELECT '19时'  as TIME from dual
+            union all
+            SELECT '20时'  as TIME from dual
+            union all
+            SELECT '21时'  as TIME from dual
+            union all
+            SELECT '22时'  as TIME from dual
+            union all
+            SELECT '23时'  as TIME from dual
+            union all
+            SELECT '24时'  as TIME from dual
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            SELECT '周一' as TIME  from dual
+            union all
+            SELECT '周一' as TIME  from dual
+            union all
+            SELECT '周三' as TIME  from dual
+            union all
+            SELECT '周四' as TIME  from dual
+            union all
+            SELECT '周五' as TIME  from dual
+            union all
+            SELECT '周六' as TIME  from dual
+            union all
+            SELECT '周日'  as TIME from dual
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            <![CDATA[
+            select *
+              from (SELECT TO_CHAR(TRUNC(SYSDATE, 'MM') + ROWNUM - 1, 'yyyy-mm-dd') as TIME
+                      FROM dual
+                    CONNECT BY ROWNUM <= to_char(last_day(SYSDATE), 'dd'))
+             where to_date(time, 'yyyy-mm-dd hh24:mi:ss') <= sysdate
+
+            ]]>
+        </if>
+    </select>
+
+    <select id="queryBadTypeTop3ByStation" resultType="com.ags.modules.sys.dto.BadTypeTop3DTO">
+        select  t.STATION_NAME,
+        t.STATION_ID,
+        t.BAD_TYPE_NAME,
+        to_char(sum(t.PERCENT)/count(1),'fm9999999990.0') as PERCENT
+
+        from (
+        SELECT
+        t.STATION_NAME,
+        t.STATION_ID,
+        t.BAD_TYPE_ID,
+        t.BAD_TYPE_NAME,
+        100 * ROUND( t.BAD_TYPE_IDNUM / ( SELECT count( * ) FROM TH_PRO_LINE_DEFECT_DETAILS WHERE STATION_ID = t.STATION_ID ), 4 ) AS PERCENT
+            FROM
+                (
+                SELECT
+                    t.*,
+                    row_number () over ( partition BY t.STATION_ID ORDER BY t.BAD_TYPE_IDNUM DESC ) row_number
+                FROM
+                    (
+                    SELECT
+                        station.STATION_NAME,
+                        station.STATION_ID,
+                        detail.BAD_TYPE_ID,
+                        badtype.BAD_TYPE_NAME,
+                        COUNT( detail.BAD_TYPE_ID ) BAD_TYPE_IDNUM
+                    FROM
+                        TH_PRO_LINE_DEFECT_DETAILS detail,
+                        TH_STATION station,
+                        TH_BAD_TYPE badtype
+                    WHERE
+                        detail.STATION_ID = station.STATION_ID
+                        AND detail.BAD_TYPE_ID = badtype.BAD_TYPE_ID
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+        <![CDATA[
+                        and detail.CREATE_TIME <= sysdate
+                          ]]>
+                    GROUP BY
+                        station.STATION_NAME,
+                        station.STATION_ID,
+                        detail.BAD_TYPE_ID,
+                        badtype.BAD_TYPE_NAME
+                    ORDER BY
+                        station.STATION_NAME,
+                        station.STATION_ID,
+                        detail.BAD_TYPE_ID,
+                        badtype.BAD_TYPE_NAME,
+                        BAD_TYPE_IDNUM ASC
+                    ) t
+                ) t
+            WHERE
+                <![CDATA[
+                row_number <= 3
+                ]]>
+            ORDER BY
+        t.STATION_ID,
+        t.ROW_NUMBER
+        ) t
+
+        GROUP BY
+        t.STATION_NAME,
+        t.STATION_ID,
+        t.BAD_TYPE_NAME
+    </select>
+
+
+    <select id="queryTimeRange" resultType="java.lang.String">
+
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            <![CDATA[
+
+            select
+             case
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 02:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate-1, 'yyyy-mm-dd') || ' 22:00:00' || '--' ||to_char(sysdate-1, 'yyyy-mm-dd') ||' 23:59:59'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 02:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 04:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 02:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 04:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 06:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || '02:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 04:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 06:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 08:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || '04:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 06:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 08:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 10:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 06:00:00' || '--' || to_char(sysdate, 'yyyy-mm-dd') ||' 08:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 10:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 12:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 08:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 10:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 12:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 10:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 12:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 12:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 14:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 16:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 16:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 20:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 18:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 20:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 22:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 20:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 22:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 23:59:59','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 20:00:00' || '--' || to_char(sysdate, 'yyyy-mm-dd') ||' 22:00:00'
+               else
+                ''
+             end timerange
+
+              from dual
+
+        ]]>
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            select to_char(trunc(sysdate, 'd') + 1,'yyyy-mm-dd') || ' 00:00:00' || '--' ||  to_char(trunc(sysdate, 'd') + 7,'yyyy-mm-dd') || ' 23:59:59' as timerange from dual
+        </if>
+
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            select to_char(trunc(sysdate, 'mm'),'yyyy-mm-dd') || ' 00:00:00' || '--' ||  to_char(last_day(trunc(sysdate)),'yyyy-mm-dd') || ' 23:59:59' as timerange from dual
+        </if>
+
+
+    </select>
+
+</mapper>

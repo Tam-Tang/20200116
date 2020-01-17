@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThAutoMachineInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThAutoMachineInfoEntity" id="thAutoMachineInfoMap">
+        <result property="id" column="ID"/>
+        <result property="machineName" column="MACHINE_NAME"/>
+        <result property="uph" column="UPH"/>
+        <result property="position" column="POSITION"/>
+        <result property="type" column="TYPE"/>
+        <result property="model" column="MODEL"/>
+        <result property="brand" column="BRAND"/>
+        <result property="machineNo" column="MACHINE_NO"/>
+        <result property="machineAccuracy" column="MACHINE_ACCURACY"/>
+        <result property="runTotalTime" column="RUN_TOTAL_TIME"/>
+        <result property="runTime" column="RUN_TIME"/>
+        <result property="outputDisplay" column="OUTPUT_DISPLAY"/>
+        <result property="utilizationRate" column="UTILIZATION_RATE"/>
+        <result property="machinTimelyStatus" column="MACHIN_TIMELY_STATUS"/>
+        <result property="machinStatusDisplay" column="MACHIN_STATUS_DISPLAY"/>
+        <result property="machinIntervalDisplay" column="MACHIN_INTERVAL_DISPLAY"/>
+    </resultMap>
+
+    <select id="listNew" resultMap="thAutoMachineInfoMap">
+        SELECT * FROM TH_AUTO_MACHINE_INFO where CREATE_TIME = (select MAX(CREATE_TIME) from TH_AUTO_MACHINE_INFO)
+    </select>
+
+</mapper>

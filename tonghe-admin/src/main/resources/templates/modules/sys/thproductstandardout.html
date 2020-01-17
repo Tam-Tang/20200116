@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>产线标准产量维护</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("sys:thproductstandardout:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thproductstandardout:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("sys:thproductstandardout:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">产线</div>
+                        <div class="col-sm-10">
+<!--                            <input type="text" class="form-control" v-model="thProductStandardOut.lineId" placeholder="产线"/>-->
+
+                            <select id="slt_productLineId" class="form-control" v-model="thProductStandardOut.lineId" readonly
+                            >
+
+                            </select>
+
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">标准产出数量</div>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" v-model="thProductStandardOut.num" placeholder="标准产出数量"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">开始时间</div>
+                        <div class="col-sm-10">
+<!--                            <input type="text" class="form-control" v-model="thProductStandardOut.startTime" placeholder="开始时间"/>-->
+
+                            <input type="text" class="form-control" v-model="thProductStandardOut.startTime" placeholder="开始时间" id="startTime" readonly/>
+
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">结束时间</div>
+                        <div class="col-sm-10">
+
+
+                            <input type="text" class="form-control" v-model="thProductStandardOut.endTime" placeholder="结束时间" id="endTime" readonly/>
+
+
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="${request.contextPath}/statics/js/modules/sys/thproductstandardout.js?_${.now?long}"></script>
+</body>
+</html>

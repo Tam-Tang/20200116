@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>工序状态看板</title>
+    <!-- 设置视口-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/bootstrap.css"/>
+    <!-- 引入swiper 样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/swiper/swiper.min.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/common.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/ProcessStateReport.css"/>
+
+    <!-- 导入3个js，有顺序要求-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/jquery.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/popper.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+    <!--引入公共字体，请求方法-->
+    <script src="${request.contextPath}/statics/webStatics/js/utils/require.js"></script>
+    <!--引入echart.js-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/echart/echarts.common.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--<header id="head"></header>-->
+    <header></header>
+    <!--内容部分-->
+    <div class="loading flexColumnCenterCenter">
+        <img src="${request.contextPath}/statics/webStatics/images/loading.png"  alt="图片出错">
+    </div>
+    <div class="wrapper ">
+        <div class="row">
+            <!--左边-->
+            <div class="left col-xl-4 col-xs-4">
+                <div class="row">
+                    <div class="chart  col-xl-12 col-xs-12" >
+                        <p class="theme" style="position: absolute">
+                            <span class="title">工序状态监控</span>
+                            <!--<span class="subhead">Adverse cause TOP3</span>-->
+                        </p>
+                        <div class="echartWrap process">
+                            <ul class="processList flexRowStartStart col-xl-12 col-xs-12">
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">SMT Line7</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">SMT Line8</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light red"></i>-->
+<!--                                    <span class="processName">PTH</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">ICT-1</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">ICT-2</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">ICT-3</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">5DX</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">组装一线</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">组装二线</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">FT测试</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">包装一线</span>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <i class="light"></i>-->
+<!--                                    <span class="processName">包装二线</span>-->
+<!--                                </li>-->
+
+                            </ul>
+                            <!--FBT测试状态-->
+                            <div class="testStatus col-xl-12 col-xs-12">
+                                <p class="title">FBT测试状态</p>
+                                <ul class="list">
+<!--                                    <li>-->
+<!--                                        <div class="">-->
+<!--                                            <p class="lineName">T01-T07</p>-->
+<!--                                            <p class="iconList flexRowBetweenCenter">-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                        <div class="">-->
+<!--                                            <p class="lineName">T08~T14</p>-->
+<!--                                            <p class="iconList flexRowBetweenCenter">-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <div class="">-->
+<!--                                            <p class="lineName">T15~T21</p>-->
+<!--                                            <p class="iconList flexRowBetweenCenter">-->
+<!--                                                <i></i>-->
+<!--                                                <i class="red"></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                        <div class="">-->
+<!--                                            <p class="lineName">T22~T28</p>-->
+<!--                                            <p class="iconList flexRowBetweenCenter">-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                                <i></i>-->
+<!--                                            </p>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--右边-->
+            <div class="bgLayout">
+                <div class="wrapper">
+                    <div class="processStatusLight">
+                        <div class="wrapper">
+                        </div>
+                    </div>
+                    <!--机器的提示框-->
+                    <div class="machineInt">
+                        <div class="wrapper">
+                        </div>
+                    </div>
+                    <!--稼动率-->
+                    <div class="utilization">
+                        <div class="wrapper">
+                            <div class="text text1 clear">
+                                <p class="title">稼动率</p>
+                                <p class="rate">20%</p>
+                                <div class="arrow">
+                                    <div class="icon"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${request.contextPath}/statics/webStatics/js/ProcessStateReport.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/header.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+</body>
+</html>

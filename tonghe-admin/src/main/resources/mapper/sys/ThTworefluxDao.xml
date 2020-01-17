@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThTworefluxDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThTworefluxEntity" id="thTworefluxMap">
+        <result property="id" column="ID"/>
+        <result property="staffId" column="STAFF_ID"/>
+        <result property="staffName" column="STAFF_NAME"/>
+        <result property="fixNum" column="FIX_NUM"/>
+        <result property="refluxNum" column="REFLUX_NUM"/>
+        <result property="refluxRate" column="REFLUX_RATE"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="createTime" column="CREATE_TIME"/>
+    </resultMap>
+
+    <!--查询二次回流数据-->
+    <select id="queryTwoReflux" resultType="com.ags.modules.sys.vo.TwoRefluxVO">
+
+        select
+
+        round(sum(REFLUX_RATE) / count(1), 1)  percent,
+
+        TO_CHAR(DATA_TIME, 'yyyy-mm') time
+
+        from TH_TWOREFLUX t
+
+        where
+        <![CDATA[
+        TO_CHAR(DATA_TIME, 'yyyy-mm') <=
+        to_char(add_months(trunc(sysdate), 0), 'yyyy-mm')
+        ]]>
+        group by TO_CHAR(DATA_TIME, 'yyyy-mm')
+
+        order by TO_CHAR(DATA_TIME, 'yyyy-mm')
+
+    </select>
+</mapper>

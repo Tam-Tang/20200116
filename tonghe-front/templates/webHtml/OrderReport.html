@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>订单管理看板</title>
+    <!-- 设置视口-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/plugIn/bootstrap.css"/>
+    <!-- 引入swiper 样式-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/plugIn/swiper/swiper.min.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/common.css">
+    <link rel="stylesheet" href="../../statics/webStatics/css/OrderReport.css"/>
+
+    <!-- 导入3个js，有顺序要求-->
+    <script src="../../statics/webStatics/js/plugIn/jquery.min.js"></script>
+    <script src="../../statics/webStatics/js/plugIn/popper.min.js"></script>
+    <script src="../../statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+    <!--引入公共字体，请求方法-->
+    <script src="../../statics/webStatics/js/utils/require.js"></script>
+    <!--引入echart.js-->
+    <script src="../../statics/webStatics/js/plugIn/echart/echarts.common.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--头部主题-->
+    <header></header>
+    <!--内容部分-->
+    <div class="loading flexColumnCenterCenter">
+        <img src="../../statics/webStatics/images/loading.png"  alt="图片出错">
+    </div>
+    <div class="wrapper">
+        <div class=" top">
+            <div class="row">
+                <!--饼图-->
+                <div class="chart col-xl-4 col-xs-4" >
+                    <p class="theme">
+                        <span class="title">交付分析(by订单维度)</span>
+                    </p>
+                    <div class="showChart" id="orderFormChart" style="width:100%;height:100%;">
+                    </div>
+                </div>
+                <!--线体生产流程图 -->
+                <div class="chart col-xl-8 col-xs-8" id="flowChart">
+                    <p class="theme" style="position: absolute">
+                        <span class="title">产品工序流程图</span>
+                    </p>
+                    <div style="width:100%;height:100%;position: relative;">
+                        <div class="productProcess">
+                            <ul class="flexRowBetweenStart">
+                                <li>
+                                    <div class="label">
+                                        <span>PCB光板</span>
+                                        <div class="arrows "></div>
+                                        <div class="arrows2"></div>
+                                    </div>
+                                    <img src="../../statics/webStatics/images/OrderReport/img1.png" alt="" >
+                                    <i class="goRight"></i>
+                                </li>
+                                <li>
+                                    <div class="label">
+                                        <span>贴装器件后</span>
+                                        <div class="arrows "></div>
+                                        <div class="arrows2"></div>
+                                    </div>
+                                    <img src="../../statics/webStatics/images/OrderReport/img2.png" alt="">
+                                    <i class="goRight"></i>
+                                </li>
+                                <li>
+                                    <div class="label">
+                                        <span>插装器件后</span>
+                                        <div class="arrows "></div>
+                                        <div class="arrows2"></div>
+                                    </div>
+                                    <img src="../../statics/webStatics/images/OrderReport/img3.png" alt="">
+                                    <i class="goRight"></i>
+                                </li>
+                                <li>
+                                    <div class="label">
+                                        <span>装配器件后</span>
+                                        <div class="arrows "></div>
+                                        <div class="arrows2"></div>
+                                    </div>
+                                    <img src="../../statics/webStatics/images/OrderReport/img4.png" alt="">
+                                    <i class="goRight"></i>
+                                </li>
+                                <li>
+                                    <div class="label">
+                                        <span>装配成品</span>
+                                        <div class="arrows "></div>
+                                        <div class="arrows2"></div>
+                                    </div>
+                                    <img src="../../statics/webStatics/images/OrderReport/img5.png" alt="">
+                                    <i class="goRight"></i>
+                                </li>
+                                <li>
+                                    <div class="label">
+                                        <span>包装成品</span>
+                                        <div class="arrows "></div>
+                                        <div class="arrows2"></div>
+                                    </div>
+                                    <img src="../../statics/webStatics/images/OrderReport/img6.png" alt="">
+                                    <i class="goRight"></i>
+                                </li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/OrderReport/line.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" bottom">
+            <div class="row">
+                <!--交付分析(by生产数量维度) -->
+                <div class="chart col-xl-4 col-xs-4" >
+                    <p class="theme">
+                        <span class="title">交付分析(by生产数量维度)</span>
+                    </p>
+                    <div class="showChart" id="productionQuantityChart" style="width:100%;height:100%;">
+                    </div>
+                </div>
+                <!-- 未交付明细表  -->
+                <div class="chart col-xl-4 col-xs-4" >
+                    <p class="theme">
+                        <span class="title">未交付分析(by生产数量)</span>
+                    </p>
+                    <div class="showChart" id="nonDeliveryChart" style="width:100%;height:100%;">
+                    </div>
+                </div>
+                <!-- 生产周期  -->
+                <div class="chart col-xl-4 col-xs-4" id="productionCycle">
+                    <p class="theme" style="position: absolute">
+                        <span class="title">订单交付周期追踪</span>
+                    </p>
+                    <div class="contain flexColumnAroundCenter" style="width:100%;padding:5.16rem 1.73rem 1.1rem 1.4rem ">
+                        <div class="tupian swiper-container">
+                            <ul class="swiper-wrapper orderList">
+                            </ul>
+                        </div>
+                        <div  class="count">
+                            <div class="ratio flexColumnStartStart">
+                                <p>交付周期达标率</p>
+                                <p><i class="trueRate"></i><i></i></p>
+                            </div>
+                            <div class="status">
+                                <p class="flexRowStartCenter">
+                                    <i class="icon" ></i>
+                                    已生产：
+                                    <span class="productedNum">0</span>
+                                </p>
+                                <p class="flexRowStartCenter">
+                                    <i class="icon"></i>
+                                    超时数量：
+                                    <span class="productedNum">0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../statics/webStatics/js/OrderReport.js"></script>
+<script src="../../statics/webStatics/js/header.js"></script>
+<script src="../../statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

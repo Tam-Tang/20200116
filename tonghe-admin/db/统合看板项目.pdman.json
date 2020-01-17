@@ -1,0 +1,5065 @@
+{
+  "modules": [
+    {
+      "name": "達成率(産出)看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_PRODUCT_STANDARD_OUT",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "產綫編號",
+              "notNull": true
+            },
+            {
+              "name": "NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "標準產出數量",
+              "notNull": true
+            },
+            {
+              "name": "START_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "開始時間",
+              "notNull": true
+            },
+            {
+              "name": "END_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "結束時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "產綫標準產量表"
+        },
+        {
+          "title": "TH_PRO_LINE_ACH_RATE",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "線別ID",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "STEP",
+              "type": "LongKey",
+              "remark": "0前段  1後段",
+              "chnname": "製程段",
+              "notNull": true
+            },
+            {
+              "name": "SCHEDUL_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "生產排產量",
+              "notNull": false
+            },
+            {
+              "name": "STANDARD_QRY",
+              "type": "LongKey",
+              "remark": "前段無值，後段生産，報表系統維護",
+              "chnname": "標準產出數量",
+              "notNull": false
+            },
+            {
+              "name": "ACTUAL_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "生產產出量",
+              "notNull": true
+            },
+            {
+              "name": "ACH_RATE",
+              "type": "LongKey",
+              "remark": "前段有值，後段需要報表系統自己計算",
+              "chnname": "生產達成率",
+              "notNull": false
+            },
+            {
+              "name": "CATEGORY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "原因大類"
+            },
+            {
+              "name": "RESON_DESC",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "原因描述"
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "產線達成率"
+        },
+        {
+          "title": "TH_EACH_SITE_WIP",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "STATION_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "站點ID",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "WIP_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數量",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "產線WIP"
+        },
+        {
+          "title": "TH_RATE_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "EMAIL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "推送郵箱(;分隔)",
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "刷新間隔",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "達成率看板配置"
+        },
+        {
+          "title": "TH_RATE_RED_DATA",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "產線編號",
+              "notNull": true
+            },
+            {
+              "name": "RATE_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "達成率警戒值(單位%)",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "達成率警戒值配置(線別)"
+        },
+        {
+          "title": "TH_WIP_RED_DATA",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "STATION_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "站點ID",
+              "notNull": true
+            },
+            {
+              "name": "WIP_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "WIP警戒值",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "站點WIP警戒值配置(站點)"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "訂單看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_ORDER_DELIVERY_RECORD",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "ORDER_TOTAL_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "訂單總數量",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_DELIVERY_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "訂單已交付數量",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_UNDELIVERY_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "訂單未交付數量",
+              "notNull": true
+            },
+            {
+              "name": "ORDEQ_TY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "目標交付數量",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "訂單交付狀況記錄表（訂單單位）"
+        },
+        {
+          "title": "TH_ORDER_PRO_QUANTITY",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "ORDER_PRO_TOTAL_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "訂單總生産數量",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_PRO_DELIVERY_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "已交付生産數量",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_PRO_UNDELIVERY_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "未交付生産數量",
+              "notNull": true
+            },
+            {
+              "name": "ORDEQ_TY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "目標交付數量",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "訂單交付狀況記錄表（訂單産品數量單位）"
+        },
+        {
+          "title": "TH_ORDER_CYCLE_TIMEOUT",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "OVER_TIME",
+              "type": "LongKey",
+              "remark": "单位：小时",
+              "chnname": "超時值",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "工單號",
+              "notNull": true
+            },
+            {
+              "name": "SALE_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "銷售訂單號",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "訂單生産周期超時記錄"
+        },
+        {
+          "title": "TH_UNDELIVERED_DETAILS",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "ORDER_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "工單號",
+              "notNull": true
+            },
+            {
+              "name": "SALE_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "銷售訂單號",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_STATUS",
+              "type": "LongKey",
+              "remark": "0-在製品,1-待上線,2-未開工單",
+              "chnname": "訂單狀態",
+              "notNull": true
+            },
+            {
+              "name": "UNDELIVERY_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "未交付數量",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "未交付明細表"
+        },
+        {
+          "title": "TH_ORDER_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "RED_RESULT",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "生産周期警戒值時長",
+              "notNull": true
+            },
+            {
+              "name": "COMPLIANCE_RATE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "交付周期達標率(%)",
+              "notNull": true
+            },
+            {
+              "name": "COMPLIANCE_DAY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "交付周期(天)"
+            },
+            {
+              "name": "EMAIL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "推送郵箱(;分隔)",
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "刷新間隔",
+              "notNull": true
+            },
+            {
+              "name": "TIMEOUT_COLOR",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "超時時段顯示顔色",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "訂單看板配置表"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "質量看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_YIELD_OF_PRO_LINE",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "産線編號"
+            },
+            {
+              "name": "STATION_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "站點編號",
+              "notNull": true
+            },
+            {
+              "name": "GOOD_RATE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "良率",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "産線良率表"
+        },
+        {
+          "title": "TH_PRO_LINE_DEFECT_DETAILS",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "PRODUCT_LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "産線編號"
+            },
+            {
+              "name": "STATION_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "站點編號",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_NUMBER",
+              "type": "LongKey",
+              "remark": "IQC記錄訂單號",
+              "chnname": "工單號",
+              "notNull": true
+            },
+            {
+              "name": "UNIT_SN",
+              "type": "LongKey",
+              "remark": "IQC記錄物料編號",
+              "chnname": "産品SN",
+              "notNull": true
+            },
+            {
+              "name": "BAD_TYPE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "不良類別編號",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "産線不良明細表"
+        },
+        {
+          "title": "TH_QUALITY_YIELD",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "産線編號",
+              "notNull": true
+            },
+            {
+              "name": "STATION_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "站點編號",
+              "notNull": true
+            },
+            {
+              "name": "YIELD_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "良率",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "各産線良率標准表"
+        },
+        {
+          "title": "TH_DIRECT_PASS_RATE",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "PASS_TYPE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "直通率類型"
+            },
+            {
+              "name": "PASS_TYPE_ITEM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "直通率類型細類"
+            },
+            {
+              "name": "TOTAL_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "總數量"
+            },
+            {
+              "name": "FAIL_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "FAIL數量"
+            },
+            {
+              "name": "PASS_RATE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "直通率"
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "直通率數據表"
+        },
+        {
+          "title": "TH_QUALITY_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "刷新間隔",
+              "notNull": true
+            },
+            {
+              "name": "PCBA_STANDARD_DATA",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "PCBA直通率標準值"
+            },
+            {
+              "name": "CTO_STANDARD_DATA",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "CTO直通率標準值"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "質量看板配置"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "基礎信息表",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_PRODUCT_LINE",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "産線編號",
+              "notNull": true
+            },
+            {
+              "name": "LINE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "産線名稱",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "産線基礎信息表"
+        },
+        {
+          "title": "TH_STATION",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "STATION_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "站點編號",
+              "notNull": true
+            },
+            {
+              "name": "STATION_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "站點名稱",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "站點基礎信息表"
+        },
+        {
+          "title": "TH_BREAK_TIME",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "START_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "休息開始時間",
+              "notNull": true
+            },
+            {
+              "name": "END_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "休息結束時間",
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "線別編號",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "產線休息時間表"
+        },
+        {
+          "title": "TH_HOLIDAY",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "HOLIDAY_TIME",
+              "type": "Date",
+              "remark": "",
+              "chnname": "節假日",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "節假日表"
+        },
+        {
+          "title": "TH_SHIFT",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "FACTORY_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "工廠ID",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "SEQNO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "序號",
+              "notNull": true
+            },
+            {
+              "name": "HOURPERIOD",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "時間段",
+              "notNull": true
+            },
+            {
+              "name": "UPHRATIO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "UPH比例",
+              "notNull": true,
+              "defaultValue": "0.00"
+            },
+            {
+              "name": "FITSR_HOUR",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "開始HOUR",
+              "notNull": false
+            },
+            {
+              "name": "LAST_HOUR",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "結束HOUR",
+              "notNull": false
+            },
+            {
+              "name": "FROM_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "開始時間",
+              "notNull": true
+            },
+            {
+              "name": "TO_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "結束時間",
+              "notNull": true
+            },
+            {
+              "name": "NOTE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "備注",
+              "notNull": false
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "班別信息表"
+        },
+        {
+          "title": "TH_BAD_TYPE",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "BAD_TYPE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "不良類別ID",
+              "notNull": true
+            },
+            {
+              "name": "BAD_TYPE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "不良類別名稱",
+              "notNull": true
+            },
+            {
+              "name": "CATEGORY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "類別(制程段)"
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "IdOrKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "不良類別信息表"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "抛料率(物料)看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_MACHINE_THROWING_RATE",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "線別",
+              "notNull": true
+            },
+            {
+              "name": "TRACK_NO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "軌道編號"
+            },
+            {
+              "name": "MACHINE_NO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "機台編號",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "PART_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "物料編號",
+              "notNull": true
+            },
+            {
+              "name": "SET_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "置件數量",
+              "notNull": true
+            },
+            {
+              "name": "THROW_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "抛料數量",
+              "notNull": true
+            },
+            {
+              "name": "THROW_RATE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "抛料率",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "機台抛料率"
+        },
+        {
+          "title": "TH_MATEERAL_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "EMAIL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "推送郵箱(;分隔)",
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "刷新間隔",
+              "notNull": true
+            },
+            {
+              "name": "RATE_DOWN",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "1000以下按數量",
+              "notNull": true
+            },
+            {
+              "name": "RATE_UP",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "1000以上按百分比",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "抛料看板配置"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "溫濕度ESD看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_REAL_TIME_TEM_AND_HUM",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "PLACE",
+              "type": "LongKey",
+              "remark": "存储名称",
+              "chnname": "區域",
+              "notNull": true
+            },
+            {
+              "name": "TEMPERATURE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "溫度值",
+              "notNull": true
+            },
+            {
+              "name": "HAMIDITY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "濕度值",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "溫濕度實時表"
+        },
+        {
+          "title": "TH_ESD_REAL_TIME",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "PLACE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "區域",
+              "notNull": true
+            },
+            {
+              "name": "ESD_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "ESD設備編號"
+            },
+            {
+              "name": "ESD_TYPE",
+              "type": "LongKey",
+              "remark": "分機器 MACHINE 和人MAN",
+              "chnname": "ESD類型"
+            },
+            {
+              "name": "ESD_STATUS",
+              "type": "LongKey",
+              "remark": "0-正常1-異常",
+              "chnname": "狀態",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "ESD實時表"
+        },
+        {
+          "title": "TH_ESD_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "EMAIL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "推送郵箱(;分隔)",
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "刷新間隔",
+              "notNull": true
+            },
+            {
+              "name": "TEMPERATURE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "溫度警戒值",
+              "notNull": true
+            },
+            {
+              "name": "HUMIDITY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "濕度警戒值",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "溫濕度ESD看板配置"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "工序狀態看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_EUIPMENT_STATUS",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "EUIPMENT_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備編號"
+            },
+            {
+              "name": "EUIPMENT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備名稱",
+              "notNull": false
+            },
+            {
+              "name": "EUIPMENT_TYPE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備類型",
+              "notNull": false
+            },
+            {
+              "name": "LINE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "線體ID"
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "STATUS",
+              "type": "LongKey",
+              "remark": "0-運行 1-停機 2-異常",
+              "chnname": "狀態",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "設備運行狀態表"
+        },
+        {
+          "title": "TH_EUIPMENT_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "EMAIL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "推送郵箱(;分隔)",
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "刷新間隔",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "工序看板配置"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "維修看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_MAINTENANCE_NUMBER",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_TYPE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "MAINTAIN_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "待維修數量",
+              "notNull": true
+            },
+            {
+              "name": "FINISH_QTY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "已維修數量",
+              "notNull": true
+            },
+            {
+              "name": "MAINTAIN_STEP",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "維修工段",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "格式年月日时分秒",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "格式年月日时分秒",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "維修數量表"
+        },
+        {
+          "title": "TH_MAINTENANCE_DETAIL",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "訂單號",
+              "notNull": true
+            },
+            {
+              "name": "WORK_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "工單號",
+              "notNull": true
+            },
+            {
+              "name": "UNIT_SN",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "産品SN",
+              "notNull": true
+            },
+            {
+              "name": "EMPLOYEE_SN",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "工號",
+              "notNull": true
+            },
+            {
+              "name": "EMPLOYEE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "姓名",
+              "notNull": true
+            },
+            {
+              "name": "STEP_SN",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "維修位號",
+              "notNull": true
+            },
+            {
+              "name": "BAD_TYPE_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "不良代碼",
+              "notNull": true
+            },
+            {
+              "name": "DESCRIPTION",
+              "type": "LongString",
+              "remark": "",
+              "chnname": "不良描述",
+              "notNull": true
+            },
+            {
+              "name": "DEFECT_STEP",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "不良工段",
+              "notNull": true
+            },
+            {
+              "name": "MAINTAIN_TYPE",
+              "type": "LongKey",
+              "remark": "0单板,1整机",
+              "chnname": "維修類型",
+              "notNull": true
+            },
+            {
+              "name": "IS_PUSH",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "是否推送",
+              "notNull": false
+            },
+            {
+              "name": "PUSH_TIME",
+              "type": "DateTime",
+              "remark": "格式年月日時分秒",
+              "chnname": "推送時間",
+              "notNull": false
+            },
+            {
+              "name": "MAINTAIN_STEP",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "維修工段",
+              "notNull": true
+            },
+            {
+              "name": "FAIL_TIME",
+              "type": "DateTime",
+              "remark": "格式年月日時分秒",
+              "chnname": "失敗開始時間",
+              "notNull": true
+            },
+            {
+              "name": "START_TIME",
+              "type": "DateTime",
+              "remark": "格式年月日時分秒",
+              "chnname": "維修開始時間",
+              "notNull": true
+            },
+            {
+              "name": "FINISH_TIME",
+              "type": "DateTime",
+              "remark": "格式年月日時分秒",
+              "chnname": "維修完成時間",
+              "notNull": true
+            },
+            {
+              "name": "ALLLINK_TIME",
+              "type": "DateTime",
+              "remark": "格式年月日時分秒",
+              "chnname": "alllink時間",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "維修明細表"
+        },
+        {
+          "title": "TH_MAINTENANCE_CYCLE",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "ORDER_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "訂單號",
+              "notNull": true
+            },
+            {
+              "name": "WORK_NUMBER",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "工單號",
+              "notNull": true
+            },
+            {
+              "name": "UNIT_SN",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "産品SN",
+              "notNull": true
+            },
+            {
+              "name": "EMPLOYEE_SN",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "工號",
+              "notNull": true
+            },
+            {
+              "name": "EMPLOYEE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "姓名",
+              "notNull": true
+            },
+            {
+              "name": "STEP_SN",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "維修位號",
+              "notNull": true
+            },
+            {
+              "name": "MAINTAIN_TYPE",
+              "type": "LongString",
+              "remark": "",
+              "chnname": "維修類型",
+              "notNull": true
+            },
+            {
+              "name": "MAINTAIN_STEP",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "維修工段",
+              "notNull": true
+            },
+            {
+              "name": "FAIL_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "失敗開始時間",
+              "notNull": true
+            },
+            {
+              "name": "START_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "維修開始時間",
+              "notNull": true
+            },
+            {
+              "name": "END_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "維修結束時間",
+              "notNull": true
+            },
+            {
+              "name": "ALLLINK_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "alllink時間",
+              "notNull": false
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "維修周期超時記錄"
+        },
+        {
+          "title": "TH_REPAIR_STABDARD_TIME",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "USER_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "員工編號",
+              "notNull": true
+            },
+            {
+              "name": "USER_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "員工姓名",
+              "notNull": true
+            },
+            {
+              "name": "NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數量",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "員工維修標准工時表"
+        },
+        {
+          "title": "TH_MAINTENANCE_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "EMAIL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "推送郵箱(;分隔)",
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "刷新間隔",
+              "notNull": true
+            },
+            {
+              "name": "STANDARD_DATA",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "維修超時標準值(H)",
+              "notNull": true
+            },
+            {
+              "name": "TWO_REFLUX_STANDARD_DATA",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "貳次回流標準值"
+            },
+            {
+              "name": "WIP_STANDARD_DATA",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "單板WIP標準值"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "維修看板配置"
+        },
+        {
+          "title": "TH_TWOREFLUX",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "REFLUX_TYPE",
+              "type": "LongKey",
+              "remark": "單板-0 整機1",
+              "chnname": "類型"
+            },
+            {
+              "name": "STAFF_ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "員工編號",
+              "notNull": true
+            },
+            {
+              "name": "STAFF_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "員工姓名",
+              "notNull": true
+            },
+            {
+              "name": "FIX_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "維修數量",
+              "notNull": true
+            },
+            {
+              "name": "REFLUX_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "回流數量",
+              "notNull": true
+            },
+            {
+              "name": "REFLUX_RATE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "回流率",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "二次回流數據表"
+        },
+        {
+          "title": "TH_VENEER_WIP",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "WIP_TYPE",
+              "type": "LongKey",
+              "remark": "分FBT,OSWX類型",
+              "chnname": "WIP類型",
+              "notNull": true
+            },
+            {
+              "name": "WIP_NUM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "WIP數量",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期",
+              "notNull": true
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "單板WIP趨勢數據表"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "自动化看板",
+      "chnname": "",
+      "entities": [
+        {
+          "title": "TH_AUTO_CONFIG",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true,
+              "uiHint": ""
+            },
+            {
+              "name": "EMAIL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "推送郵箱(;分隔)",
+              "notNull": true
+            },
+            {
+              "name": "REFRESH_TIME",
+              "type": "LongKey",
+              "remark": "秒数",
+              "chnname": "刷新間隔",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "自動化看板配置"
+        },
+        {
+          "title": "TH_AUTO_STATUS",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "MACHINE_NO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備編號"
+            },
+            {
+              "name": "MACHINE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備名稱",
+              "notNull": true
+            },
+            {
+              "name": "MACHINE_STATUS",
+              "type": "LongKey",
+              "remark": "1運行；2待機；3異常；4離線；5停機",
+              "chnname": "設備狀態",
+              "notNull": true
+            },
+            {
+              "name": "OUTPUT_DISPLAY",
+              "type": "LongKey",
+              "remark": "更新時間間隔內產出",
+              "chnname": "產出",
+              "notNull": true
+            },
+            {
+              "name": "RUN_TOTAL_TIME",
+              "type": "LongKey",
+              "remark": "設備總的運行時間（非更新時間間隔內運行時間）",
+              "chnname": "運行總時間",
+              "notNull": true
+            },
+            {
+              "name": "RUN_TIME",
+              "type": "LongKey",
+              "remark": "設備開機之後運行時間（非更新時間間隔內運行時間）",
+              "chnname": "運行時長"
+            },
+            {
+              "name": "UTILIZATION_RATE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備稼動率",
+              "notNull": true
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別",
+              "notNull": true
+            },
+            {
+              "name": "DATA_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "日期"
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "設備運行狀態表"
+        },
+        {
+          "title": "TH_AUTO_MACHINE_INFO",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "NUMBER(38)",
+              "remark": "",
+              "chnname": "數據ID",
+              "pk": true,
+              "notNull": true
+            },
+            {
+              "name": "MACHINE_NO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備編號"
+            },
+            {
+              "name": "MACHINE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備名稱",
+              "notNull": true
+            },
+            {
+              "name": "MODEL",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備型號"
+            },
+            {
+              "name": "MACHINE_TYPE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備類型"
+            },
+            {
+              "name": "BRAND",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備品牌",
+              "notNull": true
+            },
+            {
+              "name": "MACHINE_ACCURACY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "加工精度",
+              "notNull": true
+            },
+            {
+              "name": "UPH",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備UPH",
+              "notNull": true
+            },
+            {
+              "name": "POSITION",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備位置",
+              "notNull": true
+            },
+            {
+              "name": "REMARKS",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備描述",
+              "notNull": true
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "設備基礎信息數據表"
+        },
+        {
+          "title": "TH_AUTO_ALARM_INFO",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID"
+            },
+            {
+              "name": "MACHINE_NO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "報警設備編號"
+            },
+            {
+              "name": "MACHINE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "報警設備名稱"
+            },
+            {
+              "name": "ALARM_TYPE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "報警類型"
+            },
+            {
+              "name": "SHIFT_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "班別"
+            },
+            {
+              "name": "ALARM_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "報警時間"
+            },
+            {
+              "name": "CREATE_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "插入時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "自動化設備異常報警信息表"
+        },
+        {
+          "title": "TH_AUTO_MAINTENANCE_CYCLE_INFO",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID"
+            },
+            {
+              "name": "MACHINE_NO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備編號"
+            },
+            {
+              "name": "MACHINE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備名稱"
+            },
+            {
+              "name": "NAINTAIN_TYPE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養類型"
+            },
+            {
+              "name": "NAINTAIN_ITEM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養細項"
+            },
+            {
+              "name": "NAINTAIN_CYCLE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養周期（天）"
+            },
+            {
+              "name": "MAINTAIN_REMARKS",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養細項描述"
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "修改人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "修改時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "自動化設備保養周期基礎信息表"
+        },
+        {
+          "title": "TH_AUTO_MAINTENANCE_RECORD",
+          "fields": [
+            {
+              "name": "ID",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "數據ID"
+            },
+            {
+              "name": "MACHINE_NO",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備編號"
+            },
+            {
+              "name": "MACHINE_NAME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "設備名稱"
+            },
+            {
+              "name": "NAINTAIN_TYPE",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養類型"
+            },
+            {
+              "name": "NAINTAIN_ITEM",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養細項"
+            },
+            {
+              "name": "NAINTAIN_TIME",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養時間"
+            },
+            {
+              "name": "MAINTAIN_REMARK",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養狀態描述"
+            },
+            {
+              "name": "MAINTAIN_EMP",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "保養人姓名"
+            },
+            {
+              "name": "CREATED_BY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "創建人"
+            },
+            {
+              "name": "CREATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "創建時間"
+            },
+            {
+              "name": "UPDATED_BY",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "更新人"
+            },
+            {
+              "name": "UPDATED_TIME",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新時間"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "自動化設備保養記錄信息表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    }
+  ],
+  "dataTypeDomains": {
+    "datatype": [
+      {
+        "name": "默认字串",
+        "code": "DefaultString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(32)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(32)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(32)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(32)"
+          }
+        }
+      },
+      {
+        "name": "标识号",
+        "code": "IdOrKey",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(32)"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(32)"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(32)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(32)"
+          }
+        }
+      },
+      {
+        "name": "标识号-长",
+        "code": "LongKey",
+        "apply": {
+          "MYSQL": {
+            "type": "VARCHAR(64)"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(64)"
+          },
+          "JAVA": {
+            "type": "String"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(64)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(64)"
+          }
+        }
+      },
+      {
+        "name": "名称",
+        "code": "Name",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(128)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(128)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(128)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(128)"
+          }
+        }
+      },
+      {
+        "name": "备注说明",
+        "code": "Intro",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(512)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(512)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(512)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(512)"
+          }
+        }
+      },
+      {
+        "name": "字串-短",
+        "code": "ShortString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(128)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(128)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(128)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(128)"
+          }
+        }
+      },
+      {
+        "name": "字串-中",
+        "code": "MiddleString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(1024)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(1024)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(1024)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(1024)"
+          }
+        }
+      },
+      {
+        "name": "字串-长",
+        "code": "LongString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(3072)"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(3072)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(3072)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(3072)"
+          }
+        }
+      },
+      {
+        "name": "大文本",
+        "code": "LongText",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "TEXT"
+          },
+          "ORACLE": {
+            "type": "CLOB"
+          },
+          "SQLServer": {
+            "type": "NTEXT"
+          },
+          "PostgreSQL": {
+            "type": "TEXT"
+          }
+        }
+      },
+      {
+        "name": "小数",
+        "code": "Double",
+        "apply": {
+          "JAVA": {
+            "type": "Double"
+          },
+          "MYSQL": {
+            "type": "DECIMAL(32,10)"
+          },
+          "ORACLE": {
+            "type": "NUMBER(32,10)"
+          },
+          "SQLServer": {
+            "type": "DECIMAL(32,10)"
+          },
+          "PostgreSQL": {
+            "type": "DECIMAL(32,10)"
+          }
+        }
+      },
+      {
+        "name": "比例",
+        "code": "Ratio",
+        "apply": {
+          "MYSQL": {
+            "type": "DECIMAL(4,2)"
+          },
+          "JAVA": {
+            "type": "Double"
+          },
+          "ORACLE": {
+            "type": "NUMBER(4,2)"
+          },
+          "SQLServer": {
+            "type": "DECIMAL(4,2)"
+          },
+          "PostgreSQL": {
+            "type": "DECIMAL(4,2)"
+          }
+        }
+      },
+      {
+        "name": "整数",
+        "code": "Integer",
+        "apply": {
+          "JAVA": {
+            "type": "Integer"
+          },
+          "MYSQL": {
+            "type": "INT"
+          },
+          "ORACLE": {
+            "type": "INT"
+          },
+          "SQLServer": {
+            "type": "INT"
+          },
+          "PostgreSQL": {
+            "type": "INT"
+          }
+        }
+      },
+      {
+        "name": "大整数",
+        "code": "BigInt",
+        "apply": {
+          "MYSQL": {
+            "type": "BIGINT"
+          },
+          "JAVA": {
+            "type": "Long"
+          },
+          "ORACLE": {
+            "type": "NUMBER"
+          },
+          "SQLServer": {
+            "type": "BIGINT"
+          },
+          "PostgreSQL": {
+            "type": "BIGINT"
+          }
+        }
+      },
+      {
+        "name": "金额",
+        "code": "Money",
+        "apply": {
+          "JAVA": {
+            "type": "Double"
+          },
+          "MYSQL": {
+            "type": "DECIMAL(32,8)"
+          },
+          "ORACLE": {
+            "type": "NUMBER(32,8)"
+          },
+          "SQLServer": {
+            "type": "DECIMAL(32,8)"
+          },
+          "PostgreSQL": {
+            "type": "DECIMAL(32,8)"
+          }
+        }
+      },
+      {
+        "name": "是否",
+        "code": "YesNo",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(1)"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(1)"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(1)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(1)"
+          }
+        }
+      },
+      {
+        "name": "数据字典",
+        "code": "Dict",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(32)"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(32)"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(32)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(32)"
+          }
+        }
+      },
+      {
+        "name": "日期",
+        "code": "Date",
+        "apply": {
+          "JAVA": {
+            "type": "Date"
+          },
+          "MYSQL": {
+            "type": "DATE"
+          },
+          "ORACLE": {
+            "type": "DATE"
+          },
+          "SQLServer": {
+            "type": "DATE"
+          },
+          "PostgreSQL": {
+            "type": "DATE"
+          }
+        }
+      },
+      {
+        "name": "日期时间",
+        "code": "DateTime",
+        "apply": {
+          "JAVA": {
+            "type": "Date"
+          },
+          "MYSQL": {
+            "type": "DATETIME"
+          },
+          "ORACLE": {
+            "type": "DATE"
+          },
+          "SQLServer": {
+            "type": "DATE"
+          },
+          "PostgreSQL": {
+            "type": "DATE"
+          }
+        }
+      },
+      {
+        "name": "单字符",
+        "code": "Char",
+        "apply": {
+          "MYSQL": {
+            "type": "CHAR(1)"
+          },
+          "ORACLE": {
+            "type": "CHAR(1)"
+          },
+          "JAVA": {
+            "type": "String"
+          },
+          "SQLServer": {
+            "type": "CHAR(1)"
+          },
+          "PostgreSQL": {
+            "type": "CHAR(1)"
+          }
+        }
+      },
+      {
+        "name": "Oracle数字38长度",
+        "code": "NUMBER(38)",
+        "apply": {
+          "ORACLE": {
+            "type": "NUMBER(38)"
+          },
+          "JAVA": {
+            "type": "Long"
+          },
+          "MYSQL": {
+            "type": "NUMBER(38)"
+          },
+          "SQLServer": {
+            "type": "NUMBER(38)"
+          },
+          "PostgreSQL": {
+            "type": "NUMBER(38)"
+          }
+        }
+      }
+    ],
+    "database": [
+      {
+        "code": "MYSQL",
+        "template": "DROP TABLE {{=it.entity.title}};\n$blankline\nCREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.pk ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.entity.chnname,it.entity.remark,';') }}'",
+        "fileShow": true,
+        "defaultDatabase": true,
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} {{= field.autoIncrement ? 'AUTO_INCREMENT' : '' }} {{= field.defaultValue ? it.func.join('DEFAULT',field.defaultValue,' ') : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,' ')}}' {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.entity.chnname,it.entity.remark,' ') }}';{{=it.separator}}\n$blankline\n",
+        "deleteTableTemplate": "DROP TABLE {{=it.entity.title}};{{=it.separator}}/*SkipError*/",
+        "rebuildTableTemplate": "create table PDMAN_UP_{{=it.oldEntity.title}}\nas select * from {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\nCREATE TABLE {{=it.newEntity.title}}(\n{{ pkList = [] ; }}\n{{~it.newEntity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.newEntity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.newEntity.chnname,it.newEntity.remark,';') }}';{{=it.separator}}\n$blankline\n\n{{ sameCols = it.func.intersect(it.newEntity.fields,it.oldEntity.fields) ;}}\ninsert into {{=it.newEntity.title}}(\n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\n) \nselect \n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\nfrom PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n{{~it.newEntity.indexs:index}}\nALTER TABLE {{=it.newEntity.title}} ADD {{? index.isUnique}}UNIQUE{{??}}INDEX{{?}} {{=index.name}}({{=it.func.join(...index.fields,',')}});{{=it.separator}}\n{{~}}",
+        "createFieldTemplate": "ALTER TABLE {{=it.entity.title}} ADD COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.pk}}PRIMARY KEY{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}} {{? it.field.addAfter}}AFTER {{=it.field.addAfter}}{{?}};{{=it.separator}}",
+        "updateFieldTemplate": "ALTER TABLE {{=it.entity.title}} MODIFY COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}};{{=it.separator}}",
+        "deleteFieldTemplate": "ALTER TABLE {{=it.entity.title}} DROP {{=it.field.name}};{{=it.separator}}",
+        "deleteIndexTemplate": "ALTER TABLE {{=it.entity.title}} DROP INDEX {{=it.index.name}};{{=it.separator}}",
+        "createIndexTemplate": "ALTER TABLE {{=it.entity.title}} ADD {{? it.index.isUnique}}UNIQUE{{??}}INDEX{{?}} {{=it.index.name}}({{=it.func.join(...it.index.fields,',')}});{{=it.separator}}",
+        "updateTableComment": "ALTER TABLE {{=it.entity.title}} COMMENT '{{=it.entity.chnname}}';{{=it.separator}}"
+      },
+      {
+        "code": "ORACLE",
+        "template": "DROP TABLE {{=it.entity.title}};{{=it.separator}}\n$blankline\nCREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}}  {{= field.pk ? 'NOT NULL' : '' }} {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);{{=it.separator}}\n$blankline\nCOMMENT ON TABLE {{=it.entity.title}} IS '{{=it.func.join(it.entity.chnname,it.entity.remark,';') }}';{{=it.separator}}\n{{~it.entity.fields:field:index}}\nCOMMENT ON COLUMN {{=it.entity.title}}.{{=field.name}} IS '{{=it.func.join(field.chnname,field.remark,';')}}';{{=it.separator}}\n{{~}}",
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}}{{? field.defaultValue}} DEFAULT {{=field.defaultValue}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);{{=it.separator}}\n$blankline\n{{? it.entity.chnname || it.entity.remark}}COMMENT ON TABLE {{=it.entity.title}} IS {{? it.entity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.entity.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.chnname || field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=field.name}} IS {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~}}",
+        "deleteTableTemplate": "DROP TABLE {{=it.entity.title}};{{=it.separator}}/*SkipError*/\r\n$blankline",
+        "rebuildTableTemplate": "CREATE TABLE PDMAN_UP_{{=it.oldEntity.title}}\nAS SELECT * FROM {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\nDROP TABLE {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\nCREATE TABLE {{=it.newEntity.title}}(\n{{ pkList = [] ; }}{{~it.newEntity.fields:field:index}}{{? field.pk }}{{ pkList.push(field.name) }}{{?}}    {{=field.name}} {{=field.type}}{{? field.defaultValue}} DEFAULT {{=field.defaultValue}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= index < it.newEntity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}{{? pkList.length >0 }}    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}}){{?}}\n);{{=it.separator}}\n$blankline\n{{? it.newEntity.chnname || it.newEntity.remark}}COMMENT ON TABLE {{=it.newEntity.title}} IS {{? it.newEntity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.newEntity.chnname}}'{{?}};{{?}}{{=it.separator}}\n{{~it.newEntity.fields:field:index}}\n{{? field.chnname || field.remark}}COMMENT ON COLUMN {{=it.newEntity.title}}.{{=field.name}} IS {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}};{{?}}{{=it.separator}}\n{{~}}\n{{ sameCols = it.func.intersect(it.newEntity.fields,it.oldEntity.fields) ;}}\n$blankline\nINSERT INTO {{=it.newEntity.title}}(\n{{~sameCols:field:index}}   {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}) \nSELECT\n{{~sameCols:field:index}}   {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}FROM PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n\nDROP TABLE PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n{{~it.newEntity.indexs:index}}\nCREATE{{? index.isUnique}} UNIQUE{{?}} INDEX {{=index.name}} ON {{=it.newEntity.title}}({{=it.func.join(index.fields,',')}});{{=it.separator}}\n{{~}}",
+        "createFieldTemplate": "ALTER TABLE {{=it.entity.title}} ADD({{=it.field.name}} {{=it.field.type}}{{? it.field.defaultValue}} DEFAULT {{=it.field.defaultValue}}{{?}}{{? it.field.notNull}} NOT NULL{{?}});{{=it.separator}}\r\n{{? it.field.chnname || it.field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=it.field.name}} IS {{? it.field.remark}}'{{=it.field.remark}}'{{??}}'{{=it.field.chnname}}'{{?}};{{=it.separator}}{{?}}\r\n$blankline",
+        "updateFieldTemplate": "ALTER TABLE {{=it.entity.title}} MODIFY({{=it.field.name}} {{=it.field.type}}{{? it.field.defaultValue}} DEFAULT {{=it.field.defaultValue}}{{?}}{{? it.field.notNull}} NOT NULL{{?}});{{=it.separator}}\r\n{{? it.field.chnname || it.field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=it.field.name}} IS {{? it.field.remark}}'{{=it.field.remark}}'{{??}}'{{=it.field.chnname}}'{{?}};{{=it.separator}}{{=it.separator}}{{?}}\r\n$blankline",
+        "deleteFieldTemplate": "ALTER TABLE {{=it.entity.title}} DROP({{=it.field.name}});{{=it.separator}}\r\n$blankline",
+        "deleteIndexTemplate": "DROP INDEX {{=it.entity.title}}.{{=it.index.name}};{{=it.separator}}\r\n$blankline",
+        "createIndexTemplate": "CREATE{{? it.index.isUnique}} UNIQUE{{?}} INDEX {{=it.index.name}} ON {{=it.entity.title}}({{=it.func.join(it.index.fields,',')}});{{=it.separator}}\r\n$blankline",
+        "updateTableComment": "{{? it.entity.chnname || it.entity.remark}}COMMENT ON TABLE {{=it.entity.title}} IS {{? it.entity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.entity.chnname}}'{{?}};{{=it.separator}}{{?}}\r\n$blankline"
+      },
+      {
+        "code": "SQLServer",
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} {{= field.autoIncrement ? 'IDENTITY(1,1)' : '' }} {{= field.defaultValue ? it.func.join('DEFAULT',field.defaultValue,' ') : '' }}  {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    CONSTRAINT PK_{{=it.entity.title}} PRIMARY KEY CLUSTERED ({{~pkList:pkName:i}}{{= pkName }} ASC {{= i<pkList.length-1 ? ',' : '' }}{{~}}) ON [PRIMARY] \n{{?}}\n) ;{{=it.separator}}\n\n$blankline\nEXECUTE sp_addextendedproperty N'MS_Description', '{{= it.entity.chnname || it.entity.remark}}', N'user', N'dbo', N'table', N'{{=it.entity.title}}', NULL, NULL;{{=it.separator}}\n{{~it.entity.fields:field:index}}\n{{? field.chnname || field.remark}}EXECUTE sp_addextendedproperty N'MS_Description', {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}}, N'user', N'dbo', N'table', N'{{=it.entity.title}}', N'column', N'{{=field.name}}';{{=it.separator}}{{?}}\n{{~}}\n",
+        "deleteTableTemplate": "",
+        "rebuildTableTemplate": "",
+        "createFieldTemplate": "",
+        "updateFieldTemplate": "",
+        "deleteFieldTemplate": "",
+        "deleteIndexTemplate": "",
+        "createIndexTemplate": "",
+        "updateTableComment": ""
+      },
+      {
+        "code": "PostgreSQL",
+        "template": "DROP TABLE {{=it.entity.title}};\n$blankline\nCREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.pk ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.entity.chnname,it.entity.remark,';') }}'",
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}}{{? field.defaultValue}} DEFAULT {{=field.defaultValue}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);{{=it.separator}}\n$blankline\n{{? it.entity.chnname || it.entity.remark}}COMMENT ON TABLE {{=it.entity.title}} IS {{? it.entity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.entity.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.chnname || field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=field.name}} IS {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~}}",
+        "deleteTableTemplate": "DROP TABLE {{=it.entity.title}};{{=it.separator}}/*SkipError*/",
+        "rebuildTableTemplate": "create table PDMAN_UP_{{=it.oldEntity.title}}\nas select * from {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\nCREATE TABLE {{=it.newEntity.title}}(\n{{ pkList = [] ; }}\n{{~it.newEntity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.newEntity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.newEntity.chnname,it.newEntity.remark,';') }}';{{=it.separator}}\n$blankline\n\n{{ sameCols = it.func.intersect(it.newEntity.fields,it.oldEntity.fields) ;}}\ninsert into {{=it.newEntity.title}}(\n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\n) \nselect \n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\nfrom PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}",
+        "createFieldTemplate": "ALTER TABLE {{=it.entity.title}} ADD COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.pk}}PRIMARY KEY{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}} {{? it.field.addAfter}}AFTER {{=it.field.addAfter}}{{?}};{{=it.separator}}",
+        "updateFieldTemplate": "ALTER TABLE {{=it.entity.title}} MODIFY COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}};{{=it.separator}}",
+        "deleteFieldTemplate": "ALTER TABLE {{=it.entity.title}} DROP {{=it.field.name}};{{=it.separator}}",
+        "deleteIndexTemplate": "ALTER TABLE {{=it.entity.title}} DROP INDEX {{=it.index.name}};{{=it.separator}}",
+        "createIndexTemplate": "ALTER TABLE {{=it.entity.title}} ADD {{? it.index.isUnique}}UNIQUE{{??}}INDEX{{?}} {{=it.index.name}}({{=it.func.join(...it.index.fields,',')}});{{=it.separator}}",
+        "updateTableComment": "ALTER TABLE {{=it.entity.title}} COMMENT '{{=it.entity.chnname}}';{{=it.separator}}"
+      },
+      {
+        "code": "JAVA",
+        "template": "package group.rober.pdman.{{=it.module.name}}.entity;\n$blankline\nimport javax.persistence.*;\nimport java.io.Serializable;\nimport java.util.Date;\n$blankline\n$blankline\n\n/** {{=it.entity.chnname}} */\n@Table(name=\"{{=it.entity.title}}\")\npublic class {{=it.func.camel(it.entity.title,true) }} implements Serializable,Cloneable{\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    {{? field.pk }}\n    @Id\n    @GeneratedValue\n    {{?}}\n    private {{=field.type}} {{=it.func.camel(field.name,false)}} ;\n{{~}}\n$blankline\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public {{=field.type}} get{{=it.func.camel(field.name,true)}}(){\n        return this.{{=it.func.camel(field.name,false)}};\n    }\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public void set{{=it.func.camel(field.name,true)}}({{=field.type}} {{= it.func.camel(field.name,false) }}){\n        this.{{=it.func.camel(field.name,false)}} = {{= it.func.camel(field.name,false) }};\n    }\n{{~}}\n}",
+        "createTableTemplate": "package group.rober.pdman.{{=it.module.name}}.entity;\n$blankline\nimport javax.persistence.*;\nimport java.io.Serializable;\nimport java.util.Date;\n$blankline\n$blankline\n@Table(name=\"{{=it.entity.title}}\")\npublic class {{=it.func.camel(it.entity.title,true) }} implements Serializable,Cloneable{\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    {{? field.pk }}\n    @Id\n    @GeneratedValue\n    {{?}}\n    private {{=field.type}} {{=it.func.camel(field.name,false)}} ;\n{{~}}\n$blankline\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public {{=field.type}} get{{=it.func.camel(field.name,true)}}(){\n        return this.{{=it.func.camel(field.name,false)}};\n    }\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public void set{{=it.func.camel(field.name,true)}}({{=field.type}} {{= it.func.camel(field.name,false) }}){\n        this.{{=it.func.camel(field.name,false)}} = {{= it.func.camel(field.name,false) }};\n    }\n{{~}}\n}",
+        "deleteTableTemplate": "",
+        "rebuildTableTemplate": "",
+        "createFieldTemplate": "",
+        "updateFieldTemplate": "",
+        "deleteFieldTemplate": "",
+        "deleteIndexTemplate": "",
+        "createIndexTemplate": "",
+        "updateTableComment": ""
+      }
+    ]
+  },
+  "profile": {
+    "defaultFields": [
+      {
+        "name": "REVISION",
+        "type": "Integer",
+        "remark": "",
+        "chnname": "乐观锁"
+      },
+      {
+        "name": "CREATED_BY",
+        "type": "IdOrKey",
+        "remark": "",
+        "chnname": "创建人"
+      },
+      {
+        "name": "CREATED_TIME",
+        "type": "DateTime",
+        "remark": "",
+        "chnname": "创建时间"
+      },
+      {
+        "name": "UPDATED_BY",
+        "type": "IdOrKey",
+        "remark": "",
+        "chnname": "更新人"
+      },
+      {
+        "name": "UPDATED_TIME",
+        "type": "DateTime",
+        "remark": "",
+        "chnname": "更新时间"
+      }
+    ],
+    "defaultFieldsType": "1",
+    "javaConfig": {
+      "JAVA_HOME": "C:\\Program Files\\Java\\jdk1.8.0_201"
+    },
+    "sqlConfig": ";",
+    "dbs": [
+      {
+        "name": "aliuyun_oracle",
+        "defaultDB": true,
+        "properties": {
+          "driver_class_name": "oracle.jdbc.driver.OracleDriver",
+          "url": "jdbc:oracle:thin:@119.23.203.56:1521/inovance",
+          "password": "INOVANCE",
+          "username": "INOVANCE"
+        },
+        "type": "ORACLE"
+      }
+    ],
+    "wordTemplateConfig": "C:\\Users\\james_chen\\Desktop\\统合看板项目\\统合表设计\\模板文件.docx"
+  }
+}

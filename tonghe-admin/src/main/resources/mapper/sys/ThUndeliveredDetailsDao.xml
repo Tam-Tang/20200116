@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThUndeliveredDetailsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThUndeliveredDetailsEntity" id="thUndeliveredDetailsMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="orderNumber" column="ORDER_NUMBER"/>
+        <result property="saleNumber" column="SALE_NUMBER"/>
+        <result property="orderStatus" column="ORDER_STATUS"/>
+        <result property="undeliveryQty" column="UNDELIVERY_QTY"/>
+    </resultMap>
+
+    <!--按照数量查询未交付的比例-->
+    <select id="queryUndeliveryPerByQty" resultType="com.ags.modules.sys.dto.UndeliveryPerByQtyDTO">
+        select ORDER_STATUS,
+               QTY,
+               case
+                 when TOTAL = 0 then
+                  '0.00%'
+                 else
+                  TO_CHAR(QTY / TOTAL * 100, 'FM99990.99') || '%'
+               end as PERCENT
+          from (select ORDER_STATUS, sum(QTY) as QTY, NAME, sum(TOTAL) as TOTAL
+                  from (SELECT ORDER_STATUS,
+                               sum(UNDELIVERY_QTY) AS QTY,
+                               decode(ORDER_STATUS,
+                                      '0',
+                                      '在製品',
+                                      '1',
+                                      '待上線',
+                                      '2',
+                                      '未開工單',
+                                      'UNKNOWN') as NAME,
+                               (SELECT sum(UNDELIVERY_QTY)
+                                  FROM TH_UNDELIVERED_DETAILS
+                                 WHERE to_char(CREATE_TIME, 'mm') =
+                                       to_char(SYSDATE, 'mm')) AS TOTAL
+                          FROM TH_UNDELIVERED_DETAILS
+                         WHERE to_char(CREATE_TIME, 'mm') = to_char(SYSDATE, 'mm')
+                         GROUP BY ORDER_STATUS
+
+                        union all
+
+                        select '0', 0, '在製品' as NAME, 0 AS TOTAL
+                          from dual
+                        union all
+
+                        select '1', 0, '待上線' as NAME, 0 AS TOTAL
+                          from dual
+
+                        union all
+
+                        select '2', 0, '未開工單' as NAME, 0 AS TOTAL
+                          from dual)
+                 group by ORDER_STATUS, NAME)
+         order by to_number(ORDER_STATUS)
+
+
+    </select>
+</mapper>

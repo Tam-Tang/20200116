@@ -1,0 +1,84 @@
+{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{deliveryByOrder为未交付分析订单维度,deliveryByOrderQty为交付分析数量维度,undeliveryPerByQty为未交付分析数量,orderCycleTimeOut为订单交付周期追踪,boardconfig为看板配置数据}",
+    "deliveryByOrder": {
+      "orderTotalQty": "190",
+      "orderDeliveryQty": "130",
+      "orderUndeliveryQty": "60",
+      "ordeqTy": "100"
+    },
+    "deliveryByOrderQty":{
+      "xAxisData": ["2019-11-18", "2019-11-19", "2019-11-20", "2019-11-21", "2019-11-22", "2019-11-23", "2019-11-24"],
+      "dataPay": [820, 932, 901, 934, 1290, 1330, 120],
+      "dataNotPay": [920, 332, 601, 834, 190, 1030, 1320]
+    },
+
+    "undeliveryPerByQty": [
+      {
+        "orderStatus": "1",
+        "qty": "200",
+        "percent": "40%"
+      },
+      {
+        "orderStatus": "0",
+        "qty": "200",
+        "percent": "40%"
+      },
+      {
+        "orderStatus": "2",
+        "qty": "100",
+        "percent": "20%"
+      }
+    ],
+    "orderCycleTimeOut": {
+      "orderCycleTimeOutDTOS": [
+        {
+          "orderNumber": "SN00000005",
+          "overTime": "12",
+          "introduce": "就是悬浮现实的信息,后来增加的"
+        },
+        {
+          "orderNumber": "SN00000004",
+          "overTime": "11",
+          "introduce": "就是悬浮现实的信息"
+        },
+        {
+          "orderNumber": "SN00000003",
+          "overTime": "15",
+          "introduce": "请悬停鼠标展示"
+        },
+        {
+          "orderNumber": "SN00000001",
+          "overTime": "10",
+          "introduce": "请悬停鼠标展示"
+        },
+        {
+          "orderNumber": "SN00000006",
+          "overTime": "8",
+          "introduce": "请悬停鼠标展示"
+        },
+        {
+          "orderNumber": "SN00000002",
+          "overTime": "4",
+          "introduce": "请悬停鼠标展示"
+        }
+      ],
+      "orderCycleTimeOutPerctDTO": {
+        "totalQty": "10000",
+        "overTimeQty": "360",
+        "percent": 33.3
+      }
+    },
+    "boardconfig": {
+      "id": "1199505785461301250",
+      "redResult": "10",
+      "complianceRate": "80",
+      "complianceDay": "5",
+      "email": "lanccj@163.com",
+      "refreshTime": "43200",
+      "timeoutColor": "#DC143C"
+    }
+  }
+}

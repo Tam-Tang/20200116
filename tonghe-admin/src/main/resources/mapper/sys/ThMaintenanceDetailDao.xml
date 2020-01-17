@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThMaintenanceDetailDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThMaintenanceDetailEntity" id="thMaintenanceDetailMap">
+        <result property="id" column="ID"/>
+        <result property="shiftType" column="SHIFT_TYPE"/>
+        <result property="orderNumber" column="ORDER_NUMBER"/>
+        <result property="workNumber" column="WORK_NUMBER"/>
+        <result property="unitSn" column="UNIT_SN"/>
+        <result property="employeeSn" column="EMPLOYEE_SN"/>
+        <result property="employeeName" column="EMPLOYEE_NAME"/>
+        <result property="finishTime" column="FINISH_TIME"/>
+        <result property="stepSn" column="STEP_SN"/>
+        <result property="description" column="DESCRIPTION"/>
+        <result property="defectStep" column="DEFECT_STEP"/>
+        <result property="maintainType" column="MAINTAIN_TYPE"/>
+        <result property="isPush" column="IS_PUSH"/>
+        <result property="pushTime" column="PUSH_TIME"/>
+        <result property="maintainStep" column="MAINTAIN_STEP"/>
+        <result property="failTime" column="FAIL_TIME"/>
+        <result property="startTiem" column="START_TIEM"/>
+    </resultMap>
+
+    <!--查询维修周期管理-->
+    <select id="queryMaintenanceDetailPie" resultType="com.ags.modules.sys.dto.MaintenanceDetailPieDTO">
+        select
+        decode(badnum,null,0,badnum) as BADNUM,
+        decode(up5num,null,0,up5num) as UP5NUM,
+        decode(down5num,null,0,down5num) as DOWN5NUM,
+        decode(total,0,0,to_char((ontimenum / total) * 100, 'fm9999999990.0'))  as PERCENT
+
+        from (
+        select
+
+        (SELECT count(1) FROM TH_MAINTENANCE_DETAIL where  DEFECT_STEP is not null
+
+        <if test="maintainStep != null and maintainStep != ''">
+            and MAINTAIN_STEP = '${maintainStep}'
+        </if>
+
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            and TO_CHAR(CREATE_TIME,'dd') = TO_CHAR(SYSDATE,'dd')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            and to_char(CREATE_TIME,'iw')=to_char(sysdate,'iw')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            and TO_CHAR(CREATE_TIME,'yyyy-mm') = TO_CHAR(SYSDATE,'yyyy-mm')
+        </if>
+
+        ) as badnum,
+
+        (select count(*) from (SELECT count(1) FROM TH_MAINTENANCE_DETAIL
+
+        where 1=1
+
+        <if test="maintainStep != null and maintainStep != ''">
+            and MAINTAIN_STEP = '${maintainStep}'
+        </if>
+
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            and TO_CHAR(CREATE_TIME,'dd') = TO_CHAR(SYSDATE,'dd')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            and to_char(CREATE_TIME,'iw')=to_char(sysdate,'iw')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            and TO_CHAR(CREATE_TIME,'yyyy-mm') = TO_CHAR(SYSDATE,'yyyy-mm')
+        </if>
+        <![CDATA[
+        HAVING floor( CEIL(( ALLLINK_TIME - FAIL_TIME ) * 24 * 60 * 60 ) / 3600 ) >5 GROUP BY floor( CEIL(( ALLLINK_TIME - FAIL_TIME ) * 24 * 60 * 60 ) / 3600 ))) as up5num,
+        ]]>
+        (select count(*) from (SELECT count(1) FROM TH_MAINTENANCE_DETAIL
+
+        where 1=1
+
+        <if test="maintainStep != null and maintainStep != ''  ">
+            and MAINTAIN_STEP = '${maintainStep}'
+        </if>
+
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            and TO_CHAR(CREATE_TIME,'dd') = TO_CHAR(SYSDATE,'dd')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            and to_char(CREATE_TIME,'iw')=to_char(sysdate,'iw')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            and TO_CHAR(CREATE_TIME,'yyyy-mm') = TO_CHAR(SYSDATE,'yyyy-mm')
+        </if>
+        <![CDATA[
+        HAVING floor( CEIL(( ALLLINK_TIME - FAIL_TIME ) * 24 * 60 * 60 ) / 3600 ) <5 GROUP BY floor( CEIL(( ALLLINK_TIME - FAIL_TIME ) * 24 * 60 * 60 ) / 3600 ) )) as down5num,
+         ]]>
+        (select count(*) from (SELECT count(1) FROM TH_MAINTENANCE_DETAIL
+
+        where 1=1
+
+        <if test="maintainStep != null and maintainStep != '' ">
+            and MAINTAIN_STEP = '${maintainStep}'
+        </if>
+
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            and TO_CHAR(CREATE_TIME,'dd') = TO_CHAR(SYSDATE,'dd')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            and to_char(CREATE_TIME,'iw')=to_char(sysdate,'iw')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            and TO_CHAR(CREATE_TIME,'yyyy-mm') = TO_CHAR(SYSDATE,'yyyy-mm')
+        </if>
+        <![CDATA[
+        HAVING floor( CEIL(( ALLLINK_TIME - FAIL_TIME ) * 24 * 60 * 60 ) / 3600 ) <12 GROUP BY floor( CEIL(( ALLLINK_TIME - FAIL_TIME ) * 24 * 60 * 60 ) / 3600 )) ) as ontimenum,
+        ]]>
+        (SELECT count(1) FROM TH_MAINTENANCE_DETAIL
+
+        where 1=1
+
+        <if test="maintainStep != null and maintainStep != ''  ">
+            and MAINTAIN_STEP = '${maintainStep}'
+        </if>
+
+        <if test="timeType != null and timeType != ''  and timeType == 'dd' ">
+            and TO_CHAR(CREATE_TIME,'dd') = TO_CHAR(SYSDATE,'dd')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'iw' ">
+            and to_char(CREATE_TIME,'iw')=to_char(sysdate,'iw')
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType == 'mm' ">
+            and TO_CHAR(CREATE_TIME,'yyyy-mm') = TO_CHAR(SYSDATE,'yyyy-mm')
+        </if>
+
+        ) as total
+
+        from dual
+        )
+    </select>
+
+    <!--查询当天04:00之前不良类别的趋势图-->
+    <select id="queryMaintenancetrendBrfore4" resultType="com.ags.modules.sys.vo.MaintenancetrendBrforeVO">
+        select
+        decode(badtype.BAD_TYPE_NAME,'','其他',badtype.BAD_TYPE_NAME) name,
+        count(1) num
+        from
+        TH_MAINTENANCE_DETAIL detail,
+        TH_BAD_TYPE badtype
+        where
+        1=1
+        and detail.BAD_TYPE_ID = badtype.BAD_TYPE_ID(+)
+        <![CDATA[
+        and CREATE_TIME >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        and CREATE_TIME <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 04:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        ]]>
+        group by
+        badtype.BAD_TYPE_NAME
+    </select>
+
+    <!--查询当天08:00之前不良类别的趋势图-->
+    <select id="queryMaintenancetrendBrfore8" resultType="com.ags.modules.sys.vo.MaintenancetrendBrforeVO">
+        select
+        decode(badtype.BAD_TYPE_NAME,'','其他',badtype.BAD_TYPE_NAME) name,
+        count(1) num
+        from
+        TH_MAINTENANCE_DETAIL detail,
+        TH_BAD_TYPE badtype
+        where
+        1=1
+        and detail.BAD_TYPE_ID = badtype.BAD_TYPE_ID(+)
+        <![CDATA[
+        and CREATE_TIME >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        and CREATE_TIME <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 08:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        ]]>
+        group by
+        badtype.BAD_TYPE_NAME
+    </select>
+
+    <!--查询当天12:00之前不良类别的趋势图-->
+    <select id="queryMaintenancetrendBrfore12" resultType="com.ags.modules.sys.vo.MaintenancetrendBrforeVO">
+        select
+        decode(badtype.BAD_TYPE_NAME,'','其他',badtype.BAD_TYPE_NAME) name,
+        count(1) num
+        from
+        TH_MAINTENANCE_DETAIL detail,
+        TH_BAD_TYPE badtype
+        where
+        1=1
+        and detail.BAD_TYPE_ID = badtype.BAD_TYPE_ID(+)
+        <![CDATA[
+        and CREATE_TIME >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        and CREATE_TIME <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 12:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        ]]>
+        group by
+        badtype.BAD_TYPE_NAME
+    </select>
+
+    <!--查询当天16:00之前不良类别的趋势图-->
+    <select id="queryMaintenancetrendBrfore16" resultType="com.ags.modules.sys.vo.MaintenancetrendBrforeVO">
+        select
+        decode(badtype.BAD_TYPE_NAME,'','其他',badtype.BAD_TYPE_NAME) name,
+        count(1) num
+        from
+        TH_MAINTENANCE_DETAIL detail,
+        TH_BAD_TYPE badtype
+        where
+        1=1
+        and detail.BAD_TYPE_ID = badtype.BAD_TYPE_ID(+)
+        <![CDATA[
+        and CREATE_TIME >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        and CREATE_TIME <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        ]]>
+        group by
+        badtype.BAD_TYPE_NAME
+    </select>
+
+    <!--查询当天20:00之前不良类别的趋势图-->
+    <select id="queryMaintenancetrendBrfore20" resultType="com.ags.modules.sys.vo.MaintenancetrendBrforeVO">
+        select
+        decode(badtype.BAD_TYPE_NAME,'','其他',badtype.BAD_TYPE_NAME) name,
+        count(1) num
+        from
+        TH_MAINTENANCE_DETAIL detail,
+        TH_BAD_TYPE badtype
+        where
+        1=1
+        and detail.BAD_TYPE_ID = badtype.BAD_TYPE_ID(+)
+        <![CDATA[
+        and CREATE_TIME >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        and CREATE_TIME <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 20:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        ]]>
+        group by
+        badtype.BAD_TYPE_NAME
+    </select>
+
+    <!--查询当天24:00之前不良类别的趋势图-->
+    <select id="queryMaintenancetrendBrfore24" resultType="com.ags.modules.sys.vo.MaintenancetrendBrforeVO">
+        select
+        decode(badtype.BAD_TYPE_NAME,'','其他',badtype.BAD_TYPE_NAME) name,
+        count(1) num
+        from
+        TH_MAINTENANCE_DETAIL detail,
+        TH_BAD_TYPE badtype
+        where
+        1=1
+        and detail.BAD_TYPE_ID = badtype.BAD_TYPE_ID(+)
+        <![CDATA[
+        and CREATE_TIME >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00',
+        'yyyy-mm-dd hh24:mi:ss')
+        and CREATE_TIME <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 23:59:59',
+        'yyyy-mm-dd hh24:mi:ss')
+        ]]>
+        group by
+        badtype.BAD_TYPE_NAME
+    </select>
+
+</mapper>

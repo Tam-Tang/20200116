@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThProLineAchRateDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThProLineAchRateEntity" id="thProLineAchRateMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="lineId" column="LINE_ID"/>
+        <result property="shiftName" column="SHIFT_NAME"/>
+        <result property="step" column="STEP"/>
+        <result property="schedulQty" column="SCHEDUL_QTY"/>
+        <result property="standardQry" column="STANDARD_QRY"/>
+        <result property="actualQty" column="ACTUAL_QTY"/>
+        <result property="achRate" column="ACH_RATE"/>
+        <result property="category" column="CATEGORY"/>
+        <result property="resonDesc" column="RESON_DESC"/>
+    </resultMap>
+
+    <select id="queryList" resultType="com.ags.modules.sys.dto.DataDTO">
+
+        select
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        case
+        when decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)) > 100 then '100'
+        else
+
+        to_char(decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)),'fm9999999990.00')
+
+        end
+
+        ACH_RATE,
+        decode(t.STANDARD_ACH_RATE,'',0,t.STANDARD_ACH_RATE) as STANDARD_ACH_RATE,
+        case
+        when decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)) > t.STANDARD_ACH_RATE then 'ok'
+        else 'fail'
+        end STATUS
+        from (
+
+        select line.line_id LINE_ID,line.line_name LINE_NAME,
+        count(1) runtime,
+        case
+        when linerate.STEP = '0' then
+        round(sum(SCHEDUL_QTY) / count(1), 1)
+        else
+        100
+        end SCHEDUL_QTY,
+        round(sum(ACTUAL_QTY) / count(1), 1) ACTUAL_QTY,
+        case
+        when linerate.STEP = '0' then
+        round(sum(linerate.ACH_RATE) / count(1), 1)
+        else
+        100
+        end ACH_RATE,
+        starnddata.rate_num STANDARD_ACH_RATE
+        from TH_PRO_LINE_ACH_RATE linerate,
+        TH_PRODUCT_LINE      line,
+        TH_RATE_RED_DATA     starnddata
+        where linerate.line_id = line.line_id(+)
+        and linerate.line_id = starnddata.line_id(+)
+        and line.line_name is not null
+
+        
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+        group by line.line_id,line.line_name, linerate.STEP, starnddata.rate_num
+
+        ) t ,TH_PRODUCT_STANDARD_OUT standarout where t.line_id = standarout.LINE_ID(+)
+
+    </select>
+
+
+
+    <select id="queryListCatrgory" resultType="com.ags.modules.sys.dto.DataCategoryDTO">
+
+        select t.LINE_NAME, t.CATEGOrY from (
+
+        select
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1))  ACH_RATE,
+        decode(t.STANDARD_ACH_RATE,'',0,t.STANDARD_ACH_RATE) as STANDARD_ACH_RATE,
+        case
+        when decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)) > t.STANDARD_ACH_RATE then 'ok'
+        else 'fail'
+        end STATUS,
+        t.category
+        from (
+
+        select line.line_id LINE_ID,line.line_name LINE_NAME,category,
+        count(1) runtime,
+        case
+        when linerate.STEP = '0' then
+        round(sum(SCHEDUL_QTY) / count(1), 1)
+        else
+        100
+        end SCHEDUL_QTY,
+        round(sum(ACTUAL_QTY) / count(1), 1) ACTUAL_QTY,
+        case
+        when linerate.STEP = '0' then
+        round(sum(linerate.ACH_RATE) / count(1), 1)
+        else
+        100
+        end ACH_RATE,
+        starnddata.rate_num STANDARD_ACH_RATE
+        from TH_PRO_LINE_ACH_RATE linerate,
+        TH_PRODUCT_LINE      line,
+        TH_RATE_RED_DATA     starnddata
+        where linerate.line_id = line.line_id(+)
+        and linerate.line_id = starnddata.line_id(+)
+        and line.line_name is not null
+
+        and linerate.category is not null
+        
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+        group by line.line_id,line.line_name, linerate.STEP, starnddata.rate_num,category
+
+        ) t ,TH_PRODUCT_STANDARD_OUT standarout where t.line_id = standarout.LINE_ID(+)
+        ) t where t.STATUS  =  'fail'
+    </select>
+
+    <select id="queryList2" resultType="com.ags.modules.sys.dto.DataDTO">
+        select line.line_name LINE_NAME,
+        round(sum(SCHEDUL_QTY) / count(1),1) SCHEDUL_QTY,
+        round(sum(ACTUAL_QTY) / count(1),1) ACTUAL_QTY,
+        case
+        when linerate.STEP = '0' then
+        round(sum(linerate.ACH_RATE) / count(1), 1)
+        else
+        100
+        end ACH_RATE,
+        starnddata.rate_num STANDARD_ACH_RATE
+        from TH_PRO_LINE_ACH_RATE linerate,
+        TH_PRODUCT_LINE      line,
+        TH_RATE_RED_DATA     starnddata
+        where linerate.line_id = line.line_id(+)
+        and linerate.line_id = starnddata.line_id(+)
+        and line.line_name is not null
+
+        
+        <if test="timeStart != null and timeStart != ''  and timeEnd != null and timeEnd != '' ">
+            <![CDATA[
+            and DATA_TIME >=to_date('${timeStart}','yyyy-mm-dd hh24:mi:ss')   and DATA_TIME<=to_date('${timeEnd}','yyyy-mm-dd hh24:mi:ss')
+             ]]>
+        </if>
+        group by line.line_name, linerate.STEP, starnddata.rate_num
+    </select>
+
+
+    <select id="queryPreWeekTop1Ach" resultType="com.ags.modules.sys.dto.DataDTO">
+  <![CDATA[
+select * from (
+
+        select
+
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        t.ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+
+        select
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)) ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+        select line.line_id LINE_ID,line.line_name LINE_NAME,
+        count(1) runtime,
+        case
+        when linerate.STEP = '0' then
+        round(sum(SCHEDUL_QTY) / count(1), 1)
+        else
+        100
+        end SCHEDUL_QTY,
+        round(sum(ACTUAL_QTY) / count(1), 1) ACTUAL_QTY,
+        case
+        when linerate.STEP = '0' then
+        round(sum(linerate.ACH_RATE) / count(1), 1)
+        else
+        100
+        end ACH_RATE,
+        starnddata.rate_num STANDARD_ACH_RATE
+        from TH_PRO_LINE_ACH_RATE linerate,
+        TH_PRODUCT_LINE      line,
+        TH_RATE_RED_DATA     starnddata
+        where linerate.line_id = line.line_id(+)
+        and linerate.line_id = starnddata.line_id(+)
+        and line.line_name is not null
+
+        
+        and DATA_TIME >= TRUNC(NEXT_DAY(SYSDATE-8,1)-6) AND DATA_TIME < TRUNC(NEXT_DAY(SYSDATE-8,1)+1)
+        group by line.line_id,line.line_name, linerate.STEP, starnddata.rate_num
+
+        ) t ,TH_PRODUCT_STANDARD_OUT standarout where t.line_id = standarout.LINE_ID(+)
+
+        ) t  where 1=1    and t. ACH_RATE > t.STANDARD_ACH_RATE
+
+        order by t.ACH_RATE desc
+
+        ) where rownum=1
+   ]]>
+    </select>
+
+    <select id="queryPreWeekTop1NoAch" resultType="com.ags.modules.sys.dto.DataDTO">
+
+  <![CDATA[
+select * from (
+
+        select
+
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        t.ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+
+        select
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)) ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+        select line.line_id LINE_ID,line.line_name LINE_NAME,
+        count(1) runtime,
+        case
+        when linerate.STEP = '0' then
+        round(sum(SCHEDUL_QTY) / count(1), 1)
+        else
+        100
+        end SCHEDUL_QTY,
+        round(sum(ACTUAL_QTY) / count(1), 1) ACTUAL_QTY,
+        case
+        when linerate.STEP = '0' then
+        round(sum(linerate.ACH_RATE) / count(1), 1)
+        else
+        100
+        end ACH_RATE,
+        starnddata.rate_num STANDARD_ACH_RATE
+        from TH_PRO_LINE_ACH_RATE linerate,
+        TH_PRODUCT_LINE      line,
+        TH_RATE_RED_DATA     starnddata
+        where linerate.line_id = line.line_id(+)
+        and linerate.line_id = starnddata.line_id(+)
+        and line.line_name is not null
+
+        
+        and DATA_TIME >= TRUNC(NEXT_DAY(SYSDATE-8,1)-6) AND DATA_TIME < TRUNC(NEXT_DAY(SYSDATE-8,1)+1)
+        group by line.line_id,line.line_name, linerate.STEP, starnddata.rate_num
+
+        ) t ,TH_PRODUCT_STANDARD_OUT standarout where t.line_id = standarout.LINE_ID(+)
+
+        ) t  where 1=1    and t. ACH_RATE < t.STANDARD_ACH_RATE
+
+        order by t.ACH_RATE desc
+
+        ) where rownum=1
+   ]]>
+    </select>
+
+
+    <select id="queryNowWeekTop1Ach" resultType="com.ags.modules.sys.dto.DataDTO">
+  <![CDATA[
+select * from (
+
+        select
+
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        t.ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+
+        select
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)) ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+        select line.line_id LINE_ID,line.line_name LINE_NAME,
+        count(1) runtime,
+        case
+        when linerate.STEP = '0' then
+        round(sum(SCHEDUL_QTY) / count(1), 1)
+        else
+        100
+        end SCHEDUL_QTY,
+        round(sum(ACTUAL_QTY) / count(1), 1) ACTUAL_QTY,
+        case
+        when linerate.STEP = '0' then
+        round(sum(linerate.ACH_RATE) / count(1), 1)
+        else
+        100
+        end ACH_RATE,
+        starnddata.rate_num STANDARD_ACH_RATE
+        from TH_PRO_LINE_ACH_RATE linerate,
+        TH_PRODUCT_LINE      line,
+        TH_RATE_RED_DATA     starnddata
+        where linerate.line_id = line.line_id(+)
+        and linerate.line_id = starnddata.line_id(+)
+        and line.line_name is not null
+
+        
+        and DATA_TIME >= TRUNC(NEXT_DAY(SYSDATE-8,1)+1) AND DATA_TIME < TRUNC(NEXT_DAY(SYSDATE-8,1)+7)+1
+        group by line.line_id,line.line_name, linerate.STEP, starnddata.rate_num
+
+        ) t ,TH_PRODUCT_STANDARD_OUT standarout where t.line_id = standarout.LINE_ID(+)
+
+        ) t  where 1=1    and t. ACH_RATE > t.STANDARD_ACH_RATE
+
+        order by t.ACH_RATE desc
+
+        ) where rownum=1
+   ]]>
+    </select>
+
+    <select id="queryNowWeekTop1NoAch" resultType="com.ags.modules.sys.dto.DataDTO">
+
+  <![CDATA[
+select * from (
+        select
+
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        t.ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+
+        select
+        t.LINE_NAME,
+        t.SCHEDUL_QTY,
+        t.ACTUAL_QTY,
+        decode(round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1),'',0,round((t.ACTUAL_QTY/t.runtime)/standarout.NUM*100,1)) ACH_RATE,
+        t.STANDARD_ACH_RATE
+        from (
+
+        select line.line_id LINE_ID,line.line_name LINE_NAME,
+        count(1) runtime,
+        case
+        when linerate.STEP = '0' then
+        round(sum(SCHEDUL_QTY) / count(1), 1)
+        else
+        100
+        end SCHEDUL_QTY,
+        round(sum(ACTUAL_QTY) / count(1), 1) ACTUAL_QTY,
+        case
+        when linerate.STEP = '0' then
+        round(sum(linerate.ACH_RATE) / count(1), 1)
+        else
+        100
+        end ACH_RATE,
+        starnddata.rate_num STANDARD_ACH_RATE
+        from TH_PRO_LINE_ACH_RATE linerate,
+        TH_PRODUCT_LINE      line,
+        TH_RATE_RED_DATA     starnddata
+        where linerate.line_id = line.line_id(+)
+        and linerate.line_id = starnddata.line_id(+)
+        and line.line_name is not null
+
+        
+        and DATA_TIME >= TRUNC(NEXT_DAY(SYSDATE-8,1)+1) AND DATA_TIME < TRUNC(NEXT_DAY(SYSDATE-8,1)+7)+1
+        group by line.line_id,line.line_name, linerate.STEP, starnddata.rate_num
+
+        ) t ,TH_PRODUCT_STANDARD_OUT standarout where t.line_id = standarout.LINE_ID(+)
+
+        ) t  where 1=1    and t. ACH_RATE < t.STANDARD_ACH_RATE
+
+        order by t.ACH_RATE desc
+
+        ) where rownum=1
+   ]]>
+    </select>
+
+
+    <select id="queryTimeRange" resultType="java.lang.String">
+
+        <if test="timeType != null and timeType != ''  and timeType == 'in2hour' ">
+            <![CDATA[
+
+            select
+             case
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 02:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate-1, 'yyyy-mm-dd') || ' 22:00:00' || '--' ||to_char(sysdate-1, 'yyyy-mm-dd') ||' 23:59:59'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 02:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 04:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 00:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 02:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 04:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 06:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || '02:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 04:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 06:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 08:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || '04:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 06:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 08:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 10:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 06:00:00' || '--' || to_char(sysdate, 'yyyy-mm-dd') ||' 08:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 10:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 12:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 08:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 10:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 12:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 10:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 12:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 12:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 14:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 16:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 14:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 16:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 20:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 16:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 18:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 20:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 22:00:00','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 18:00:00' || '--' ||to_char(sysdate, 'yyyy-mm-dd') ||' 20:00:00'
+               when sysdate >= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 22:00:00','yyyy-mm-dd hh24:mi:ss') and
+                    sysdate <= to_date(to_char(sysdate, 'yyyy-mm-dd') || ' 23:59:59','yyyy-mm-dd hh24:mi:ss') then
+                to_char(sysdate, 'yyyy-mm-dd') || ' 20:00:00' || '--' || to_char(sysdate, 'yyyy-mm-dd') ||' 22:00:00'
+               else
+                ''
+             end timerange
+
+              from dual
+
+        ]]>
+        </if>
+        <if test="timeType != null and timeType != ''  and timeType != 'in2hour' ">
+            select
+
+            to_char(sysdate,'yyyy-mm-dd') || ' 00:00:00' || '--' ||   to_char(sysdate,'yyyy-mm-dd') || ' 23:59:59'  as timerange from dual
+        </if>
+
+
+    </select>
+</mapper>

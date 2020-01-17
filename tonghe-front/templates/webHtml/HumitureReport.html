@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>温湿度、ESD监控看板</title>
+    <!-- 设置视口-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/plugIn/bootstrap.css"/>
+    <!-- 引入swiper 样式-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/plugIn/swiper/swiper.min.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="../../statics/webStatics/css/common.css">
+    <link rel="stylesheet" href="../../statics/webStatics/css/HumitureReport.css"/>
+
+    <!-- 导入3个js，有顺序要求-->
+    <script src="../../statics/webStatics/js/plugIn/jquery.min.js"></script>
+    <script src="../../statics/webStatics/js/plugIn/popper.min.js"></script>
+    <script src="../../statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+    <!--引入公共字体，请求方法-->
+    <script src="../../statics/webStatics/js/utils/require.js"></script>
+    <!--引入echart.js-->
+    <script src="../../statics/webStatics/js/plugIn/echart/echarts.common.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--头部主题-->
+    <header></header>
+    <!--内容部分-->
+    <div class="loading flexColumnCenterCenter">
+        <img src="../../statics/webStatics/images/loading.png"  alt="图片出错">
+    </div>
+    <div class="wrapper flexColumnBetweenCenter">
+        <!--布局图，温湿度-->
+        <div class="humiture clear">
+<!--               <ul class="lf">-->
+<!--                   <li>-->
+<!--                       原料仓库区-->
+<!--                   </li>-->
+<!--                   <li>-->
+<!--                       KITTING区-->
+<!--                   </li>-->
+<!--                   <li>-->
+<!--                       PCBA区-->
+<!--                   </li>-->
+<!--                   <li>-->
+<!--                       前加工区-->
+<!--                   </li>-->
+<!--                   <li>-->
+<!--                       G3组装区-->
+<!--                   </li>-->
+<!--                   <li>-->
+<!--                       FT测试区-->
+<!--                   </li>-->
+<!--                   <li>-->
+<!--                       ST测试区-->
+<!--                   </li>-->
+<!--                   <li>-->
+<!--                       G3包装区-->
+<!--                   </li>-->
+<!--               </ul>-->
+                <div class="layout rt">
+                    <div class="region area1">
+                        <div class="showStatus">
+                            <p class="areaName">KITTING区</p>
+                            <ul>
+                                <li class="icon"><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light"  data-lineName="KITTING">
+                        </i>
+                    </div>
+                    <div class="region area2">
+                        <div class="showStatus">
+                            <p class="areaName">G3组装区</p>
+                            <ul>
+                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light" data-lineName="G3组装一线"></i>
+                        <i class="light" data-lineName="G3组装二线"></i>
+                    </div>
+<!--                    <div class="region area3" style="display: none">-->
+<!--                        <div class="showStatus">-->
+<!--                            <p class="areaName">FT测试区</p>-->
+<!--                            <ul>-->
+<!--                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>-->
+<!--                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>-->
+<!--                            </ul>-->
+<!--                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">-->
+<!--                        </div>-->
+<!--                        <i class="light" data-lineName="FT测试区"></i>-->
+<!--                    </div>-->
+                    <div class="region area4">
+                        <div class="showStatus">
+                            <p class="areaName">ST测试区</p>
+                            <ul>
+                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light" data-lineName="ST测试区"></i>
+                    </div>
+                    <div class="region area5">
+                        <div class="showStatus ">
+                            <p class="areaName">G3包装区</p>
+                            <ul>
+                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light" data-lineName="G3包装一线"></i>
+                        <i class="light" data-lineName="G3包装二线"></i>
+                    </div>
+                    <div class="region area6">
+                        <div class="showStatus">
+                            <p class="areaName">PCBA区</p>
+                            <ul>
+                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li class="icon"><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light " data-lineName="5DX"></i>
+                        <i class="light " data-lineName="FBT"></i>
+                        <i class="light " data-lineName="PTH"></i>
+                        <i class="light" data-lineName="SMT8L"></i>
+                        <i class="light" data-lineName="SMT7L"></i>
+                        <i class="light" data-lineName="在线维修"></i>
+                    </div>
+                    <div class="region area7">
+                        <div class="showStatus">
+                            <p class="areaName">前加工区</p>
+                            <ul>
+                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light" data-lineName="前加工"></i>
+                    </div>
+                    <div class="region area8">
+                        <div class="showStatus">
+                            <p class="areaName">原料仓库区</p>
+                            <ul>
+                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light" data-lineName="原料仓库"></i>
+                    </div>
+                    <div class="region area9">
+                        <div class="showStatus">
+                            <p class="areaName">测试与维修区</p>
+                            <ul>
+                                <li><i class="icon"></i> <span>0</span> &nbsp;℃</li>
+                                <li><i class="icon"></i><span>0</span> &nbsp; %</li>
+                            </ul>
+                            <img src="../../statics/webStatics/images/HumitureReport/halo.png" alt="图片不存在"  style="">
+                        </div>
+                        <i class="light" data-lineName="维修区"></i>
+                    </div>
+                </div>
+        </div>
+        <!--ESD监控 -->
+        <div class="row ESDControl">
+            <div class="chart col-xl-12 col-xs-12" >
+                <p class="theme" style="position: absolute">
+                    <span class="title">ESD人体实时监控</span>
+                    <!--<span class="subhead">Adverse cause TOP3</span>-->
+                </p>
+                <div class="area">
+                    <ul class="list flexRowAroundCenter">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../statics/webStatics/js/HumitureReport.js"></script>
+<script src="../../statics/webStatics/js/header.js"></script>
+<script src="../../statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+</body>
+</html>

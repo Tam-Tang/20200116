@@ -1,0 +1,599 @@
+{
+  "msg": "success",
+  "code": 0,
+  "data": {
+    "description": "{euipmentsStateListData为工序状态,utilization为线别稼动率,machineMobilityRate为设备稼动率boardconfig为看板配置数据}",
+    "euipmentsStateListData": [{
+      "id": "ACD6A867E75A4B26BB8B284F40329B17",
+      "createTime": "2020-01-11 06:50:50",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "SMT七線",
+      "euipmentName": "SMT七线",
+      "euipmentType": "SMT",
+      "lineId": "S11L7A",
+      "shiftName": "SHIFT 1",
+      "status": "0"
+    }, {
+      "id": "525907D35F5A43EEADA12D957CF5F243",
+      "createTime": "2020-01-11 06:50:50",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "SMT八線",
+      "euipmentName": "SMT八线",
+      "euipmentType": "SMT",
+      "lineId": "S11L8A",
+      "shiftName": "SHIFT 1",
+      "status": "0"
+    }, {
+      "id": "9D840B84AE924CDFA9F32AECE84F6152",
+      "createTime": "2020-01-11 06:50:51",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1ICT06",
+      "euipmentName": "ICT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1ICT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "604873206FBA417AA56C9B7285A99467",
+      "createTime": "2020-01-11 06:50:51",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1ICT07",
+      "euipmentName": "ICT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1ICT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "924C3AD43B084637B0F95B53049F7FA6",
+      "createTime": "2020-01-11 06:50:51",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1ICT12",
+      "euipmentName": "ICT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1ICT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "76DB83DA295C48B58C523EB397AF2A0E",
+      "createTime": "2020-01-11 06:50:51",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "5DX-3",
+      "euipmentName": "5DX测试设备",
+      "euipmentType": "测试",
+      "lineId": "B15DX",
+      "shiftName": "SHIFT 1",
+      "status": "0"
+    }, {
+      "id": "211B67165D094AECBD66B3126C4DD139",
+      "createTime": "2020-01-11 06:50:52",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-01",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "4419F654A4024201AEE062BAFCB4734D",
+      "createTime": "2020-01-11 06:50:54",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-02",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "0"
+    }, {
+      "id": "FC37D275D47F4495B0762D71B1E17764",
+      "createTime": "2020-01-11 06:50:56",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-03",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "A39F972F749E405EA8184EBB789B12B6",
+      "createTime": "2020-01-11 06:50:58",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-04",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "DA7731D07397400F9DA00D5730DC0E2D",
+      "createTime": "2020-01-11 06:50:59",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-05",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "464D57B58B4F496EB52653F438C519B4",
+      "createTime": "2020-01-11 06:51:00",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-06",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "7F1514383B0E45BC9FB90FF909384DAC",
+      "createTime": "2020-01-11 06:51:02",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-07",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "0"
+    }, {
+      "id": "11839A5535CC4D879C14310BE5AC33C1",
+      "createTime": "2020-01-11 06:51:03",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-08",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "378F9F4E96E448318E7D9F1B8E57D2FE",
+      "createTime": "2020-01-11 06:51:05",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-09",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "8C190FD4250D4D40989AC8AC926E9D82",
+      "createTime": "2020-01-11 06:51:06",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-10",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "76DCE276731E423DAD7D92A8EFDAAD76",
+      "createTime": "2020-01-11 06:51:07",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-11",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "CB29C77C36F840F89FA7551E36B65994",
+      "createTime": "2020-01-11 06:51:08",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-12",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "51852417243041D090AE95D2C3B07F7C",
+      "createTime": "2020-01-11 06:51:10",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-13",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "EAF655631A8E47CB937C3139504B5DCA",
+      "createTime": "2020-01-11 06:51:11",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-14",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "020BBB9BD4014DBFA5C07D555D11A182",
+      "createTime": "2020-01-11 06:51:12",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-15",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "770FA8EEB232474D938FCFDDC5BD2C53",
+      "createTime": "2020-01-11 06:51:14",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-16",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "07A5AAEBE25F4B58BDEABA0DFA689F6F",
+      "createTime": "2020-01-11 06:51:15",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-17",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "3CE358891D1241D192E91C2F8604E0E9",
+      "createTime": "2020-01-11 06:51:17",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-18",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "B6A097C2E5CD4506ACA04C43867106EB",
+      "createTime": "2020-01-11 06:51:18",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-19",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "7C41367B47AD491C85F80B3043AE0568",
+      "createTime": "2020-01-11 06:51:19",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-20",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "1570B31AD29F4D078AAB13352EBA449D",
+      "createTime": "2020-01-11 06:51:20",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-21",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "4F6EBAEC56494583AB25887CE693577E",
+      "createTime": "2020-01-11 06:51:21",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-22",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "F1FD74C92E224A3FBEF101E3DC974C96",
+      "createTime": "2020-01-11 06:51:23",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-23",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "51DE5CC3044C4963885851272BD75B9C",
+      "createTime": "2020-01-11 06:51:25",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-24",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "9D521ECAEC9545319B2D0F035719994C",
+      "createTime": "2020-01-11 06:51:26",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-25",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "67604F0BE4014EF18A257022321ACDAB",
+      "createTime": "2020-01-11 06:51:27",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-26",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "9C39C1CC5B80478AB6F1E8352EBC9A16",
+      "createTime": "2020-01-11 06:51:28",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-27",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "E9FC4A97691B466EA2B040E81F6A55E1",
+      "createTime": "2020-01-11 06:51:30",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "FBT-28",
+      "euipmentName": "FBT测试设备",
+      "euipmentType": "测试",
+      "lineId": "B1FBT",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "D40A7214E96A4C0AB4E58EC3583EAD35",
+      "createTime": "2020-01-11 06:51:30",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1PTH線",
+      "euipmentName": "B1PTH线",
+      "euipmentType": "PTH",
+      "lineId": "B1PTH",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "198781FC35434054BCC460B79A4517F7",
+      "createTime": "2020-01-11 06:51:30",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1服務器測試",
+      "euipmentName": "B1服务器测试",
+      "euipmentType": "测试",
+      "lineId": "B1SERVERTEST",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "5B08B01C68D7433A96D47BAD809132AF",
+      "createTime": "2020-01-11 06:51:30",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1組裝一線",
+      "euipmentName": "B1组装一线",
+      "euipmentType": "组装",
+      "lineId": "B11FA1",
+      "shiftName": "SHIFT 1",
+      "status": "0"
+    }, {
+      "id": "385A2401DE354BF5A66ADB948C81077E",
+      "createTime": "2020-01-11 06:51:30",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1組裝二線",
+      "euipmentName": "B1组装二线",
+      "euipmentType": "组装",
+      "lineId": "B11FA2",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }, {
+      "id": "C610C8D7BD4243A4BCDA2C2AC85A200B",
+      "createTime": "2020-01-11 06:51:30",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1包裝一線",
+      "euipmentName": "B1包装一线",
+      "euipmentType": "包装",
+      "lineId": "B11FP1",
+      "shiftName": "SHIFT 1",
+      "status": "0"
+    }, {
+      "id": "3EE2553578E94C168D2931ADA274BFA1",
+      "createTime": "2020-01-11 06:51:30",
+      "dataTime": "2020-01-11 06:45:00",
+      "euipmentId": "B1包裝二線",
+      "euipmentName": "B1包装二线",
+      "euipmentType": "包装",
+      "lineId": "B11FP2",
+      "shiftName": "SHIFT 1",
+      "status": "2"
+    }],
+    "utilization": [{
+      "lineName": "组装2",
+      "rate": "100"
+    }, {
+      "lineName": "SMTL8",
+      "rate": "100"
+    }, {
+      "lineName": "组装1",
+      "rate": "100"
+    }, {
+      "lineName": "测试",
+      "rate": "100"
+    }, {
+      "lineName": "包装2",
+      "rate": "100"
+    }, {
+      "lineName": "包装1",
+      "rate": "100"
+    }, {
+      "lineName": "SMTL7",
+      "rate": "100"
+    }, {
+      "lineName": "ICT",
+      "rate": "100"
+    }],
+    "machineMobilityRate": [{
+      "euipmentId": "FBT-23",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-26",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1PTH線",
+      "euipmentName": "B1PTH线",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1包裝一線",
+      "euipmentName": "B1包装一线",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1包裝二線",
+      "euipmentName": "B1包装二线",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1ICT07",
+      "euipmentName": "ICT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-05",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-14",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-01",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-24",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1ICT06",
+      "euipmentName": "ICT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "5DX-3",
+      "euipmentName": "5DX测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-02",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-10",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-16",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-04",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1組裝一線",
+      "euipmentName": "B1组装一线",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-06",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-18",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-27",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1組裝二線",
+      "euipmentName": "B1组装二线",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1ICT12",
+      "euipmentName": "ICT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-03",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-08",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-13",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-15",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-07",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-20",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-21",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-22",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-25",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-28",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "B1服務器測試",
+      "euipmentName": "B1服务器测试",
+      "rate": "100"
+    }, {
+      "euipmentId": "SMT七線",
+      "euipmentName": "SMT七线",
+      "rate": "100"
+    }, {
+      "euipmentId": "SMT八線",
+      "euipmentName": "SMT八线",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-09",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-11",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-12",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-17",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }, {
+      "euipmentId": "FBT-19",
+      "euipmentName": "FBT测试设备",
+      "rate": "100"
+    }],
+    "boardconfig": {
+      "id": "1199498239556110000",
+      "email": "lanccj@163.com",
+      "refreshTime": "3600"
+    }
+  }
+}

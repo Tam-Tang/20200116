@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>质量监控看板</title>
+    <!-- 设置视口-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1"/>
+    <!-- 导入css-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/bootstrap.css"/>
+    <!-- 引入swiper 样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/plugIn/swiper/swiper.min.css">
+    <!--公共样式-->
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/common.css">
+    <link rel="stylesheet" href="${request.contextPath}/statics/webStatics/css/QualityReport.css"/>
+
+    <!-- 导入3个js，有顺序要求-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/jquery.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/popper.min.js"></script>
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/bootstrap.min.js"></script>
+    <!--引入公共字体，请求方法-->
+    <script src="${request.contextPath}/statics/webStatics/js/utils/require.js"></script>
+    <!--引入echart.js-->
+    <script src="${request.contextPath}/statics/webStatics/js/plugIn/echart/echarts.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--头部主题-->
+    <header></header>
+    <!--内容部分-->
+    <div class="loading flexColumnCenterCenter">
+        <img src="${request.contextPath}/statics/webStatics/images/loading.png"  alt="图片出错">
+    </div>
+    <div class="wrapper ">
+        <div class="row">
+            <!--网状图-->
+            <div class=" chart  col-lg-7 col-xs-7" >
+                <!--class=showChart 是echarts图表的父组件-->
+                <div  class="barCharts showChart" id="productionQuantityChart" ></div>
+                <ul class="myLegend">
+                    <li><i class="selectBox "></i>今日</li>
+                    <li><i class="selectBox"></i>本周</li>
+                    <li><i class="selectBox"></i>本月</li>
+                </ul>
+<!--                <div class="updateTime">-->
+<!--                   <div class="wrapper flexRowStartCenter">-->
+<!--                       <div class="flexRowAroundCenter"><img src="${request.contextPath}/statics/webStatics/images/nowTime.png" alt="图片路径错误"> 数据周期</>-->
+<!--                       <p class="time"></p>-->
+<!--                   </div>-->
+<!--                </div>-->
+            </div>
+            <!--右边的环状图 -->
+            <div class="chart col-lg-5 col-xs-5" id="flowChart">
+                <p class="theme" style="position: absolute">
+                    <span class="title">PCBA直通率和CTO直通率</span>
+                    <!--<span class="subhead">Adverse cause TOP3</span>-->
+                </p>
+                <div class="ecahrtWrap">
+                    <!--加载动画-->
+<!--                    <div class="loading">-->
+<!--                        <div class="gif"></div>-->
+<!--                    </div>-->
+                    <div class="pcba" id="pcba" style="height:28%">
+                    </div>
+                    <div class="cto" id="cto" style="height:28%;margin-bottom: 0"></div>
+                    <p class="title flexRowStartCenter">各工序不良原因TOP3</p>
+                    <div class="tupian swiper-container "  style="display: block">
+                        <div class="swiper-wrapper">
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                &lt;!&ndash;饼图&ndash;&gt;-->
+<!--                                <div class="pie" >-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash;折线图&ndash;&gt;-->
+<!--                                <div class="lineChart">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                <div class="pie">-->
+<!--                                    2.第二-->
+<!--                                </div>-->
+<!--                                <div class="lineChart"></div>-->
+<!--                            </div>-->
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                <div class="pie">-->
+<!--                                    3.第三-->
+<!--                                </div>-->
+<!--                                <div class="lineChart"></div>-->
+<!--                            </div>-->
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                <div class="pie">-->
+<!--                                    4.第四-->
+<!--                                </div>-->
+<!--                                <div class="lineChart"></div>-->
+<!--                            </div>-->
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                <div class="pie">-->
+<!--                                    5.第五-->
+<!--                                </div>-->
+<!--                                <div class="lineChart"></div>-->
+<!--                            </div>-->
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                <div class="pie">-->
+<!--                                    6.第六-->
+<!--                                </div>-->
+<!--                                <div class="lineChart"></div>-->
+<!--                            </div>-->
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                <div class="pie">-->
+<!--                                    7.第七-->
+<!--                                </div>-->
+<!--                                <div class="lineChart"></div>-->
+<!--                            </div>-->
+<!--                            <div class="swiper-slide echart" >-->
+<!--                                <div class="pie">-->
+<!--                                    8.第八-->
+<!--                                </div>-->
+<!--                                <div class="lineChart"></div>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${request.contextPath}/statics/webStatics/js/QualityReport.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/header.js"></script>
+<script src="${request.contextPath}/statics/webStatics/js/plugIn/swiper/swiper.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #MySQL配置
+    #    driverClassName: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://localhost:3306/renren_security?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    #    username: renren
+    #    password: 123456
+    #oracle配置
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@119.119.118.118:1521:SZHDB01
+    username: szh01
+    password: skb169
+    #SQLServer配置
+    #    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    #    url: jdbc:sqlserver://192.168.10.10:1433;DatabaseName=renren_security
+    #    username: sa
+    #    password: 123456
+    #PostgreSQL配置
+  #    driverClassName: org.postgresql.Driver
+  #    url: jdbc:postgresql://192.168.10.10:5432/renren_security
+  #    username: postgres
+  #    password: 123456
+
+       

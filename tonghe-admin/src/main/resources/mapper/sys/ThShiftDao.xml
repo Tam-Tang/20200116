@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThShiftDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThShiftEntity" id="thShiftMap">
+        <result property="id" column="ID"/>
+        <result property="factoryId" column="FACTORY_ID"/>
+        <result property="shift" column="SHIFT"/>
+        <result property="seqno" column="SEQNO"/>
+        <result property="hourperiod" column="HOURPERIOD"/>
+        <result property="uphratio" column="UPHRATIO"/>
+        <result property="fitsrHour" column="FITSR_HOUR"/>
+        <result property="lastHour" column="LAST_HOUR"/>
+        <result property="fromTime" column="FROM_TIME"/>
+        <result property="toTime" column="TO_TIME"/>
+        <result property="note" column="NOTE"/>
+    </resultMap>
+
+
+</mapper>

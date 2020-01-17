@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThRealTimeTemAndHumDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThRealTimeTemAndHumEntity" id="thRealTimeTemAndHumMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="dataTime" column="DATA_TIME"/>
+        <result property="place" column="PLACE"/>
+        <result property="temperature" column="TEMPERATURE"/>
+        <result property="hamidity" column="HAMIDITY"/>
+
+    </resultMap>
+
+    <select id="listNew" resultMap="thRealTimeTemAndHumMap">
+        SELECT * FROM TH_REAL_TIME_TEM_AND_HUM where CREATE_TIME = (select MAX(CREATE_TIME) from TH_REAL_TIME_TEM_AND_HUM)
+    </select>
+
+    <select id="queryTempHumWarn" resultType="com.ags.modules.sys.dto.HumWarnDTO">
+
+               SELECT * FROM (
+
+                select th.DATA_TIME TIME, th.PLACE, th.TEMPERATURE TEM, th.HAMIDITY HUM,
+
+                (select TEMPERATURE from TH_ESD_CONFIG) STANDARD_TEMPERATURE,
+
+                (select HUMIDITY from TH_ESD_CONFIG) STANDARD_HUMIDITY
+
+                  from TH_REAL_TIME_TEM_AND_HUM th
+                 where 1 = 1
+
+                   and CREATE_TIME = (select MAX(CREATE_TIME) from TH_REAL_TIME_TEM_AND_HUM)
+
+                   ) WHERE TO_NUMBER(TEM) > TO_NUMBER(STANDARD_TEMPERATURE) OR  TO_NUMBER(HUM) > TO_NUMBER(STANDARD_HUMIDITY)
+
+    </select>
+
+</mapper>

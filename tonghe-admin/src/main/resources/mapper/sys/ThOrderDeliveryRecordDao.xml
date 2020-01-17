@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ags.modules.sys.dao.ThOrderDeliveryRecordDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ags.modules.sys.entity.ThOrderDeliveryRecordEntity" id="thOrderDeliveryRecordMap">
+        <result property="id" column="ID"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="orderTotalQty" column="ORDER_TOTAL_QTY"/>
+        <result property="orderDeliveryQty" column="ORDER_DELIVERY_QTY"/>
+        <result property="orderUndeliveryQty" column="ORDER_UNDELIVERY_QTY"/>
+        <result property="ordeqTy" column="ORDEQ_TY"/>
+    </resultMap>
+
+    <!--按照订单维度查询交付分析  查询当月-->
+    <select id="queryDeliveryByOrder" resultType="com.ags.modules.sys.dto.DeliveryByOrderDTO">
+        SELECT
+            sum( ORDER_TOTAL_QTY ) as ORDER_TOTAL_QTY,
+            sum( ORDER_DELIVERY_QTY ) as ORDER_DELIVERY_QTY,
+            sum( ORDER_UNDELIVERY_QTY ) as ORDER_UNDELIVERY_QTY,
+            sum( ORDEQ_TY ) as ORDEQ_TY
+        FROM
+            TH_ORDER_DELIVERY_RECORD
+        WHERE
+            to_char( CREATE_TIME, 'mm' ) = to_char(
+            SYSDATE,
+            'mm')
+    </select>
+
+
+</mapper>
